@@ -6,7 +6,7 @@
 /*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/20 02:44:05 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/20 05:27:45 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,33 @@ typedef struct s_vector2double	t_v2d;
 typedef struct s_map_data		t_map;
 typedef struct s_temp_pointers	t_tmp;
 
+#	define ENM_AI_TIMER 3
+
 typedef enum e_entity_types
 {
 	ITEM,
 	ENEMY
 }	t_ent_t;
 
+typedef enum s_enemy_state
+{
+	IDLE,
+	PATROL
+}	t_enm_st;
+
+typedef struct s_enemy_data
+{
+	t_enm_st	state;
+	double		st_timer;
+	t_v2d		dir;
+}	t_enm;
+
 typedef struct s_entity
 {
 	t_v2d	pos;
 	double	pl_dist;
 	t_ent_t	type;
+	t_enm	data;
 }	t_ent;
 
 typedef struct s_player_data
@@ -78,5 +94,8 @@ typedef struct s_cub3d_data
 	t_tmp		tmp;
 	t_input		input;
 }	t_cub;
+
+void	update_enemy_states(t_cub *data, t_ent	*enemy, int	enm_n);
+void	enemy_action(t_cub *data, t_ent	*enemy, int	enm_n);
 
 #endif

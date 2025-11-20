@@ -6,7 +6,7 @@
 /*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:30:54 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/20 00:29:45 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/20 05:29:03 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int	game_loop(t_cub *data)
 
 	time_start = get_time_in_sec();
 	calc_delta_time(data);
+	update_enemy_states(data, data->gman.enemies, data->gman.enemies_n);
+	enemy_action(data, data->gman.enemies, data->gman.enemies_n);
 	input_manager(data);
 	door_check(data);
 	draw_background(data);
@@ -90,6 +92,7 @@ int	main(int ac, char	**av)
 	parse_cub3d(&data, ac, av);
 	init_gfx_data(&data);
 	init_player(&data);
+	init_enemies(&data);
 	mlx_hook(data.mlx_w, 17, 0, exit_game, &data);
 	mlx_hook(data.mlx_w, 2, 1L << 0, key_press_handler, &data);
 	mlx_hook(data.mlx_w, 3, 1L << 1, key_release_handler, &data);

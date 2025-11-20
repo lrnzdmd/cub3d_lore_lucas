@@ -6,7 +6,7 @@
 /*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 04:04:23 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/20 03:32:08 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/20 05:18:48 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,33 +45,6 @@ void	init_minimap_buffer(t_cub *data)
 		map->size.x * map->tile_size, map->size.y * map->tile_size);
 }
 
-void	init_enemy_sprites(t_cub *data)
-{
-	int		j;
-	t_v2i	i;
-
-	if (data->gman.enemies_n < 1)
-		return ;
-	data->gman.enemies = safe_calloc(data, data->gman.enemies_n, sizeof(t_ent));
-	j = 0;
-	i.y = -1;
-	while (++i.y < data->gman.map.size.y)
-	{
-		i.x = -1;
-		while (++i.x < data->gman.map.size.x)
-		{
-			if (data->gman.map.map[i.y][i.x] == 'Z')
-			{
-				data->gman.map.map[i.y][i.x] = '0';
-				data->gman.enemies[j].pos.x = i.x + 0.5;
-				data->gman.enemies[j].pos.y = i.y + 0.5;
-				data->gman.enemies[j].type = ENEMY;
-				j++;
-			}
-		}
-	}
-}
-
 void	init_gfx_data(t_cub	*data)
 {
 	t_img_d	*frame;
@@ -89,7 +62,6 @@ void	init_gfx_data(t_cub	*data)
 	safe_mlx_new_img(data, frame, frame->size.x, frame->size.y);
 	safe_mlx_xpm_to_img(data, sprite, TXT_ENEMY, &sprite->size);
 	safe_mlx_xpm_to_img(data, door_txt, TXT_DOOR, &door_txt->size);
-	init_enemy_sprites(data);
 	init_minimap(data);
 }
 

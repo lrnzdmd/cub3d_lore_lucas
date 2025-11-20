@@ -6,7 +6,7 @@
 #    By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/09 20:22:59 by lde-medi          #+#    #+#              #
-#    Updated: 2025/11/20 00:48:07 by lorenzo          ###   ########.fr        #
+#    Updated: 2025/11/20 05:24:44 by lorenzo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,11 @@ CFLAGS = -g3 -O3 -Wall -Wextra -Werror -Iincludes -std=gnu99 -Ilibft/includes -I
 SRCS = 	srcs/main.c \
 		srcs/cleanup/cleanup.c \
 		srcs/cleanup/exit.c \
+		srcs/game/enemy.c \
 		srcs/gfx/render_minimap.c \
 		srcs/gfx/shapes.c \
 		srcs/gfx/shapes_utils.c \
+		srcs/init/init_enemy.c \
 		srcs/init/init_gfx.c \
 		srcs/init/init_map.c \
 		srcs/init/init_player.c \
