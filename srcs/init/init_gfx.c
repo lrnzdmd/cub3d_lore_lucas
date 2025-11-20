@@ -6,7 +6,7 @@
 /*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 04:04:23 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/20 00:44:03 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/20 03:32:08 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	init_minimap(t_cub *data)
 		while (++i.x < map.size.x)
 		{
 			if (map.map[i.y][i.x] == '1')
-				draw_map_tile(data, minimap, i, false);
+				draw_map_tile(data, minimap, i);
 		}
 	}
 }

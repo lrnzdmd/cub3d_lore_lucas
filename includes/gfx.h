@@ -6,7 +6,7 @@
 /*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/20 00:54:35 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/20 03:32:00 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ static inline t_v2i	map_to_pixel_coords(t_map map, t_v2d	map_cd)
 void	init_minimap(t_cub *data);
 void	draw_minimap(t_cub *data);
 void	draw_player_minimap(t_cub *data);
-void	draw_map_tile(t_cub *data, t_img_d	*img, t_v2i map, bool door);
+void	draw_map_tile(t_cub *data, t_img_d	*img, t_v2i map);
 
 void	drawline_to_img(t_img_d *img, t_v2i start, t_v2i end, int color);
 void	drawrect_to_img(t_img_d	*img, t_v2i top_l, t_v2i bot_r, int color);

@@ -6,23 +6,49 @@
 /*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 21:05:31 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/20 00:36:04 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/20 04:00:20 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
+static void	calc_door_pos(t_cub *data, t_v2i *pos, t_v2i *end, t_d_hor hor);
+
 void	draw_doors(t_cub *data)
 {
 	int		i;
+	t_v2i	pos;
+	t_v2i	end;
 	t_door	*doors;
 
 	i = -1;
 	doors = data->gman.map.doors;
 	while (++i < data->gman.map.doors_n)
 	{
-		if (!doors[i].open)
-			draw_map_tile(data, &data->gfx.fr_bf, doors[i].pos, true);
+		if (doors[i].open)
+			continue ;
+		pos = map_to_pixel_coords(data->gman.map, (t_v2d){doors[i].pos.x, doors[i].pos.y});
+		calc_door_pos(data, &pos, &end, doors[i].hor);
+		drawrect_to_img(&data->gfx.fr_bf, pos, end, MAP_CLR_DR);
+	}
+}
+
+static void	calc_door_pos(t_cub *data, t_v2i *pos, t_v2i *end, t_d_hor hor)
+{
+	int	tile_size;
+	
+	tile_size = data->gman.map.tile_size;
+	if (hor)
+	{
+		pos->x += (tile_size / 2) - (tile_size / 16);
+		end->y = pos->y + tile_size;
+		end->x = pos->x + (tile_size / 8);
+	}
+	else
+	{
+		pos->y += (tile_size / 2) - (tile_size / 16);
+		end->x = pos->x + tile_size;
+		end->y = pos->y + (tile_size / 8);
 	}
 }
 
@@ -85,31 +111,13 @@ void	draw_player_minimap(t_cub *data)
 		pl_pix.y - 2}, (t_v2i){pl_pix.x + 2, pl_pix.y + 2}, 0x0000ff00);
 }
 
-void	draw_map_tile(t_cub *data, t_img_d	*img, t_v2i map, bool door)
+void	draw_map_tile(t_cub *data, t_img_d	*img, t_v2i map)
 {
 	t_v2i	pos;
-	t_v2i	end;
 	int		tile_size;
 
 	tile_size = data->gman.map.tile_size;
 	pos = map_to_pixel_coords(data->gman.map, (t_v2d){map.x, map.y});
-	if (door)
-	{
-		if (data->gman.map.door_map[map.y][map.x]->hor)
-		{
-			pos.x += (tile_size / 2) - (tile_size / 16);
-			end.y = pos.y + tile_size;
-			end.x = pos.x + (tile_size / 8);
-		}
-		else
-		{
-			pos.y += (tile_size / 2) - (tile_size / 16);
-			end.x = pos.x + tile_size;
-			end.y = pos.y + (tile_size / 8);
-		}
-		drawrect_to_img(img, pos, end, MAP_CLR_DR);
-	}
-	else
-		drawrect_to_img(img, pos,
+	drawrect_to_img(img, pos,
 			(t_v2i){pos.x + tile_size, pos.y + tile_size}, MAP_CLR_WL);
 }
