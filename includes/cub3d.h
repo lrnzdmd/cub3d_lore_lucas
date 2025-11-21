@@ -6,7 +6,7 @@
 /*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/20 05:27:45 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/21 00:49:55 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ typedef struct s_vector2double	t_v2d;
 typedef struct s_map_data		t_map;
 typedef struct s_temp_pointers	t_tmp;
 
-#	define ENM_AI_TIMER 3
+# define ENM_AI_TIMER 3
+# define ENM_ATK_RANGE 0.125
+# define ENM_HBOX_RADIUS 0.125
+# define ENM_MOV_SPD 0.2
 
 typedef enum e_entity_types
 {
@@ -49,7 +52,9 @@ typedef enum e_entity_types
 typedef enum s_enemy_state
 {
 	IDLE,
-	PATROL
+	PATROL,
+	CHASE,
+	ATTACK
 }	t_enm_st;
 
 typedef struct s_enemy_data

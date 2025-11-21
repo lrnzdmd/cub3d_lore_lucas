@@ -6,7 +6,7 @@
 /*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 05:13:32 by lorenzo           #+#    #+#             */
-/*   Updated: 2025/11/20 05:16:25 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/20 22:35:21 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ static void	init_enemy(t_ent *enemy, t_v2i	i)
 	enemy->pos.y = i.y + 0.5;
 	enemy->type = ENEMY;
 	enemy->data.state = IDLE;
-	enemy->data.dir = (t_v2d){1, 0};	
+	enemy->data.dir = (t_v2d){1, 0};
 }
