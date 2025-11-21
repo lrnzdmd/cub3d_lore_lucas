@@ -6,12 +6,14 @@
 /*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:38:52 by lorenzo           #+#    #+#             */
-/*   Updated: 2025/11/21 06:40:19 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/21 06:47:56 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SETTINGS_H
 # define SETTINGS_H
+
+# define MINIMAP_SZ 0.29
 
 # define MOV_SPD 1
 # define ROT_SPD 2

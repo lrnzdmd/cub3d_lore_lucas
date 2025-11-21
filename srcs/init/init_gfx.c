@@ -6,7 +6,7 @@
 /*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 04:04:23 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/20 05:18:48 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/21 06:45:41 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	init_minimap_buffer(t_cub *data)
 	frame = &data->gfx.fr_bf;
 	map = &data->gman.map;
 	mn_map_bf = &data->gfx.m_map;
-	map->tile_size = (frame->size.x * 0.9) / map->size.x;
+	map->tile_size = (frame->size.x * (MINIMAP_SZ + 0.01)) / map->size.x;
 	safe_mlx_new_img(data, mn_map_bf,
 		map->size.x * map->tile_size, map->size.y * map->tile_size);
 }
