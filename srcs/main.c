@@ -6,7 +6,7 @@
 /*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:30:54 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/20 14:42:11 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/21 03:14:51 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,11 @@ int	game_loop(t_cub *data)
 	}
 	mlx_put_image_to_window(data->mlx, data->mlx_w,
 		data->gfx.fr_bf.img_p, 0, 0);
+	if (data->gman.plyr.hp <= 0)
+	{
+		ft_printf("Game Over.\n");
+		exit_game(data);
+	}
 	time_end = get_time_in_sec() - time_start;
 	if (time_end < TARGET_FR_TIME)
 		usleep(((TARGET_FR_TIME - time_end) * 1000000.0));

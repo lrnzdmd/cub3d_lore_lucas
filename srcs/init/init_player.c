@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 17:18:35 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/16 06:14:48 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/21 03:09:04 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ void	get_player_start_pos(t_cub *data)
 void	init_player(t_cub	*data)
 {
 	get_player_start_pos(data);
+	data->gman.plyr.hp = PLYR_MAX_HP;
 }

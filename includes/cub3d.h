@@ -6,7 +6,7 @@
 /*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/21 00:49:55 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/21 03:25:55 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,11 @@ typedef struct s_temp_pointers	t_tmp;
 
 # define ENM_AI_TIMER 3
 # define ENM_ATK_RANGE 0.125
+# define ENM_AGGR_RANGE 8
+# define ENM_ATK_SPD 2
 # define ENM_HBOX_RADIUS 0.125
 # define ENM_MOV_SPD 0.2
+# define PLYR_MAX_HP 10
 
 typedef enum e_entity_types
 {
@@ -74,6 +77,7 @@ typedef struct s_entity
 
 typedef struct s_player_data
 {
+	int		hp;
 	t_v2d	pos;
 	t_v2d	dir;
 	t_v2d	plane;
