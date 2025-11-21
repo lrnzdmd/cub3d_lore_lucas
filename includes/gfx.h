@@ -6,14 +6,13 @@
 /*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/20 03:32:00 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/21 06:40:39 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GFX_H
 # define GFX_H
 
-# define TARGET_FPS 60
 # define TARGET_FR_TIME 0.0166666666666667
 # define SCR_SZ_X 900
 # define SCR_SZ_Y 600

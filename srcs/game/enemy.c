@@ -6,7 +6,7 @@
 /*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 05:08:50 by lorenzo           #+#    #+#             */
-/*   Updated: 2025/11/21 03:39:59 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/21 06:11:59 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,6 @@ void	update_enemy_dir(t_ent *enemy)
 	enemy->data.dir.x = cos(rot);
 	enemy->data.dir.y = sin(rot);
 }
-
-
-
-
 
 static void	enemy_movement_x(t_cub *data, t_ent *enemy, t_v2d step, t_v2d coll)
 {
@@ -104,7 +100,7 @@ void	enemy_move(t_cub *data, t_ent *enemy)
 	enemy_movement_y(data, enemy, step, coll);
 }
 
-void	state_patrol(t_cub *data, t_ent *enemy)
+void	patrol_state(t_cub *data, t_ent *enemy)
 {
 	if (enemy->data.st_timer == ENM_AI_TIMER)
 		update_enemy_dir(enemy);
@@ -116,11 +112,11 @@ void	chase_state(t_cub *data, t_ent	*enemy)
 	t_v2d	dist_vec;
 	double	dist_len;
 
-	dist_vec.x = data->gman.plyr.pos.x - enemy->pos.x;
-	dist_vec.y = data->gman.plyr.pos.y - enemy->pos.y;
-	dist_len = sqrt(dist_vec.x * dist_vec.x + dist_vec.y * dist_vec.y);
+	dist_len = sqrt(enemy->pl_dist);
 	if (dist_len < ENM_ATK_RANGE)
 		return ;
+	dist_vec.x = data->gman.plyr.pos.x - enemy->pos.x;
+	dist_vec.y = data->gman.plyr.pos.y - enemy->pos.y;
 	enemy->data.dir.x = dist_vec.x / dist_len;
 	enemy->data.dir.y = dist_vec.y / dist_len;
 	enemy_move(data, enemy);
@@ -147,7 +143,7 @@ void	enemy_action(t_cub *data, t_ent	*enemy, int	enm_n)
 		if (enemy[i].data.state == IDLE)
 			continue ;
 		if (enemy[i].data.state == PATROL)
-			state_patrol(data, &enemy[i]);
+			patrol_state(data, &enemy[i]);
 		if (enemy[i].data.state == CHASE)
 			chase_state(data, &enemy[i]);
 		if (enemy[i].data.state == ATTACK)

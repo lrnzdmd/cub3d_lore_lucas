@@ -3,22 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   input.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:29:26 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/18 07:20:38 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/21 06:39:54 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INPUT_H
 # define INPUT_H
-
-# define MOV_SPD 1
-# define ROT_SPD 2
-# define MOUSE_SENS 0.002
-
-# define PLR_HBOX_RD 0.125
-# define PLR_ACT_RNG 0.33
 
 # define KEY_UP 65362
 # define KEY_DOWN 65364
