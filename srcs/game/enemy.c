@@ -6,7 +6,7 @@
 /*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 05:08:50 by lorenzo           #+#    #+#             */
-/*   Updated: 2025/11/21 03:26:01 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/21 03:39:59 by lorenzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,42 +50,71 @@ void	update_enemy_dir(t_ent *enemy)
 	enemy->data.dir.y = sin(rot);
 }
 
-void	state_patrol(t_cub *data, t_ent *enemy)
+
+
+
+
+static void	enemy_movement_x(t_cub *data, t_ent *enemy, t_v2d step, t_v2d coll)
 {
-	t_v2d	step;
-	t_v2d	coll;
 	t_v2i	map;
 
-	if (enemy->data.st_timer == ENM_AI_TIMER)
-		update_enemy_dir(enemy);
-	step.x = enemy->data.dir.x * (ENM_MOV_SPD * data->d_time);
-	step.y = enemy->data.dir.y * (ENM_MOV_SPD * data->d_time);
 	coll.x = enemy->pos.x + step.x;
-	coll.y = enemy->pos.y + step.y;
 	if (step.x > 0)
 		map.x = coll.x + ENM_HBOX_RADIUS;
 	else
 		map.x = coll.x - ENM_HBOX_RADIUS;
+	map.y = enemy->pos.y;
+	if (coll.x > data->gman.map.size.x || coll.x < 0)
+		return ;
+	if (data->gman.map.map[map.y][map.x] != '1'
+		&& data->gman.map.map[map.y][map.x] != '2')
+		enemy->pos.x = coll.x;
+	else
+		update_enemy_dir(enemy);
+}
+
+static void	enemy_movement_y(t_cub *data, t_ent *enemy, t_v2d step, t_v2d coll)
+{
+	t_v2i	map;
+
+	coll.y = enemy->pos.y + step.y;
 	if (step.y > 0)
 		map.y = coll.y + ENM_HBOX_RADIUS;
 	else
 		map.y = coll.y - ENM_HBOX_RADIUS;
-	if (data->gman.map.map[map.y][map.x] == '0')
-	{
-		enemy->pos.x += step.x;
-		enemy->pos.y += step.y;
-	}
+	map.x = enemy->pos.x;
+	if (coll.y > data->gman.map.size.y || coll.y < 0)
+		return ;
+	if (data->gman.map.map[map.y][map.x] != '1'
+		&& data->gman.map.map[map.y][map.x] != '2')
+		enemy->pos.y = coll.y;
 	else
 		update_enemy_dir(enemy);
+}
+
+void	enemy_move(t_cub *data, t_ent *enemy)
+{
+	t_v2d	step;
+	t_v2d	coll;
+	double	speed;
+
+	speed = ENM_MOV_SPD * data->d_time;
+	step = ft_multiply_v2d(enemy->data.dir, speed);
+	enemy_movement_x(data, enemy, step, coll);
+	enemy_movement_y(data, enemy, step, coll);
+}
+
+void	state_patrol(t_cub *data, t_ent *enemy)
+{
+	if (enemy->data.st_timer == ENM_AI_TIMER)
+		update_enemy_dir(enemy);
+	enemy_move(data, enemy);
 }
 
 void	chase_state(t_cub *data, t_ent	*enemy)
 {
 	t_v2d	dist_vec;
 	double	dist_len;
-	t_v2d	step;
-	t_v2d	coll;
-	t_v2i	map;
 
 	dist_vec.x = data->gman.plyr.pos.x - enemy->pos.x;
 	dist_vec.y = data->gman.plyr.pos.y - enemy->pos.y;
@@ -94,23 +123,7 @@ void	chase_state(t_cub *data, t_ent	*enemy)
 		return ;
 	enemy->data.dir.x = dist_vec.x / dist_len;
 	enemy->data.dir.y = dist_vec.y / dist_len;
-	step.x = enemy->data.dir.x * (ENM_MOV_SPD * data->d_time);
-	step.y = enemy->data.dir.y * (ENM_MOV_SPD * data->d_time);
-	if (enemy->data.dir.x > 0)
-		coll.x = enemy->pos.x + step.x + ENM_HBOX_RADIUS;
-	else
-		coll.x = enemy->pos.x + step.x - ENM_HBOX_RADIUS;
-	if (enemy->data.dir.y > 0)
-		coll.y = enemy->pos.y + step.y + ENM_HBOX_RADIUS;
-	else
-		coll.y = enemy->pos.y + step.y - ENM_HBOX_RADIUS;
-	map.x = (int)coll.x;
-	map.y = (int)coll.y;
-	if (data->gman.map.map[map.y][map.x] == '0')
-	{
-		enemy->pos.x += step.x;
-		enemy->pos.y += step.y;
-	}
+	enemy_move(data, enemy);
 }
 
 void	attack_state(t_cub *data, t_ent	*enemy)
