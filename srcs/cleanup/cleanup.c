@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 18:49:10 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/19 06:15:29 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/21 20:00:49 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ void	free_gfx_data(t_cub	*data)
 	safe_mlx_free_img(mlx, gfx->txt.wall.w.img_p);
 	safe_mlx_free_img(mlx, gfx->txt.wall.e.img_p);
 	safe_mlx_free_img(mlx, gfx->txt.wall.dr.img_p);
-	safe_mlx_free_img(mlx, gfx->txt.sprt.enemy_idle.img_p);
+	safe_mlx_free_img(mlx, gfx->txt.sprts.enemy.attack[0].img_p);
+	safe_mlx_free_img(mlx, gfx->txt.sprts.enemy.attack[1].img_p);
+	safe_mlx_free_img(mlx, gfx->txt.sprts.enemy.walk[0].img_p);
+	safe_mlx_free_img(mlx, gfx->txt.sprts.enemy.walk[1].img_p);
 	ft_multifree(1, &data->gman.enemies);
 }
 

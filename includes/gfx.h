@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gfx.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/21 06:40:39 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/21 20:13:42 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@
 
 # define TXT_ENEMY "./assets/textures/bear.xpm"
 # define TXT_DOOR "./assets/textures/door.xpm"
+# define TXT_ENM_ATK_0 "./assets/textures/enm_atk1.xpm"
+# define TXT_ENM_ATK_1 "./assets/textures/enm_atk2.xpm"
+# define TXT_ENM_WALK_0 "./assets/textures/enm_walk1.xpm"
+# define TXT_ENM_WALK_1 "./assets/textures/enm_walk2.xpm"
+# define ANM_SPD_ENM_ATK 2
+# define ANM_SPD_ENM_WALK 2
 
 typedef enum e_door_orientation
 {
@@ -81,16 +87,23 @@ typedef struct s_wall_textures
 	t_img_d	dr;
 }	t_wall_txt;
 
+typedef struct s_enemy_textures
+{
+	t_img_d	attack[2];
+	t_img_d	walk[2];
+}	t_enm_txt;
+
+
 typedef struct s_sprites_textures
 {
-	t_img_d	enemy_idle;
-	t_img_d	barrel;
+	t_enm_txt	enemy;
+	t_img_d		barrel;
 }	t_sprt_txt;
 
 typedef struct s_textures
 {
 	t_wall_txt	wall;
-	t_sprt_txt	sprt;
+	t_sprt_txt	sprts;
 }	t_txt;
 
 typedef struct s_graphics_data

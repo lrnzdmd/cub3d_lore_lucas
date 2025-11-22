@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_gfx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 04:04:23 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/21 06:45:41 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/22 03:13:32 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,27 @@ void	init_minimap_buffer(t_cub *data)
 		map->size.x * map->tile_size, map->size.y * map->tile_size);
 }
 
+void	init_enemy_textures(t_cub *data)
+{
+	t_enm_txt	*text;
+
+	text = &data->gfx.txt.sprts.enemy;
+	safe_mlx_xpm_to_img(data, &text->attack[0],
+		TXT_ENM_ATK_0, &text->attack[0].size);
+	safe_mlx_xpm_to_img(data, &text->attack[1],
+		TXT_ENM_ATK_1, &text->attack[1].size);
+	safe_mlx_xpm_to_img(data, &text->walk[0],
+		TXT_ENM_WALK_0, &text->walk[0].size);
+	safe_mlx_xpm_to_img(data, &text->walk[1],
+		TXT_ENM_WALK_0, &text->walk[1].size);
+}
+
 void	init_gfx_data(t_cub	*data)
 {
 	t_img_d	*frame;
-	t_img_d	*sprite;
 	t_img_d	*door_txt;
 
 	frame = &data->gfx.fr_bf;
-	sprite = &data->gfx.txt.sprt.enemy_idle;
 	door_txt = &data->gfx.txt.wall.dr;
 	data->lst_frm_time = get_time_in_sec();
 	data->d_time = 0;
@@ -60,8 +73,8 @@ void	init_gfx_data(t_cub	*data)
 	data->mlx_w = safe_mlx_new_window(data,
 			frame->size.x, frame->size.y, "cub3d");
 	safe_mlx_new_img(data, frame, frame->size.x, frame->size.y);
-	safe_mlx_xpm_to_img(data, sprite, TXT_ENEMY, &sprite->size);
 	safe_mlx_xpm_to_img(data, door_txt, TXT_DOOR, &door_txt->size);
+	init_enemy_textures(data);
 	init_minimap(data);
 }
 

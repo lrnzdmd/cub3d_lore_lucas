@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/21 06:39:26 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/22 03:22:23 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef enum s_enemy_state
 typedef struct s_enemy_data
 {
 	t_enm_st	state;
+	double		anim_timer;
+	int			anim_frm;
 	double		st_timer;
 	t_v2d		dir;
 }	t_enm;
@@ -64,6 +66,7 @@ typedef struct s_entity
 {
 	t_v2d	pos;
 	double	pl_dist;
+	t_img_d	*sprt;
 	t_ent_t	type;
 	t_enm	data;
 }	t_ent;
@@ -97,7 +100,8 @@ typedef struct s_cub3d_data
 	t_input		input;
 }	t_cub;
 
-void	update_enemy_states(t_cub *data, t_ent	*enemy, int	enm_n);
-void	enemy_action(t_cub *data, t_ent	*enemy, int	enm_n);
+void	enemy_state_update(t_cub *data, t_ent	*enemy);
+void	enemy_action(t_cub *data, t_ent	*enemy);
+void	enemy_animator(t_cub *data, t_ent *enemy);
 
 #endif

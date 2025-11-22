@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+         #
+#    By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/09 20:22:59 by lde-medi          #+#    #+#              #
-#    Updated: 2025/11/20 05:24:44 by lorenzo          ###   ########.fr        #
+#    Updated: 2025/11/22 03:14:10 by lde-medi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS = 	srcs/main.c \
 		srcs/cleanup/cleanup.c \
 		srcs/cleanup/exit.c \
 		srcs/game/enemy.c \
+		srcs/game/enemy_anim.c \
 		srcs/gfx/render_minimap.c \
 		srcs/gfx/shapes.c \
 		srcs/gfx/shapes_utils.c \

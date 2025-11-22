@@ -3,41 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   enemy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/20 05:08:50 by lorenzo           #+#    #+#             */
-/*   Updated: 2025/11/21 06:53:13 by lorenzo          ###   ########.fr       */
+/*   Created: 2025/11/20 05:08:50 by lde-medi          #+#    #+#             */
+/*   Updated: 2025/11/22 03:20:51 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-void	update_enemy_states(t_cub *data, t_ent	*enemy, int	enm_n)
+void	enemy_state_update(t_cub *data, t_ent	*enemy)
 {
-	int	i;
-
-	i = -1;
-	while (++i < enm_n)
+	enemy->data.st_timer -= data->d_time;
+	enemy->pl_dist = ft_distance_sq_v2d(data->gman.plyr.pos, enemy->pos);
+	if (enemy->pl_dist < ENM_AGGR_RANGE)
 	{
-		enemy[i].data.st_timer -= data->d_time;
-		enemy[i].pl_dist = ft_distance_sq_v2d(data->gman.plyr.pos, enemy[i].pos);
-		if (enemy[i].pl_dist < ENM_AGGR_RANGE)
-		{
-			if (enemy[i].pl_dist < ENM_ATK_RANGE)
-				enemy[i].data.state = ATTACK;
-			else
-				enemy[i].data.state = CHASE;
-		}
+		if (enemy->pl_dist < ENM_ATK_RANGE)
+			enemy->data.state = ATTACK;
 		else
-		{
-			if (enemy[i].data.st_timer > 0)
-				continue ;
-			else if (rand() % 3 == 0)
-				enemy[i].data.state = IDLE;
-			else
-				enemy[i].data.state = PATROL;
-			enemy[i].data.st_timer = ENM_AI_TIMER;
-		}
+			enemy->data.state = CHASE;
+	}
+	else
+	{
+		if (enemy->data.st_timer > 0)
+			return ;
+		else if (rand() % 3 == 0)
+			enemy->data.state = IDLE;
+		else
+			enemy->data.state = PATROL;
+		enemy->data.st_timer = ENM_AI_TIMER;
 	}
 }
 
@@ -132,21 +126,13 @@ void	attack_state(t_cub *data, t_ent	*enemy)
 	else
 		return ;
 }
-void	enemy_action(t_cub *data, t_ent	*enemy, int	enm_n)
-{
-	int	i;
 
-	i = -1;
-	(void)data;
-	while (++i < enm_n)
-	{
-		if (enemy[i].data.state == IDLE)
-			continue ;
-		if (enemy[i].data.state == PATROL)
-			patrol_state(data, &enemy[i]);
-		if (enemy[i].data.state == CHASE)
-			chase_state(data, &enemy[i]);
-		if (enemy[i].data.state == ATTACK)
-			attack_state(data, &enemy[i]);
-	}
+void	enemy_action(t_cub *data, t_ent	*enemy)
+{
+	if (enemy->data.state == PATROL)
+		patrol_state(data, enemy);
+	if (enemy->data.state == CHASE)
+		chase_state(data, enemy);
+	if (enemy->data.state == ATTACK)
+		attack_state(data, enemy);
 }
