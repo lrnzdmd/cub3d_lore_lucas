@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:50:16 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/20 00:46:13 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/22 05:46:56 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define UTILS_H
 
 typedef struct s_list			t_list;
-typedef struct s_ray			t_ray;
+typedef struct s_ray_data		t_ray;
 typedef struct s_image_data		t_img_d;
 typedef union u_color			t_clr;
 

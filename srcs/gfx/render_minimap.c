@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 21:05:31 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/20 04:00:20 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/22 06:08:26 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	draw_doors(t_cub *data)
 	{
 		if (doors[i].open)
 			continue ;
-		pos = map_to_pixel_coords(data->gman.map, (t_v2d){doors[i].pos.x, doors[i].pos.y});
+		pos = map_to_pixel_coords(data->gman.map,
+				(t_v2d){doors[i].pos.x, doors[i].pos.y});
 		calc_door_pos(data, &pos, &end, doors[i].hor);
 		drawrect_to_img(&data->gfx.fr_bf, pos, end, MAP_CLR_DR);
 	}
@@ -36,7 +37,7 @@ void	draw_doors(t_cub *data)
 static void	calc_door_pos(t_cub *data, t_v2i *pos, t_v2i *end, t_d_hor hor)
 {
 	int	tile_size;
-	
+
 	tile_size = data->gman.map.tile_size;
 	if (hor)
 	{
@@ -119,5 +120,5 @@ void	draw_map_tile(t_cub *data, t_img_d	*img, t_v2i map)
 	tile_size = data->gman.map.tile_size;
 	pos = map_to_pixel_coords(data->gman.map, (t_v2d){map.x, map.y});
 	drawrect_to_img(img, pos,
-			(t_v2i){pos.x + tile_size, pos.y + tile_size}, MAP_CLR_WL);
+		(t_v2i){pos.x + tile_size, pos.y + tile_size}, MAP_CLR_WL);
 }

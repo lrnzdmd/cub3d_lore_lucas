@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/22 03:22:23 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/22 04:30:27 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_game_data
 	t_ent	*enemies;
 	int		enemies_n;
 }	t_game;
+
 
 typedef struct s_cub3d_data
 {

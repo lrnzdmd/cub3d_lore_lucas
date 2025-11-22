@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/21 20:13:42 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/22 05:46:14 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,25 @@ typedef union u_color
 	int		color;
 	t_argb	c;
 }	t_clr;
+
+typedef struct s_ray_data
+{
+	double	ln_hght;
+	double	p_dist;
+	double	draw_st;
+	double	draw_end;
+	double	cam_x;
+	t_v2d	dir;
+	t_v2d	st_pos;
+	t_v2d	end_pos;
+	t_v2d	sd_dist;
+	t_v2d	d_dist;
+	t_v2i	map;
+	t_v2i	step;
+	bool	hit;
+	bool	door_hit;
+	bool	side;
+}	t_ray;
 
 typedef struct s_image_data
 {
@@ -143,6 +162,7 @@ void	init_minimap(t_cub *data);
 void	draw_minimap(t_cub *data);
 void	draw_player_minimap(t_cub *data);
 void	draw_map_tile(t_cub *data, t_img_d	*img, t_v2i map);
+void	render_world(t_cub *data);
 
 void	drawline_to_img(t_img_d *img, t_v2i start, t_v2i end, int color);
 void	drawrect_to_img(t_img_d	*img, t_v2i top_l, t_v2i bot_r, int color);

@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:11:24 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/22 03:14:19 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/22 06:06:35 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,3 @@ void	enemy_animator(t_cub *data, t_ent *enemy)
 	else
 		enemy->sprt = &data->gfx.txt.sprts.enemy.walk[enemy->data.anim_frm];
 }
-

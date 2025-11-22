@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 05:08:50 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/22 03:20:51 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/22 06:07:16 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void	attack_state(t_cub *data, t_ent	*enemy)
 	if (enemy->data.st_timer <= 0)
 	{
 		data->gman.plyr.hp -= 1;
-		enemy->data.st_timer = ENM_ATK_SPD;	
+		enemy->data.st_timer = ENM_ATK_SPD;
 	}
 	else
 		return ;

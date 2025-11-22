@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:30:54 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/22 03:22:12 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/22 05:46:31 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int	game_loop(t_cub *data)
 	input_manager(data);
 	door_check(data);
 	draw_background(data);
+	render_world(data);
 	if (data->input.map_toggle)
 	{
 		draw_minimap(data);
