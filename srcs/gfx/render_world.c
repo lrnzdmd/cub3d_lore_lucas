@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 04:26:06 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/22 06:12:51 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/22 07:02:50 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,42 @@ void	init_ray(t_cub *data, t_ray *ray, int x)
 	init_ray_sd_dist(ray);
 }
 
+bool	door_dda(t_ray *ray, t_door	***doors)
+{
+	t_door	*door;
+	double	dr_dist;
+	double	wl_dist;
+	double	p_pos;
+	double	dir;
+	int		map;
+
+	door = doors[ray->map.y][ray->map.x];
+	if (!ray->side != (door->hor == V))
+		return (false);
+	if (!ray->side)
+	{
+		p_pos = ray->st_pos.x;
+		dir = ray->dir.x;
+		map = ray->map.x;
+		wl_dist = ray->sd_dist.y; 
+	}
+	else
+	{
+		p_pos = ray->st_pos.y;
+		dir = ray->dir.y;
+		map = ray->map.y;
+		wl_dist = ray->sd_dist.x; 
+	}
+	dr_dist = (map + 0.5 - p_pos) / dir;
+	if (dr_dist < wl_dist)
+	{
+		ray->p_dist = dr_dist;
+		ray->door_hit = true;
+		return (true);
+	}
+	return (false);
+}
+
 t_ray	cast_ray(t_cub *data, int x)
 {
 	t_ray	ray;
@@ -99,13 +135,18 @@ t_ray	cast_ray(t_cub *data, int x)
 			|| ray.map.x > data->gman.map.size.x
 			|| ray.map.y > data->gman.map.size.y)
 			break ;
-		if (data->gman.map.map[ray.map.y][ray.map.x] != '0')
+		if (data->gman.map.map[ray.map.y][ray.map.x] == '1')
 			ray.hit = true;
+		else if (data->gman.map.map[ray.map.y][ray.map.x] == '2')
+			ray.hit = door_dda(&ray, data->gman.map.door_map);
 	}
-	if (ray.side)
-		ray.p_dist = (ray.sd_dist.y - ray.d_dist.y);
-	else
-		ray.p_dist = (ray.sd_dist.x - ray.d_dist.x);
+	if (!ray.door_hit)
+	{
+		if (ray.side)
+			ray.p_dist = (ray.sd_dist.y - ray.d_dist.y);
+		else
+			ray.p_dist = (ray.sd_dist.x - ray.d_dist.x);
+	}
 	return (ray);
 }
 
@@ -113,6 +154,7 @@ void	render_world(t_cub *data)
 {
 	t_v2i	i;
 	t_ray	ray;
+	int		color;
 
 	i.x = -1;
 	while (++i.x < data->gfx.fr_bf.size.x)
@@ -125,7 +167,12 @@ void	render_world(t_cub *data)
 		ray.draw_end = ray.ln_hght / 2 + data->gfx.fr_bf.size.y / 2;
 		if (ray.draw_end >= data->gfx.fr_bf.size.y)
 			ray.draw_end = data->gfx.fr_bf.size.y - 1;
+		color = 0x0000ff00;
+		if (!ray.side)
+			color = darken_color(color, 25);
+		if (ray.side && ray.dir.y > 0)
+			color = darken_color(color, 80);
 		draw_v_line(&data->gfx.fr_bf, (t_v2i){i.x, ray.draw_st},
-			(t_v2i){i.x, ray.draw_end}, 0x00ff0000);
+			(t_v2i){i.x, ray.draw_end}, color);
 	}
 }
