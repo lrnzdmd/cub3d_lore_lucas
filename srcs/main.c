@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:30:54 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/23 21:56:06 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/23 22:42:31 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	game_loop(t_cub *data)
 		enemy_action(data, &data->gman.enemies[i]);
 		enemy_animator(data, &data->gman.enemies[i]);
 	}
+	player_animator(data);
 	input_manager(data);
 	door_check(data);
 	draw_background(data);

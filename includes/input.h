@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:29:26 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/21 06:39:54 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/23 22:48:45 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define KEY_ESCAPE 65307
 # define KEY_LSHIFT 65505
 # define KEY_RSHIFT 65506
+# define KEY_SPACE 32
 # define KEY_W 119
 # define KEY_A 97
 # define KEY_S 115
@@ -31,6 +32,7 @@ typedef struct s_input_data
 {
 	int		mouse_dx;
 	bool	map_toggle;
+	bool	shoot;
 	bool	action;
 	bool	fwd;
 	bool	lft;
@@ -52,6 +54,7 @@ void	rotate_player(t_cub *data, bool left);
 void	mouse_rotate_player(t_cub *data);
 void	move_fwd_bck(t_cub *data, bool fwd);
 
+void	pew_pew(t_cub *data);
 void	open_door(t_cub	*data);
 
 #endif

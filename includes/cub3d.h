@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/23 21:36:19 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/23 22:37:22 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_player_data
 	t_v2d	plane;
 	double	rot;
 	double	anim_timer;
+	t_img_d	*sprt;
 }	t_plyr;
 
 typedef struct s_game_data

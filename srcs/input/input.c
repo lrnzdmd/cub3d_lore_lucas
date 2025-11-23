@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:30:28 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/14 05:29:03 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/23 22:49:00 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	input_manager(t_cub	*data)
 		move_fwd_bck(data, false);
 	if (input.action)
 		open_door(data);
+	if (input.shoot)
+		pew_pew(data);
 	if (input.quit)
 		exit_game(data);
 }
@@ -60,6 +62,8 @@ int	key_press_handler(int keycode, t_cub *data)
 		input->rght = true;
 	if (keycode == KEY_F)
 		input->action = true;
+	if (keycode == KEY_SPACE)
+		input->shoot = true;
 	if (keycode == KEY_LSHIFT || keycode == KEY_RSHIFT)
 		input->sprint = true;
 	if (keycode == KEY_ESCAPE)
@@ -84,6 +88,8 @@ int	key_release_handler(int keycode, t_cub *data)
 		input->rght = false;
 	if (keycode == KEY_F)
 		input->action = false;
+	if (keycode == KEY_SPACE)
+		input->shoot = false;
 	if (keycode == KEY_LSHIFT || keycode == KEY_RSHIFT)
 		input->sprint = false;
 	if (keycode == KEY_ESCAPE)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 05:16:04 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/16 05:58:32 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/23 22:48:40 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,13 @@ void	open_door(t_cub	*data)
 		data->gman.map.door_map[map.y][map.x]->open = true;
 		data->gman.map.doors_open = true;
 	}
+}
+
+void	pew_pew(t_cub *data)
+{
+	t_plyr *plyr;
+
+	plyr = &data->gman.plyr;
+	if (plyr->state != SHOOT)
+		plyr->state = SHOOT;
 }

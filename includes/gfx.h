@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/23 21:53:31 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/23 22:50:26 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define TXT_ENM_WALK_1 "./assets/textures/walk1.xpm"
 # define TXT_ENM_IDLE "./assets/textures/idle.xpm"
 # define TXT_ENM_DEAD "./assets/textures/dead.xpm"
-# define ANM_SPD_SHOOT 0.3
+# define ANM_SPD_SHOOT 0.75
 # define ANM_SPD_ENM_ATK 0.5
 # define ANM_SPD_ENM_WALK 0.8
 
@@ -190,6 +190,7 @@ void	draw_map_tile(t_cub *data, t_img_d	*img, t_v2i map);
 void	render_enemies(t_cub *data);
 int		get_sprite_pixel(t_img_d *txt, t_v2i pos);
 void	render_world(t_cub *data);
+void	player_animator(t_cub *data);
 void	render_player(t_cub *data);
 
 void	drawline_to_img(t_img_d *img, t_v2i start, t_v2i end, int color);

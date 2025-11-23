@@ -6,11 +6,31 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 21:36:22 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/23 22:13:43 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/23 22:41:59 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+void	player_animator(t_cub *data)
+{
+	t_plyr	*plyr;
+
+	plyr = &data->gman.plyr;
+	if (plyr->state == NORM)
+	{
+		plyr->sprt = &data->gfx.txt.sprts.gun[0];
+		plyr->anim_timer = 0;
+		return ;
+	}
+	plyr->anim_timer += data->d_time;
+	if (plyr->anim_timer >= ANM_SPD_SHOOT)
+	{
+		plyr->state = NORM;
+		return ;
+	}
+	plyr->sprt = &data->gfx.txt.sprts.gun[1];
+}
 
 void	render_player(t_cub *data)
 {
@@ -34,7 +54,7 @@ void	render_player(t_cub *data)
 		{
 			txt_cd.x = ((i.x - start.x) * data->gfx.txt.sprts.gun[0].size.x) / size;
 			txt_cd.y = ((i.y - start.y) * data->gfx.txt.sprts.gun[0].size.y) / size;
-			color = get_sprite_pixel(&data->gfx.txt.sprts.gun[0], txt_cd);
+			color = get_sprite_pixel(data->gman.plyr.sprt, txt_cd);
 			if ((color & 0x00FFFFFF) != 0xFF00FF)
 				*(int *)calc_dest_addr(&data->gfx.fr_bf, i) = color;
 		}
