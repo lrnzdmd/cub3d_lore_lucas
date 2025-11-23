@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 05:08:50 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/22 06:07:16 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/23 21:22:25 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	enemy_state_update(t_cub *data, t_ent	*enemy)
 {
+	if (enemy->data.state == DEAD)
+		return ;
 	enemy->data.st_timer -= data->d_time;
 	enemy->pl_dist = ft_distance_sq_v2d(data->gman.plyr.pos, enemy->pos);
 	if (enemy->pl_dist < ENM_AGGR_RANGE)

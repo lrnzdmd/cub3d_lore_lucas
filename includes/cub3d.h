@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/22 04:30:27 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/23 21:36:19 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ typedef enum s_enemy_state
 	IDLE,
 	PATROL,
 	CHASE,
-	ATTACK
+	ATTACK,
+	DEAD
 }	t_enm_st;
 
 typedef struct s_enemy_data
@@ -71,13 +72,21 @@ typedef struct s_entity
 	t_enm	data;
 }	t_ent;
 
+typedef enum	e_player_states
+{
+	NORM,
+	SHOOT
+}	t_pl_st;
+
 typedef struct s_player_data
 {
+	t_pl_st	state;
 	int		hp;
 	t_v2d	pos;
 	t_v2d	dir;
 	t_v2d	plane;
 	double	rot;
+	double	anim_timer;
 }	t_plyr;
 
 typedef struct s_game_data

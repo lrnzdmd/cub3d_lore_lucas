@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:11:24 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/23 08:29:53 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/23 21:53:40 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ void	enemy_animator(t_cub *data, t_ent *enemy)
 	if (enemy->data.state == IDLE)
 	{
 		enemy->sprt = &data->gfx.txt.sprts.enemy.idle;
+		enemy->data.anim_timer = 0;
+		enemy->data.anim_frm = 0;
+		return ;
+	}
+	if (enemy->data.state == DEAD)
+	{
+		enemy->sprt = &data->gfx.txt.sprts.enemy.dead;
 		enemy->data.anim_timer = 0;
 		enemy->data.anim_frm = 0;
 		return ;
