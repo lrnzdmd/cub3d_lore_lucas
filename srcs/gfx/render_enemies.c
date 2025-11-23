@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 06:44:28 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/23 07:48:47 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/23 23:14:07 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,19 @@ int get_sprite_pixel(t_img_d *txt, t_v2i pos)
     return (color);
 }
 
+bool	is_shootable(t_cub *data, t_v2i	pos)
+{
+	int	center;
+	int	aim;
+
+	center = data->gfx.fr_bf.size.x / 2;
+	aim = data->gfx.fr_bf.size.x * PLR_AIM_SIZE;
+	if (pos.x >= center - aim && pos.x <= center + aim)
+		return (true);
+	else
+		return (false);
+}
+
 void	render_sprite(t_cub *data, t_ent *enemy, t_ray_s ray)
 {
 	int		proy;
@@ -70,6 +83,7 @@ void	render_sprite(t_cub *data, t_ent *enemy, t_ray_s ray)
 				proy =  (i.y) * 256 - data->gfx.fr_bf.size.y * 128 + ray.size * 128;
 				txt_p.y = ((proy * enemy->sprt->size.y) / ray.size) / 256;
 				ray.color = get_sprite_pixel(enemy->sprt, txt_p);
+				enemy->data.shootable = is_shootable(data, i);
 				if ((ray.color & 0x00FFFFFF) != 0xFF00FF)
 					*(int *)calc_dest_addr(&data->gfx.fr_bf, i) = ray.color;
 			}
