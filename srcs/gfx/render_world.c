@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 04:26:06 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/23 05:00:31 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/23 07:48:03 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	shade_texture(t_img_d *txt, t_v2i pos, t_ray ray)
 	if (color == 0xFF00ff)
 		return (color);
 	if (ray.side && ray.dir.y > 0)
-		return (darken_color(color, 80));
-	else if (!ray.side)
 		return (darken_color(color, 40));
+	else if (!ray.side)
+		return (darken_color(color, 20));
 	else
 		return (color);
 }
@@ -212,7 +212,6 @@ void	render_world(t_cub *data)
 {
 	t_v2i	i;
 	t_ray	ray;
-	int		color;
 
 	i.x = -1;
 	while (++i.x < data->gfx.fr_bf.size.x)
@@ -225,11 +224,12 @@ void	render_world(t_cub *data)
 		ray.draw_end = ray.ln_hght / 2 + data->gfx.fr_bf.size.y / 2;
 		if (ray.draw_end >= data->gfx.fr_bf.size.y)
 			ray.draw_end = data->gfx.fr_bf.size.y - 1;
+		data->gfx.zbuffer[i.x] = ray.p_dist;
 		i.y = ray.draw_st - 1;
 		while (++i.y < ray.draw_end)
 		{
-			color = calc_texture_color(data, &ray, i);
-			*(int *)calc_dest_addr(&data->gfx.fr_bf, i) = color;
+			ray.color = calc_texture_color(data, &ray, i);
+			*(int *)calc_dest_addr(&data->gfx.fr_bf, i) = ray.color;
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:11:24 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/22 06:06:35 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/23 08:22:33 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ void	enemy_animator(t_cub *data, t_ent *enemy)
 
 	if (enemy->data.state == IDLE)
 	{
-		enemy->sprt = &data->gfx.txt.sprts.enemy.attack[0];
+		enemy->sprt = &data->gfx.txt.sprts.enemy.idle;
 		enemy->data.anim_timer = 0;
 		enemy->data.anim_frm = 0;
+		speed = 1;
 	}
 	else
 	{
@@ -29,6 +30,7 @@ void	enemy_animator(t_cub *data, t_ent *enemy)
 		else
 			speed = ANM_SPD_ENM_WALK;
 	}
+	enemy->data.anim_timer += data->d_time;
 	if (enemy->data.anim_timer >= speed)
 	{
 		enemy->data.anim_timer = 0;

@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/23 03:02:41 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/23 08:23:07 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@
 
 # define TXT_ENEMY "./assets/textures/bear.xpm"
 # define TXT_DOOR "./assets/textures/door.xpm"
-# define TXT_ENM_ATK_0 "./assets/textures/enm_atk1.xpm"
-# define TXT_ENM_ATK_1 "./assets/textures/enm_atk2.xpm"
-# define TXT_ENM_WALK_0 "./assets/textures/enm_walk1.xpm"
-# define TXT_ENM_WALK_1 "./assets/textures/enm_walk2.xpm"
-# define ANM_SPD_ENM_ATK 2
-# define ANM_SPD_ENM_WALK 2
+# define TXT_ENM_ATK_0 "./assets/textures/atk0.xpm"
+# define TXT_ENM_ATK_1 "./assets/textures/atk1.xpm"
+# define TXT_ENM_WALK_0 "./assets/textures/walk0.xpm"
+# define TXT_ENM_WALK_1 "./assets/textures/walk1.xpm"
+# define TXT_ENM_IDLE "./assets/textures/idle.xpm"
+# define ANM_SPD_ENM_ATK 0.5
+# define ANM_SPD_ENM_WALK 0.8
 
 typedef enum e_door_orientation
 {
@@ -68,8 +69,23 @@ typedef union u_color
 	t_argb	c;
 }	t_clr;
 
+typedef struct s_sprite_ray_data
+{
+	int		color;
+	double	inv_det;
+	double	scr_x;
+	double	size;
+	t_v2i	draw_st;
+	t_v2i	draw_end;
+	t_v2d	rel_pos;
+	t_v2d	transf;
+
+}	t_ray_s;
+
+
 typedef struct s_ray_data
 {
+	int		color;
 	double	ln_hght;
 	double	p_dist;
 	double	draw_st;
@@ -112,6 +128,7 @@ typedef struct s_enemy_textures
 {
 	t_img_d	attack[2];
 	t_img_d	walk[2];
+	t_img_d	idle;
 }	t_enm_txt;
 
 
@@ -134,6 +151,7 @@ typedef struct s_graphics_data
 	t_txt		txt;
 	t_img_d		fr_bf;
 	t_img_d		m_map;
+	double		*zbuffer;
 }	t_gfx;
 
 inline static char	*calc_dest_addr(t_img_d	*img, t_v2i	pos)
@@ -164,6 +182,7 @@ void	init_minimap(t_cub *data);
 void	draw_minimap(t_cub *data);
 void	draw_player_minimap(t_cub *data);
 void	draw_map_tile(t_cub *data, t_img_d	*img, t_v2i map);
+void	render_enemies(t_cub *data);
 void	render_world(t_cub *data);
 
 void	drawline_to_img(t_img_d *img, t_v2i start, t_v2i end, int color);

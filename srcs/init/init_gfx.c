@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 04:04:23 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/22 03:13:32 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/23 08:22:08 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	set_window_size(t_cub *data)
 		frame->size.y = screen.y - 10;
 	else
 		frame->size.y = SCR_SZ_Y;
+	data->gfx.zbuffer = safe_calloc(data, frame->size.x, sizeof(double));
 }
 
 void	init_minimap_buffer(t_cub *data)
@@ -50,6 +51,8 @@ void	init_enemy_textures(t_cub *data)
 	t_enm_txt	*text;
 
 	text = &data->gfx.txt.sprts.enemy;
+	safe_mlx_xpm_to_img(data, &text->idle,
+		TXT_ENM_IDLE, &text->idle.size);
 	safe_mlx_xpm_to_img(data, &text->attack[0],
 		TXT_ENM_ATK_0, &text->attack[0].size);
 	safe_mlx_xpm_to_img(data, &text->attack[1],
@@ -57,7 +60,7 @@ void	init_enemy_textures(t_cub *data)
 	safe_mlx_xpm_to_img(data, &text->walk[0],
 		TXT_ENM_WALK_0, &text->walk[0].size);
 	safe_mlx_xpm_to_img(data, &text->walk[1],
-		TXT_ENM_WALK_0, &text->walk[1].size);
+		TXT_ENM_WALK_1, &text->walk[1].size);
 }
 
 void	init_gfx_data(t_cub	*data)
