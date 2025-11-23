@@ -6,13 +6,13 @@
 #    By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/09 20:22:59 by lde-medi          #+#    #+#              #
-#    Updated: 2025/11/23 22:43:47 by lde-medi         ###   ########.fr        #
+#    Updated: 2025/11/23 23:31:47 by lde-medi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = cc
-CFLAGS = -g3 -O3 -Wall -Wextra -Werror -Iincludes -std=gnu99 -Ilibft/includes -Imlx/ #-fsanitize=address
+CFLAGS = -g3 -O0 -Wall -Wextra -Werror -Iincludes -std=gnu99 -Ilibft/includes -Imlx/ #-fsanitize=address
 SRCS = 	srcs/main.c \
 		srcs/cleanup/cleanup.c \
 		srcs/cleanup/exit.c \

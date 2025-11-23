@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 05:16:04 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/23 23:15:45 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/24 00:38:34 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,11 @@ void	pew_pew(t_cub *data)
 		i = -1;
 		while (++i < data->gman.enemies_n)
 		{
-			if (data->gman.enemies[i].data.shootable)
-				data->gman.enemies[i].data.state = DEAD;
+			if (data->gman.plyr.target)
+			{
+				data->gman.plyr.target->data.state = DEAD;
+				return ;
+			}
 		}
 	}
 }

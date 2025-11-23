@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/23 23:08:10 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/24 00:25:39 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ typedef enum s_enemy_state
 typedef struct s_enemy_data
 {
 	t_enm_st	state;
-	bool		shootable;
 	double		anim_timer;
 	int			anim_frm;
 	double		st_timer;
@@ -88,6 +87,8 @@ typedef struct s_player_data
 	t_v2d	plane;
 	double	rot;
 	double	anim_timer;
+	t_ent	*target;
+	double	tgt_dist;
 	t_img_d	*sprt;
 }	t_plyr;
 
