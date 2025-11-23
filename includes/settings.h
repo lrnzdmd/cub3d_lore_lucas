@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:38:52 by lorenzo           #+#    #+#             */
-/*   Updated: 2025/11/23 08:01:05 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/23 09:26:14 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define PLR_ACT_RNG 0.33
 
 # define ENM_AI_TIMER 3
-# define ENM_ATK_RANGE 0.25
+# define ENM_ATK_RANGE 0.6
 # define ENM_AGGR_RANGE 8
 # define ENM_ATK_SPD 2
 # define ENM_HBOX_RADIUS 0.125
