@@ -6,11 +6,71 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 04:26:06 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/22 07:02:50 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/23 05:00:31 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+t_img_d	*world_texture_picker(t_cub *data, char cell, t_ray ray)
+{
+	if (cell == '2')
+		return (&data->gfx.txt.wall.dr);
+	if (ray.side)
+	{
+		if (ray.dir.y > 0)
+			return (&data->gfx.txt.wall.n);
+		else
+			return (&data->gfx.txt.wall.s);
+	}
+	else
+	{
+		if (ray.dir.x > 0)
+			return (&data->gfx.txt.wall.e);
+		else
+			return (&data->gfx.txt.wall.w);
+	}
+}
+
+int	shade_texture(t_img_d *txt, t_v2i pos, t_ray ray)
+{
+	int	color;
+
+	color = *(int *)calc_dest_addr(txt, pos);
+	if (color == 0xFF00ff)
+		return (color);
+	if (ray.side && ray.dir.y > 0)
+		return (darken_color(color, 80));
+	else if (!ray.side)
+		return (darken_color(color, 40));
+	else
+		return (color);
+}
+
+int	calc_texture_color(t_cub *data, t_ray *ray, t_v2i i)
+{
+	char	cell;
+	t_v2i	out;
+	t_img_d	*txt;
+	double	y_offset;
+	double	hit_frct;
+
+	cell = data->gman.map.map[ray->map.y][ray->map.x];
+	if (ray->side)
+		hit_frct = (ray->st_pos.x + ray->p_dist * ray->dir.x);
+	else
+		hit_frct = (ray->st_pos.y + ray->p_dist * ray->dir.y);
+	txt = world_texture_picker(data, cell, *ray);
+	hit_frct -= floor(hit_frct);
+	out.x = (int)(hit_frct * (double)(txt->size.x));
+	if ((!ray->side && ray->dir.x < 0) || (ray->side && ray->dir.y > 0))
+		out.x = txt->size.x - out.x - 1;
+	if (ray->ln_hght == 0)
+		ray->ln_hght = 1;
+	y_offset = i.y * 256 - data->gfx.fr_bf.size.y * 128 + ray->ln_hght * 128;
+	out.y = ((y_offset * txt->size.y) / ray->ln_hght) / 256;
+	return (shade_texture(txt, out, *ray));
+}
 
 void	init_ray_dir(t_cub *data, t_ray *ray, int x)
 {
@@ -90,8 +150,6 @@ void	init_ray(t_cub *data, t_ray *ray, int x)
 bool	door_dda(t_ray *ray, t_door	***doors)
 {
 	t_door	*door;
-	double	dr_dist;
-	double	wl_dist;
 	double	p_pos;
 	double	dir;
 	int		map;
@@ -104,19 +162,19 @@ bool	door_dda(t_ray *ray, t_door	***doors)
 		p_pos = ray->st_pos.x;
 		dir = ray->dir.x;
 		map = ray->map.x;
-		wl_dist = ray->sd_dist.y; 
+		ray->wl_dist = ray->sd_dist.y; 
 	}
 	else
 	{
 		p_pos = ray->st_pos.y;
 		dir = ray->dir.y;
 		map = ray->map.y;
-		wl_dist = ray->sd_dist.x; 
+		ray->wl_dist = ray->sd_dist.x; 
 	}
-	dr_dist = (map + 0.5 - p_pos) / dir;
-	if (dr_dist < wl_dist)
+	ray->dr_dist = (map + 0.5 - p_pos) / dir;
+	if (ray->dr_dist < ray->wl_dist)
 	{
-		ray->p_dist = dr_dist;
+		ray->p_dist = ray->dr_dist;
 		ray->door_hit = true;
 		return (true);
 	}
@@ -167,12 +225,11 @@ void	render_world(t_cub *data)
 		ray.draw_end = ray.ln_hght / 2 + data->gfx.fr_bf.size.y / 2;
 		if (ray.draw_end >= data->gfx.fr_bf.size.y)
 			ray.draw_end = data->gfx.fr_bf.size.y - 1;
-		color = 0x0000ff00;
-		if (!ray.side)
-			color = darken_color(color, 25);
-		if (ray.side && ray.dir.y > 0)
-			color = darken_color(color, 80);
-		draw_v_line(&data->gfx.fr_bf, (t_v2i){i.x, ray.draw_st},
-			(t_v2i){i.x, ray.draw_end}, color);
+		i.y = ray.draw_st - 1;
+		while (++i.y < ray.draw_end)
+		{
+			color = calc_texture_color(data, &ray, i);
+			*(int *)calc_dest_addr(&data->gfx.fr_bf, i) = color;
+		}
 	}
 }

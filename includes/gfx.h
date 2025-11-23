@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/22 06:58:57 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/23 03:02:41 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ typedef struct s_ray_data
 	double	p_dist;
 	double	draw_st;
 	double	draw_end;
+	double	dr_dist;
+	double	wl_dist;
 	double	cam_x;
 	t_v2d	dir;
 	t_v2d	st_pos;
