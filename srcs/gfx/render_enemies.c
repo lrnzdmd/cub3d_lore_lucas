@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 06:44:28 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/24 00:37:34 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/24 01:07:49 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,20 @@ int get_sprite_pixel(t_img_d *txt, t_v2i pos)
 
 bool	is_shootable(t_cub *data, t_ray_s ray)
 {
+	int		sp_cnt;
 	int		center;
 	int		aim;
 
+	sp_cnt = (int)round(ray.scr_x);
+	if (ray.transf.y <= 0 || sp_cnt < 0
+		|| sp_cnt > data->gfx.fr_bf.size.x
+		|| ray.transf.y >= data->gfx.zbuffer[sp_cnt])
+		return (false);
 	center = data->gfx.fr_bf.size.x / 2;
 	aim = (data->gfx.fr_bf.size.x * PLR_AIM_SIZE);
 	if (ray.scr_x >= center - aim && ray.scr_x <= center + aim)
 		return (true);
-	else
-		return (false);
+	return (false);
 }
 
 void	render_sprite(t_cub *data, t_ent *enemy, t_ray_s ray)
@@ -105,7 +110,7 @@ void	render_enemies(t_cub *data)
 	{
 		enemy = &data->gman.enemies[i];
 		init_sprite_ray(data, enemy, &ray);
-		if (enemy->data.state != DEAD && ray.transf.y > 0.5)
+		if (enemy->data.state != DEAD && ray.transf.y > 0)
 		{
 			if (is_shootable(data, ray))
 			{

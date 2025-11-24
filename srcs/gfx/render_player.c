@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 21:36:22 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/23 22:41:59 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/24 00:48:56 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void	player_animator(t_cub *data)
 		return ;
 	}
 	plyr->anim_timer += data->d_time;
+	if (plyr->anim_timer >= ANM_SPD_SHOOT / 4 && plyr->anim_timer < ANM_SPD_SHOOT)
+	{
+		plyr->sprt = &data->gfx.txt.sprts.gun[0];
+		return ;
+	}
 	if (plyr->anim_timer >= ANM_SPD_SHOOT)
 	{
 		plyr->state = NORM;
