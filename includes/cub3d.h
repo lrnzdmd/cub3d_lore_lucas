@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/24 00:25:39 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/24 03:56:20 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@
 # include <safe_ops.h>
 # include <utils.h>
 # include <mlx.h>
-
-# define M_PI 3.14159265358979323846
 
 typedef struct s_vector2int		t_v2i;
 typedef struct s_vector2double	t_v2d;

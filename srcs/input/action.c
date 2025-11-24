@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 05:16:04 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/24 00:38:34 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/24 02:19:37 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	pew_pew(t_cub *data)
 	if (plyr->state != SHOOT)
 	{
 		plyr->state = SHOOT;
+		plyr->anim_timer = 0;
 		i = -1;
 		while (++i < data->gman.enemies_n)
 		{
