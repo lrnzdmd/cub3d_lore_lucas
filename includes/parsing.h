@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 03:11:04 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/24 01:45:52 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/24 02:04:47 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define ERR_CUB_ISDIR "Invalid file path (is a directory)"
 # define ERR_DUPL_COL_TXT "found duplicate texture or color in file"
 # define ERR_TXT_FILE "error parsing texture file (need .xpm square texture)"
+# define ERR_TXT_FMT "error parsing color or textures"
 # define ERR_CLR_FMT "error parsing color line (format C/F 255,255,255)"
 # define ERR_MAP_INV_CH "map contains invalid characters"
 # define ERR_MAP_INV_BRD "map area (0) must be surrounded by (1)"
@@ -51,7 +52,7 @@ void	parse_cub3d(t_cub	*data, int ac, char **av);
 void	validate_args(t_cub	*data, int ac, char	**av);
 bool	validate_map_doors(t_cub *data);
 void	parse_map(t_cub	*data);
-void	parse_text_color(t_cub	*data, char	*line);
+void	parse_text_color(t_cub	*data, char	*line, bool end_check);
 bool	check_file_extension(char	*filename, char *extension);
 
 #endif

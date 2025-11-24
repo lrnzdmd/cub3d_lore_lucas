@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_files.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 02:43:00 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/17 07:30:06 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/24 02:04:04 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,20 @@ static bool	parse_wall_text(t_cub	*data, char *line, int dir);
 static bool	validate_color_line(char **line);
 static bool	ft_isdigit_str(char *str);
 
-void	parse_text_color(t_cub *data, char *line)
+void	parse_text_color(t_cub *data, char *line, bool end_check)
 {
 	int			i;
 	const char	*ids[6] = {"NO ", "SO ", "WE ", "EA ", "F ", "C "};
 	static bool	found[6] = {false};
 
 	i = -1;
+	if (end_check)
+	{
+		while (++i < 6)
+			if (found[i] == false)
+				exit_with_error(data, ERR_TXT_FMT, 1);
+		return ;
+	}
 	while (++i < 6)
 	{
 		if (ft_strncmp(line, (char *)ids[i], ft_strlen(ids[i])) == 0)

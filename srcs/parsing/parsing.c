@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 02:27:17 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/24 01:47:13 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/24 02:04:36 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,12 @@ static void	read_cub_file(t_cub	*data, char	*av)
 static void	parse_first_section(t_cub	*data, bool *map_st)
 {
 	if (cub_map_start(data->tmp.str_1))
+	{
+		parse_text_color(data, data->tmp.str_1, true);
 		*map_st = true;
+	}
 	else
-		parse_text_color(data, data->tmp.str_1);
+		parse_text_color(data, data->tmp.str_1, false);
 }
 
 static void parse_file_loop(t_cub *data, bool *map_st)

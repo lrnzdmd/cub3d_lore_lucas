@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 06:44:28 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/24 01:07:49 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/24 02:12:28 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,42 @@ bool	is_shootable(t_cub *data, t_ray_s ray)
 	return (false);
 }
 
+void	order_sprites(t_cub *data)
+{
+	int			i;
+	bool		sort;
+	t_ent		tmp;
+	t_ent		*sprts;
+
+	sprts = data->gman.enemies;
+	i = -1;
+	while (++i < data->gman.enemies_n)
+		sprts[i].pl_dist = ft_distance_sq_v2d(sprts[i].pos, data->gman.plyr.pos);
+	sort = false;
+	while (!sort)
+	{
+		sort = true;
+		i = -1;
+		while (++i < data->gman.enemies_n - 1)
+		{
+			if (sprts[i].pl_dist < sprts[i + 1].pl_dist)
+			{
+				tmp = sprts[i];
+				sprts[i] = sprts[i + 1];
+				sprts[i + 1] = tmp;
+				sort = false;
+			}
+		}
+	}
+}
+
 void	render_sprite(t_cub *data, t_ent *enemy, t_ray_s ray)
 {
 	int		proy;
 	t_v2i	i;
 	t_v2i	txt_p;
 
+	order_sprites(data);
 	i.x = ray.draw_st.x - 1;
 	while (++i.x < ray.draw_end.x)
 	{
