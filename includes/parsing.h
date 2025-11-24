@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 03:11:04 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/20 02:44:12 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/24 01:45:52 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_temp_pointers
 	char	**arr;
 	char	*str_1;
 	char	*str_2;
+	char	*gnl;
 	t_list	*lst;
 	t_d_hor	lst_dr_h;
 }	t_tmp;

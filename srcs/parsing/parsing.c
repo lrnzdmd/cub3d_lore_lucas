@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 02:27:17 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/24 01:31:50 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/24 01:47:13 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,39 +50,37 @@ static void parse_file_loop(t_cub *data, bool *map_st)
 
 	while (1)
 	{
-		data->tmp.str_1 = ft_get_next_line(data->tmp.fd, GNL_NOFLUSH);
-		if (!data->tmp.str_1)
+		data->tmp.gnl = ft_get_next_line(data->tmp.fd, GNL_NOFLUSH);
+		if (!data->tmp.gnl)
 			break ;
-		
-		data->tmp.str_2 = data->tmp.str_1;
-		data->tmp.str_1 = safe_strtrim(data, data->tmp.str_2, (char *)config_trim);
+		data->tmp.str_1 = safe_strtrim(data, data->tmp.gnl, (char *)config_trim);
 		if (!*map_st && !*data->tmp.str_1)
 		{
-			ft_multifree(2, &data->tmp.str_1, &data->tmp.str_2);
+			ft_multifree(2, &data->tmp.str_1, &data->tmp.gnl);
 			continue ;
 		}
+
 		if (!*map_st)
 		{
 			parse_first_section(data, map_st); 
 			if (*map_st)
 			{
 				ft_multifree(1, &data->tmp.str_1); 
-				data->tmp.str_1 = NULL; 
-				data->tmp.str_1 = safe_strtrim(data, data->tmp.str_2, (char *)map_trim);
+				data->tmp.str_1 = safe_strtrim(data, data->tmp.gnl, (char *)map_trim);
 			}
 		}
 		else
 		{
 			ft_multifree(1, &data->tmp.str_1);
-			data->tmp.str_1 = NULL;
-			data->tmp.str_1 = safe_strtrim(data, data->tmp.str_2, (char *)map_trim);
+			data->tmp.str_1 = safe_strtrim(data, data->tmp.gnl, (char *)map_trim);
 		}
+
 		if (*map_st)
 		{
 			safe_append_lst(data, &data->tmp.lst, data->tmp.str_1);
 			data->tmp.str_1 = NULL;
 		}
-		ft_multifree(2, &data->tmp.str_1, &data->tmp.str_2);
+		ft_multifree(2, &data->tmp.str_1, &data->tmp.gnl);
 	}
 }
 
