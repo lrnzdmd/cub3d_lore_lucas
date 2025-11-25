@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:48:43 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/16 05:32:51 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/25 03:35:03 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	mouse_rotate_player(t_cub *data)
 	rot = data->input.mouse_dx * MOUSE_SENS * data->d_time;
 	if (rot != 0.0)
 	{
-		data->gman.plyr.dir = ft_rotate_v2d(data->gman.plyr.dir, rot);
-		data->gman.plyr.plane = ft_rotate_v2d(data->gman.plyr.plane, rot);
+		data->gman.plyr.rot += rot;
+		update_player_vectors(data);
 		data->input.mouse_dx = 0;
 	}
 }
