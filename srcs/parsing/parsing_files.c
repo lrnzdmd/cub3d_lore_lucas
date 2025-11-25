@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_files.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 02:43:00 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/24 02:04:04 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/25 04:56:47 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,39 +17,77 @@ static bool	parse_wall_text(t_cub	*data, char *line, int dir);
 static bool	validate_color_line(char **line);
 static bool	ft_isdigit_str(char *str);
 
+static int	find_config_id(char *line, const char *ids[6])
+{
+	int	i;
+
+	i = -1;
+	while (++i < 6)
+		if (ft_strncmp(line, (char *)ids[i], ft_strlen(ids[i])) == 0)
+			return (i);
+	return (-1);
+}
+
 void	parse_text_color(t_cub *data, char *line, bool end_check)
 {
 	int			i;
 	const char	*ids[6] = {"NO ", "SO ", "WE ", "EA ", "F ", "C "};
 	static bool	found[6] = {false};
 
-	i = -1;
 	if (end_check)
 	{
+		i = -1;
 		while (++i < 6)
-			if (found[i] == false)
+			if (!found[i])
 				exit_with_error(data, ERR_TXT_FMT, 1);
 		return ;
 	}
-	while (++i < 6)
-	{
-		if (ft_strncmp(line, (char *)ids[i], ft_strlen(ids[i])) == 0)
-		{
-			if (found[i])
-				exit_with_error(data, ERR_DUPL_COL_TXT, 1);
-			line += ft_strlen(ids[i]);
-			if (i <= EA)
-			{
-				if (!parse_wall_text(data, line, i))
-					exit_with_error(data, ERR_TXT_FILE, 1);
-			}
-			else
-				if (!parse_fc_color(data, line, i))
-					exit_with_error(data, ERR_CLR_FMT, 1);
-			found[i] = true;
-		}
-	}
+	i = find_config_id(line, ids);
+	if (i == -1)
+		exit_with_error(data, ERR_TXT_FMT, 1);
+	if (found[i])
+		exit_with_error(data, ERR_DUPL_COL_TXT, 1);
+	line += ft_strlen(ids[i]);
+	if (i <= EA && !parse_wall_text(data, line, i))
+		exit_with_error(data, ERR_TXT_FILE, 1);
+	else if (i > EA && !parse_fc_color(data, line, i))
+		exit_with_error(data, ERR_CLR_FMT, 1);
+	found[i] = true;
 }
+
+// void	parse_text_color(t_cub *data, char *line, bool end_check)
+// {
+// 	int			i;
+// 	const char	*ids[6] = {"NO ", "SO ", "WE ", "EA ", "F ", "C "};
+// 	static bool	found[6] = {false};
+
+// 	i = -1;
+// 	if (end_check)
+// 	{
+// 		while (++i < 6)
+// 			if (found[i] == false)
+// 				exit_with_error(data, ERR_TXT_FMT, 1);
+// 		return ;
+// 	}
+// 	while (++i < 6)
+// 	{
+// 		if (ft_strncmp(line, (char *)ids[i], ft_strlen(ids[i])) == 0)
+// 		{
+// 			if (found[i])
+// 				exit_with_error(data, ERR_DUPL_COL_TXT, 1);
+// 			line += ft_strlen(ids[i]);
+// 			if (i <= EA)
+// 			{
+// 				if (!parse_wall_text(data, line, i))
+// 					exit_with_error(data, ERR_TXT_FILE, 1);
+// 			}
+// 			else
+// 				if (!parse_fc_color(data, line, i))
+// 					exit_with_error(data, ERR_CLR_FMT, 1);
+// 			found[i] = true;
+// 		}
+// 	}
+// }
 
 static bool	parse_fc_color(t_cub	*data, char	*line, int flr_ceil)
 {
