@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 06:44:11 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 06:54:28 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define ANM_SPD_ENM_ATK 0.5
 # define ANM_SPD_ENM_WALK 0.8
 
-typedef struct s_entity t_ent;
+typedef struct s_entity	t_ent;
 
 typedef enum e_door_orientation
 {
@@ -88,7 +88,6 @@ typedef struct s_sprite_ray_data
 
 }	t_ray_s;
 
-
 typedef struct s_ray_data
 {
 	int		color;
@@ -137,7 +136,6 @@ typedef struct s_enemy_textures
 	t_img_d	dead;
 	t_img_d	idle;
 }	t_enm_txt;
-
 
 typedef struct s_sprites_textures
 {

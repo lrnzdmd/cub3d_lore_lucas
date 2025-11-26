@@ -6,11 +6,24 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 05:08:50 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 06:43:07 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 06:52:22 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+void	update_enemies(t_cub *data)
+{
+	int	i;
+
+	i = -1;
+	while (++i < data->gman.enemies_n)
+	{
+		enemy_state_update(data, &data->gman.enemies[i]);
+		enemy_action(data, &data->gman.enemies[i]);
+		enemy_animator(data, &data->gman.enemies[i]);
+	}
+}
 
 void	update_enemy_dir(t_ent *enemy)
 {

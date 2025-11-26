@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorenzo <lorenzo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 17:18:35 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/21 03:09:04 by lorenzo          ###   ########.fr       */
+/*   Updated: 2025/11/26 06:51:55 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,14 @@ void	get_player_start_pos(t_cub *data)
 			}
 		}
 	}
+}
+
+void	init_mouse_controls(t_cub *data)
+{
+	mlx_mouse_hide(data->mlx, data->mlx_w);
+	mlx_mouse_move(data->mlx, data->mlx_w,
+		data->gfx.fr_bf.size.x / 2,
+		data->gfx.fr_bf.size.y / 2);
 }
 
 void	init_player(t_cub	*data)

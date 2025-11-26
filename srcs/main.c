@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:30:54 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 06:29:33 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 06:51:42 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,24 +59,8 @@ void	door_check(t_cub	*data)
 	}
 }
 
-int	game_loop(t_cub *data)
+void	draw_game(t_cub *data)
 {
-	int		i;
-	double	time_start;
-	double	time_end;
-
-	time_start = get_time_in_sec();
-	calc_delta_time(data);
-	i = -1;
-	while (++i < data->gman.enemies_n)
-	{
-		enemy_state_update(data, &data->gman.enemies[i]);
-		enemy_action(data, &data->gman.enemies[i]);
-		enemy_animator(data, &data->gman.enemies[i]);
-	}
-	player_animator(data);
-	input_manager(data);
-	door_check(data);
 	draw_background(data);
 	render_world(data);
 	render_enemies(data);
@@ -88,6 +72,21 @@ int	game_loop(t_cub *data)
 	}
 	mlx_put_image_to_window(data->mlx, data->mlx_w,
 		data->gfx.fr_bf.img_p, 0, 0);
+}
+
+int	game_loop(t_cub *data)
+{
+	int		i;
+	double	time_start;
+	double	time_end;
+
+	time_start = get_time_in_sec();
+	calc_delta_time(data);
+	update_enemies(data);
+	player_animator(data);
+	input_manager(data);
+	door_check(data);
+	draw_game(data);
 	if (data->gman.plyr.hp <= 0)
 	{
 		ft_printf("Game Over.\n");
@@ -97,14 +96,6 @@ int	game_loop(t_cub *data)
 	if (time_end < TARGET_FR_TIME)
 		usleep(((TARGET_FR_TIME - time_end) * 1000000.0));
 	return (0);
-}
-
-void	init_mouse_controls(t_cub *data)
-{
-	mlx_mouse_hide(data->mlx, data->mlx_w);
-	mlx_mouse_move(data->mlx, data->mlx_w,
-		data->gfx.fr_bf.size.x / 2,
-		data->gfx.fr_bf.size.y / 2);
 }
 
 int	main(int ac, char	**av)

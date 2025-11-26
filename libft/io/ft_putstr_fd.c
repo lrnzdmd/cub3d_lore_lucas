@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 20:19:22 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/13 04:48:32 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 06:53:18 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	ft_putstr_fd(char	*s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
-	int r;
+	int	r;
 
 	i = 0;
 	while (s[i])

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 20:05:07 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/13 04:46:56 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 06:52:57 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	ft_putchar_fd(char c, int fd)
 {
 	int	r;
+
 	r = write(fd, &c, 1);
 	(void)r;
 }
