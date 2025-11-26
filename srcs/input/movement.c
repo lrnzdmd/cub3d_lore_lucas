@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:48:43 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/25 03:35:03 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 04:17:10 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,31 @@ void	rotate_player(t_cub *data, bool left)
 	}
 }
 
+// void	mouse_rotate_player(t_cub *data)
+// {
+// 	double	rot;
+
+// 	rot = data->input.mouse_dx * MOUSE_SENS * data->d_time;
+// 	if (rot != 0.0)
+// 	{
+// 		data->gman.plyr.rot += rot;
+// 		update_player_vectors(data);
+// 		data->input.mouse_dx = 0;
+// 	}
+// }
+
 void	mouse_rotate_player(t_cub *data)
 {
 	double	rot;
 
-	rot = data->input.mouse_dx * MOUSE_SENS * data->d_time;
+	rot = data->input.mouse_dx * MOUSE_SENS;
 	if (rot != 0.0)
 	{
 		data->gman.plyr.rot += rot;
+		if (data->gman.plyr.rot < 0.0)
+			data->gman.plyr.rot += 2.0 * M_PI;
+		else if (data->gman.plyr.rot > 2.0 * M_PI)
+			data->gman.plyr.rot -= 2.0 * M_PI;
 		update_player_vectors(data);
 		data->input.mouse_dx = 0;
 	}

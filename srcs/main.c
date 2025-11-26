@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:30:54 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/24 03:56:10 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 04:13:59 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,14 @@ int	game_loop(t_cub *data)
 	return (0);
 }
 
+void	init_mouse_controls(t_cub *data)
+{
+	mlx_mouse_hide(data->mlx, data->mlx_w);
+	mlx_mouse_move(data->mlx, data->mlx_w, 
+		data->gfx.fr_bf.size.x / 2, 
+		data->gfx.fr_bf.size.y / 2);
+}
+
 int	main(int ac, char	**av)
 {
 	static t_cub	data;
@@ -108,6 +116,7 @@ int	main(int ac, char	**av)
 	init_gfx_data(&data);
 	init_player(&data);
 	init_enemies(&data);
+	init_mouse_controls(&data);
 	mlx_hook(data.mlx_w, 17, 0, exit_game, &data);
 	mlx_hook(data.mlx_w, 2, 1L << 0, key_press_handler, &data);
 	mlx_hook(data.mlx_w, 3, 1L << 1, key_release_handler, &data);

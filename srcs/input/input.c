@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:30:28 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/23 22:49:00 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 04:14:31 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,32 @@ void	input_manager(t_cub	*data)
 		exit_game(data);
 }
 
+// int	mouse_move_handler(int x, int y, t_cub *data)
+// {
+// 	int	scr_sz;
+// 	int	delta_x;
+
+// 	(void)y;
+// 	scr_sz = data->gfx.fr_bf.size.x / 2;
+// 	delta_x = x - scr_sz;
+// 	data->input.mouse_dx = delta_x;
+// 	return (0);
+// }
+
 int	mouse_move_handler(int x, int y, t_cub *data)
 {
-	int	scr_sz;
+	int	center_x;
 	int	delta_x;
 
 	(void)y;
-	scr_sz = data->gfx.fr_bf.size.x / 2;
-	delta_x = x - scr_sz;
-	data->input.mouse_dx = delta_x;
+	center_x = data->gfx.fr_bf.size.x / 2;
+	delta_x = x - center_x;
+	if (abs(delta_x) > 2)
+	{
+		data->input.mouse_dx = delta_x;
+		mlx_mouse_move(data->mlx, data->mlx_w, center_x, 
+			data->gfx.fr_bf.size.y / 2);
+	}
 	return (0);
 }
 

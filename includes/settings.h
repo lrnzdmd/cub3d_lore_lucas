@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:38:52 by lorenzo           #+#    #+#             */
-/*   Updated: 2025/11/24 00:43:14 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 04:17:42 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # define MOV_SPD 1
 # define ROT_SPD 2
-# define MOUSE_SENS 0.002
+# define MOUSE_SENS 0.005
 
 # define PLYR_MAX_HP 10
 # define PLR_HBOX_RD 0.125
