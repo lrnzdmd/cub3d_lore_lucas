@@ -6,7 +6,7 @@
 /*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 07:23:53 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/26 08:07:09 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ typedef struct s_screen_shake
 	double	duration;
 	double	time;
 	double	offset;
+	double	last_offset;
 }	t_screen_shake;
 
 typedef struct s_cub3d_data

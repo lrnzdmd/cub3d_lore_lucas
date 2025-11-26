@@ -6,7 +6,7 @@
 /*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:30:54 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 07:27:14 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/26 08:11:33 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ void	door_check(t_cub	*data)
 void	draw_game(t_cub *data)
 {
 	int		i;
-	double	time_start;
-	double	time_end;
+	//double	time_start;
+	//double	time_end;
 
-	time_start = get_time_in_sec();
+	//time_start = get_time_in_sec();
 	calc_delta_time(data);
 	i = -1;
 	while (++i < data->gman.enemies_n)
@@ -74,7 +74,6 @@ void	draw_game(t_cub *data)
 		enemy_action(data, &data->gman.enemies[i]);
 		enemy_animator(data, &data->gman.enemies[i]);
 	}
-	update_screen_shake(data);
 	player_animator(data);
 	input_manager(data);
 	door_check(data);
@@ -93,13 +92,14 @@ void	draw_game(t_cub *data)
 
 int	game_loop(t_cub *data)
 {
-	int		i;
+	//int		i;
 	double	time_start;
 	double	time_end;
 
 	time_start = get_time_in_sec();
 	calc_delta_time(data);
 	update_enemies(data);
+	update_screen_shake(data);
 	player_animator(data);
 	input_manager(data);
 	door_check(data);
@@ -122,14 +122,7 @@ void	init_screen_shake(t_cub *data)
 	data->shake.duration = 0.0;
 	data->shake.time = 0.0;
 	data->shake.offset = 0.0;
-}
-
-void	init_mouse_controls(t_cub *data)
-{
-	mlx_mouse_hide(data->mlx, data->mlx_w);
-	mlx_mouse_move(data->mlx, data->mlx_w, 
-		data->gfx.fr_bf.size.x / 2, 
-		data->gfx.fr_bf.size.y / 2);
+	data->shake.last_offset = 0.0;
 }
 
 int	main(int ac, char	**av)

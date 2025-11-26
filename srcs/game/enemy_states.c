@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy_states.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 06:29:54 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 06:31:44 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 08:12:06 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	attack_state(t_cub *data, t_ent	*enemy)
 	if (enemy->data.st_timer <= 0)
 	{
 		data->gman.plyr.hp -= 1;
+		trigger_screen_shake(data, 40.0, 0.3);
 		enemy->data.st_timer = ENM_ATK_SPD;
 	}
 	else
