@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gfx.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/24 16:11:56 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 03:59:35 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define ANM_SPD_SHOOT 0.8
 # define ANM_SPD_ENM_ATK 0.5
 # define ANM_SPD_ENM_WALK 0.8
+
+typedef struct s_entity t_ent;
 
 typedef enum e_door_orientation
 {
@@ -197,5 +199,18 @@ void	drawline_to_img(t_img_d *img, t_v2i start, t_v2i end, int color);
 void	drawrect_to_img(t_img_d	*img, t_v2i top_l, t_v2i bot_r, int color);
 void	draw_h_line(t_img_d *img, t_v2i start, t_v2i end, int color);
 void	draw_v_line(t_img_d *img, t_v2i start, t_v2i end, int color);
+
+void	init_sprite_ray(t_cub *data, t_ent *enemy, t_ray_s *ray);
+int		get_sprite_pixel(t_img_d *txt, t_v2i pos);
+bool	is_shootable(t_cub *data, t_ray_s ray);
+void	render_sprite(t_cub *data, t_ent *enemy, t_ray_s ray);
+
+void	init_ray_dir(t_cub *data, t_ray *ray, int x);
+void	init_ray_d_dist(t_ray *ray);
+void	init_ray_sd_dist(t_ray *ray);
+void	ray_dda(t_ray *ray);
+void	init_ray(t_cub *data, t_ray *ray, int x);
+void	order_sprites(t_cub *data);
+bool	door_dda(t_ray *ray, t_door ***doors);
 
 #endif

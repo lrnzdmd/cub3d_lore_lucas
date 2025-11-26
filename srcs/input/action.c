@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 05:16:04 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/24 02:19:37 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/25 05:16:48 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	open_door(t_cub	*data)
 void	pew_pew(t_cub *data)
 {
 	int		i;
-	t_plyr *plyr;
+	t_plyr	*plyr;
 
 	plyr = &data->gman.plyr;
 	if (plyr->state != SHOOT)
