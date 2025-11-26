@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:38:52 by lorenzo           #+#    #+#             */
-/*   Updated: 2025/11/26 04:17:42 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/26 17:00:07 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@
 # define PLR_HBOX_RD 0.125
 # define PLR_ACT_RNG 0.33
 # define PLR_AIM_SIZE 0.05
+
+# define SCRSHK_INT_SHOOT 30
+# define SCRSHK_INT_DOOR 2
+# define SCRSHK_INT_HURT 40
+# define SCRSHK_DUR_SHOOT 0.2
+# define SCRSHK_DUR_DOOR 0.5
+# define SCRSHK_DUR_HURT 0.3
 
 # define ENM_AI_TIMER 3
 # define ENM_ATK_RANGE 0.6

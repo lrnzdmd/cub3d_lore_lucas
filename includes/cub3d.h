@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 08:07:09 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:51:52 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,10 +122,10 @@ typedef struct s_cub3d_data
 	t_screen_shake	shake;
 }	t_cub;
 
-void	enemy_state_update(t_cub *data, t_ent	*enemy);
-void	enemy_action(t_cub *data, t_ent	*enemy);
-void	enemy_animator(t_cub *data, t_ent *enemy);
 void	update_screen_shake(t_cub *data);
 void	trigger_screen_shake(t_cub *data, double intensity, double duration);
+int		game_loop(t_cub *data);
+void	init_screen_shake(t_cub *data);
+void	door_check(t_cub	*data);
 
 #endif

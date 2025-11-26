@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 06:54:28 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:52:46 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,8 @@ int		get_sprite_pixel(t_img_d *txt, t_v2i pos);
 void	render_world(t_cub *data);
 void	player_animator(t_cub *data);
 void	render_player(t_cub *data);
+void	draw_game(t_cub *data);
+void	draw_background(t_cub	*data);
 
 void	drawline_to_img(t_img_d *img, t_v2i start, t_v2i end, int color);
 void	drawrect_to_img(t_img_d	*img, t_v2i top_l, t_v2i bot_r, int color);

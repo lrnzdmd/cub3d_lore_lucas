@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+         #
+#    By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/09 20:22:59 by lde-medi          #+#    #+#              #
-#    Updated: 2025/11/26 08:02:56 by luferna3         ###   ########.fr        #
+#    Updated: 2025/11/26 16:53:31 by lde-medi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,11 @@ SRCS = 	srcs/main.c \
 		srcs/game/enemy.c \
 		srcs/game/enemy_states.c \
 		srcs/game/enemy_anim.c \
+		srcs/game/game_loop.c \
 		srcs/game/screen_shake.c \
 		srcs/gfx/render_enemies.c \
 		srcs/gfx/render_enemies2.c \
+		srcs/gfx/render_game.c \
 		srcs/gfx/render_minimap.c \
 		srcs/gfx/render_player.c \
 		srcs/gfx/render_world.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 05:16:04 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 07:17:20 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/26 17:00:54 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	open_door(t_cub	*data)
 		data->gman.map.map[map.y][map.x] = '0';
 		data->gman.map.door_map[map.y][map.x]->open = true;
 		data->gman.map.doors_open = true;
-		trigger_screen_shake(data, 2.0, 0.5);
+		trigger_screen_shake(data, SCRSHK_INT_DOOR, SCRSHK_DUR_DOOR);
 	}
 }
 
@@ -39,7 +39,7 @@ void	pew_pew(t_cub *data)
 	if (plyr->state != SHOOT)
 	{
 		plyr->state = SHOOT;
-		trigger_screen_shake(data, 30.0, 0.4);
+		trigger_screen_shake(data, SCRSHK_INT_SHOOT, SCRSHK_DUR_SHOOT);
 		plyr->anim_timer = 0;
 		i = -1;
 		while (++i < data->gman.enemies_n)

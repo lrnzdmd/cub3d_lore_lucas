@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 03:49:23 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/17 05:06:16 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:25:53 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	free_all_data(t_cub	*data);
 
 int	exit_game(t_cub	*data)
 {
+	mlx_mouse_show(data->mlx, data->mlx_w);
 	free_all_data(data);
 	exit(0);
 }

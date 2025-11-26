@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_world2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 05:53:55 by luferna3          #+#    #+#             */
-/*   Updated: 2025/11/26 07:10:56 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:43:53 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	init_ray(t_cub *data, t_ray *ray, int x)
 {
 	double	camera_x;
 
-	camera_x = 2.0 * x / (double)data->gfx.fr_bf.size.x - 1.0;	
+	camera_x = 2.0 * x / (double)data->gfx.fr_bf.size.x - 1.0;
 	ray->dir.x = data->gman.plyr.dir.x + data->gman.plyr.plane.x * camera_x;
 	ray->dir.y = data->gman.plyr.dir.y + data->gman.plyr.plane.y * camera_x;
 	ray->hit = false;
