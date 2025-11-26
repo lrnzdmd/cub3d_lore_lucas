@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 06:29:54 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 17:00:26 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 18:39:39 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	chase_state(t_cub *data, t_ent	*enemy)
 	t_v2d	dist_vec;
 	double	dist_len;
 
-	dist_len = sqrt(enemy->pl_dist);
-	if (dist_len < ENM_ATK_RANGE)
+	if (enemy->pl_dist < (ENM_ATK_RANGE * ENM_ATK_RANGE))
 		return ;
+	dist_len = sqrt(enemy->pl_dist);
 	dist_vec.x = data->gman.plyr.pos.x - enemy->pos.x;
 	dist_vec.y = data->gman.plyr.pos.y - enemy->pos.y;
 	enemy->data.dir.x = dist_vec.x / dist_len;
