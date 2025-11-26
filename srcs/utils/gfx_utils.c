@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gfx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:54:37 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/13 05:52:15 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 06:44:03 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,15 @@ int	darken_color(int color, int amount)
 	else
 		out.c.b -= amount;
 	return (out.color);
+}
+
+void	draw_map_tile(t_cub *data, t_img_d	*img, t_v2i map)
+{
+	t_v2i	pos;
+	int		tile_size;
+
+	tile_size = data->gman.map.tile_size;
+	pos = map_to_pixel_coords(data->gman.map, (t_v2d){map.x, map.y});
+	drawrect_to_img(img, pos,
+		(t_v2i){pos.x + tile_size, pos.y + tile_size}, MAP_CLR_WL);
 }

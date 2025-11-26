@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 02:27:17 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/25 05:14:45 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/26 06:42:32 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	read_cub_file(t_cub	*data, char	*av);
 static void	parse_first_section(t_cub	*data, bool *map_st);
 static void	parse_file_loop(t_cub	*data, bool	*map_st);
-static bool	cub_map_start(char	*line);
 
 void	parse_cub3d(t_cub	*data, int ac, char	**av)
 {
@@ -121,10 +120,4 @@ static void	parse_file_loop(t_cub *data, bool *map_st)
 		handle_map_transition(data, map_st);
 		ft_multifree(2, &data->tmp.str_1, &data->tmp.gnl);
 	}
-}
-
-static bool	cub_map_start(char	*line)
-{
-	return (*line != 'N' && *line != 'S' && *line != 'W'
-		&& *line != 'E' && *line != 'F' && *line != 'C' );
 }

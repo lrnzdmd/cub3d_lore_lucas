@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 21:05:31 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/22 06:08:26 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 06:44:38 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,15 +110,4 @@ void	draw_player_minimap(t_cub *data)
 	drawline_to_img(minimap, pl_pix, dir, 0x00707012);
 	drawrect_to_img(minimap, (t_v2i){pl_pix.x - 2,
 		pl_pix.y - 2}, (t_v2i){pl_pix.x + 2, pl_pix.y + 2}, 0x0000ff00);
-}
-
-void	draw_map_tile(t_cub *data, t_img_d	*img, t_v2i map)
-{
-	t_v2i	pos;
-	int		tile_size;
-
-	tile_size = data->gman.map.tile_size;
-	pos = map_to_pixel_coords(data->gman.map, (t_v2d){map.x, map.y});
-	drawrect_to_img(img, pos,
-		(t_v2i){pos.x + tile_size, pos.y + tile_size}, MAP_CLR_WL);
 }

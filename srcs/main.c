@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:30:54 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 04:13:59 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/26 06:29:33 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ int	game_loop(t_cub *data)
 void	init_mouse_controls(t_cub *data)
 {
 	mlx_mouse_hide(data->mlx, data->mlx_w);
-	mlx_mouse_move(data->mlx, data->mlx_w, 
-		data->gfx.fr_bf.size.x / 2, 
+	mlx_mouse_move(data->mlx, data->mlx_w,
+		data->gfx.fr_bf.size.x / 2,
 		data->gfx.fr_bf.size.y / 2);
 }
 

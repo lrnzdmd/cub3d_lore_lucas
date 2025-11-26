@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/24 03:56:20 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 06:40:42 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/time.h>
 
 # include <libft.h>
+# include <enemy.h>
 # include <settings.h>
 # include <cleanup.h>
 # include <gfx.h>
@@ -110,9 +111,5 @@ typedef struct s_cub3d_data
 	t_tmp		tmp;
 	t_input		input;
 }	t_cub;
-
-void	enemy_state_update(t_cub *data, t_ent	*enemy);
-void	enemy_action(t_cub *data, t_ent	*enemy);
-void	enemy_animator(t_cub *data, t_ent *enemy);
 
 #endif

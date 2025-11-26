@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:30:28 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 04:14:31 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/26 06:07:02 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	mouse_move_handler(int x, int y, t_cub *data)
 	if (abs(delta_x) > 2)
 	{
 		data->input.mouse_dx = delta_x;
-		mlx_mouse_move(data->mlx, data->mlx_w, center_x, 
+		mlx_mouse_move(data->mlx, data->mlx_w, center_x,
 			data->gfx.fr_bf.size.y / 2);
 	}
 	return (0);

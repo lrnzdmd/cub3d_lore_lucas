@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gfx.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 03:59:35 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/26 06:44:11 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,6 @@ static inline t_v2i	map_to_pixel_coords(t_map map, t_v2d	map_cd)
 void	init_minimap(t_cub *data);
 void	draw_minimap(t_cub *data);
 void	draw_player_minimap(t_cub *data);
-void	draw_map_tile(t_cub *data, t_img_d	*img, t_v2i map);
 void	render_enemies(t_cub *data);
 int		get_sprite_pixel(t_img_d *txt, t_v2i pos);
 void	render_world(t_cub *data);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_files.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 02:43:00 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/25 04:56:47 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/26 06:27:37 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,6 @@ static bool	parse_fc_color(t_cub *data, char *line, int flr_ceil);
 static bool	parse_wall_text(t_cub	*data, char *line, int dir);
 static bool	validate_color_line(char **line);
 static bool	ft_isdigit_str(char *str);
-
-static int	find_config_id(char *line, const char *ids[6])
-{
-	int	i;
-
-	i = -1;
-	while (++i < 6)
-		if (ft_strncmp(line, (char *)ids[i], ft_strlen(ids[i])) == 0)
-			return (i);
-	return (-1);
-}
 
 void	parse_text_color(t_cub *data, char *line, bool end_check)
 {

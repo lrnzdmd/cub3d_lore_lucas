@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 18:49:10 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/23 22:16:02 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/25 16:26:31 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,7 @@ void	free_tmp_pointers(t_cub	*data)
 	}
 	if (tmp->arr)
 		free_array(&tmp->arr);
-	if (tmp->str_1)
-		free(tmp->str_1);
-	if (tmp->str_2)
-		free(tmp->str_2);
 	if (tmp->lst)
 		free_list(&tmp->lst);
+	ft_multifree(3, &tmp->gnl, &tmp->str_1, &tmp->str_2);
 }
