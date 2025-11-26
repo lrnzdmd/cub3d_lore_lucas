@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:30:54 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 06:51:42 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 07:27:14 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,23 @@ void	door_check(t_cub	*data)
 
 void	draw_game(t_cub *data)
 {
+	int		i;
+	double	time_start;
+	double	time_end;
+
+	time_start = get_time_in_sec();
+	calc_delta_time(data);
+	i = -1;
+	while (++i < data->gman.enemies_n)
+	{
+		enemy_state_update(data, &data->gman.enemies[i]);
+		enemy_action(data, &data->gman.enemies[i]);
+		enemy_animator(data, &data->gman.enemies[i]);
+	}
+	update_screen_shake(data);
+	player_animator(data);
+	input_manager(data);
+	door_check(data);
 	draw_background(data);
 	render_world(data);
 	render_enemies(data);
@@ -98,6 +115,23 @@ int	game_loop(t_cub *data)
 	return (0);
 }
 
+void	init_screen_shake(t_cub *data)
+{
+	data->shake.active = false;
+	data->shake.intensity = 0.0;
+	data->shake.duration = 0.0;
+	data->shake.time = 0.0;
+	data->shake.offset = 0.0;
+}
+
+void	init_mouse_controls(t_cub *data)
+{
+	mlx_mouse_hide(data->mlx, data->mlx_w);
+	mlx_mouse_move(data->mlx, data->mlx_w, 
+		data->gfx.fr_bf.size.x / 2, 
+		data->gfx.fr_bf.size.y / 2);
+}
+
 int	main(int ac, char	**av)
 {
 	static t_cub	data;
@@ -108,6 +142,7 @@ int	main(int ac, char	**av)
 	init_player(&data);
 	init_enemies(&data);
 	init_mouse_controls(&data);
+	init_screen_shake(&data);
 	mlx_hook(data.mlx_w, 17, 0, exit_game, &data);
 	mlx_hook(data.mlx_w, 2, 1L << 0, key_press_handler, &data);
 	mlx_hook(data.mlx_w, 3, 1L << 1, key_release_handler, &data);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 06:54:46 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/26 07:23:53 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,16 +99,32 @@ typedef struct s_game_data
 	int		enemies_n;
 }	t_game;
 
+typedef struct s_screen_shake
+{
+	bool	active;
+	double	intensity;
+	double	duration;
+	double	time;
+	double	offset;
+}	t_screen_shake;
+
 typedef struct s_cub3d_data
 {
-	double		lst_frm_time;
-	double		d_time;
-	void		*mlx;
-	void		*mlx_w;
-	t_gfx		gfx;
-	t_game		gman;
-	t_tmp		tmp;
-	t_input		input;
+	double			lst_frm_time;
+	double			d_time;
+	void			*mlx;
+	void			*mlx_w;
+	t_gfx			gfx;
+	t_game			gman;
+	t_tmp			tmp;
+	t_input			input;
+	t_screen_shake	shake;
 }	t_cub;
+
+void	enemy_state_update(t_cub *data, t_ent	*enemy);
+void	enemy_action(t_cub *data, t_ent	*enemy);
+void	enemy_animator(t_cub *data, t_ent *enemy);
+void	update_screen_shake(t_cub *data);
+void	trigger_screen_shake(t_cub *data, double intensity, double duration);
 
 #endif

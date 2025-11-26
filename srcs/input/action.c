@@ -6,7 +6,7 @@
 /*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 05:16:04 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/25 05:16:48 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/26 07:17:20 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	open_door(t_cub	*data)
 		data->gman.map.map[map.y][map.x] = '0';
 		data->gman.map.door_map[map.y][map.x]->open = true;
 		data->gman.map.doors_open = true;
+		trigger_screen_shake(data, 2.0, 0.5);
 	}
 }
 
@@ -38,6 +39,7 @@ void	pew_pew(t_cub *data)
 	if (plyr->state != SHOOT)
 	{
 		plyr->state = SHOOT;
+		trigger_screen_shake(data, 30.0, 0.4);
 		plyr->anim_timer = 0;
 		i = -1;
 		while (++i < data->gman.enemies_n)
