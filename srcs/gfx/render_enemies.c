@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 06:44:28 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/27 19:35:38 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/27 19:56:37 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,26 @@ int	get_sprite_pixel(t_img_d *txt, t_v2i pos)
 
 bool	is_shootable(t_cub *data, t_ray_s ray)
 {
-	int		sp_cnt;
-	int		center;
-	int		aim;
+	int			sp_cnt;
+	t_v2i		center;
+	bool		hit_x;
+	bool		hit_y;
+	t_v2i		aim;
 
 	sp_cnt = (int)round(ray.scr_x);
 	if (ray.transf.y <= 0 || sp_cnt < 0
 		|| sp_cnt > data->gfx.fr_bf.size.x
 		|| ray.transf.y >= data->gfx.zbuffer[sp_cnt])
 		return (false);
-	center = data->gfx.fr_bf.size.x / 2;
-	aim = (data->gfx.fr_bf.size.x * PLR_AIM_SIZE);
-	if (ray.scr_x >= center - aim && ray.scr_x <= center + aim)
-		return (true);
-	return (false);
+	center.x = data->gfx.fr_bf.size.x / 2;
+	center.y = data->gfx.fr_bf.size.y / 2;
+	aim.x = ((ray.size / 2) * PLR_AIM_SIZE);
+	aim.y = (ray.size * PLR_AIM_SIZE);
+	hit_x = (center.x >= ((ray.draw_st.x - aim.x))
+		&& center.x <= (ray.draw_end.x + aim.x));
+	hit_y = (center.y >= (ray.draw_st.y - aim.y)
+		&& center.y <= (ray.draw_end.y + aim.y));
+	return (hit_x && hit_y);
 }
 
 static void	calc_sprite_distances(t_cub *data)
