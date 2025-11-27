@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:38:52 by lorenzo           #+#    #+#             */
-/*   Updated: 2025/11/26 17:00:07 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/27 23:40:53 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define PLYR_MAX_HP 10
 # define PLR_HBOX_RD 0.125
 # define PLR_ACT_RNG 0.33
-# define PLR_AIM_SIZE 0.05
+# define PLR_AIM_SIZE 0.5
 
 # define SCRSHK_INT_SHOOT 30
 # define SCRSHK_INT_DOOR 2

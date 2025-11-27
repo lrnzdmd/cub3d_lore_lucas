@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:45:23 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 16:47:58 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/27 22:22:59 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	game_loop(t_cub *data)
 	input_manager(data);
 	door_check(data);
 	draw_game(data);
+	render_crosshair(data);
 	if (data->gman.plyr.hp <= 0)
 	{
 		ft_printf("Game Over.\n");

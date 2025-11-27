@@ -6,7 +6,7 @@
 #    By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/09 20:22:59 by lde-medi          #+#    #+#              #
-#    Updated: 2025/11/26 16:53:31 by lde-medi         ###   ########.fr        #
+#    Updated: 2025/11/27 19:59:23 by lde-medi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS = 	srcs/main.c \
 		srcs/gfx/render_enemies.c \
 		srcs/gfx/render_enemies2.c \
 		srcs/gfx/render_game.c \
+		srcs/gfx/render_hud.c \
 		srcs/gfx/render_minimap.c \
 		srcs/gfx/render_player.c \
 		srcs/gfx/render_world.c \

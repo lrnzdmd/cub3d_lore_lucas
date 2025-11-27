@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 18:47:00 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/27 22:22:39 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,7 @@ void	init_sprite_ray(t_cub *data, t_ent *enemy, t_ray_s *ray);
 int		get_sprite_pixel(t_img_d *txt, t_v2i pos);
 bool	is_shootable(t_cub *data, t_ray_s ray);
 void	render_sprite(t_cub *data, t_ent *enemy, t_ray_s ray);
+void	render_crosshair(t_cub *data);
 
 void	init_ray_dir(t_cub *data, t_ray *ray, int x);
 void	init_ray_d_dist(t_ray *ray);
