@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_enemies.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 06:44:28 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/25 05:50:38 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/27 19:35:38 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	init_sprite_ray(t_cub *data, t_ent *enemy, t_ray_s *ray)
 	ray->scr_x = (data->gfx.fr_bf.size.x / 2)
 		* (1 + (ray->transf.x / ray->transf.y));
 	ray->size = fabs(floor(data->gfx.fr_bf.size.y / ray->transf.y));
-	ray->draw_st.y = -ray->size / 2 + data->gfx.fr_bf.size.y / 2;
+	ray->draw_st.y = -ray->size / 2 + data->gfx.fr_bf.size.y / 2 + plyr.pitch;
 	if (ray->draw_st.y < 0)
 		ray->draw_st.y = 0;
-	ray->draw_end.y = ray->size / 2 + data->gfx.fr_bf.size.y / 2;
+	ray->draw_end.y = ray->size / 2 + data->gfx.fr_bf.size.y / 2 + plyr.pitch;
 	if (ray->draw_end.y >= data->gfx.fr_bf.size.y)
 		ray->draw_end.y = data->gfx.fr_bf.size.y - 1;
 	ray->draw_st.x = -ray->size / 2 + ray->scr_x;

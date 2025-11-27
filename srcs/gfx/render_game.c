@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:46:21 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 16:54:52 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/27 19:29:24 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	draw_background(t_cub	*data)
 	addr = (int *)frm->addr;
 	total_pix = (frm->size.x * frm->size.y);
 	i = -1;
-	while (++i < total_pix / 2)
+	while (++i < (total_pix / 2) - (frm->size.x * -data->gman.plyr.pitch))
 		addr[i] = data->gfx.ceil_c.color;
 	while (i < total_pix)
 		addr[i++] = data->gfx.grnd_c.color;

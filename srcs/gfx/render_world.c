@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_world.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 04:26:06 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 06:44:17 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/27 19:21:34 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	calc_texture_color(t_cub *data, t_ray *ray, t_v2i i)
 		out.x = txt->size.x - out.x - 1;
 	if (ray->ln_hght == 0)
 		ray->ln_hght = 1;
-	y_offset = i.y * 256 - data->gfx.fr_bf.size.y * 128 + ray->ln_hght * 128;
+	y_offset = (i.y - data->gman.plyr.pitch) * 256 - data->gfx.fr_bf.size.y * 128 + ray->ln_hght * 128;
 	out.y = ((y_offset * txt->size.y) / ray->ln_hght) / 256;
 	return (shade_texture(txt, out, *ray));
 }
@@ -109,10 +109,10 @@ void	render_world(t_cub *data)
 	{
 		ray = cast_ray(data, i.x);
 		ray.ln_hght = (int)(data->gfx.fr_bf.size.y / ray.p_dist);
-		ray.draw_st = -ray.ln_hght / 2 + data->gfx.fr_bf.size.y / 2;
+		ray.draw_st = -ray.ln_hght / 2 + data->gfx.fr_bf.size.y / 2 + data->gman.plyr.pitch;
 		if (ray.draw_st < 0)
 			ray.draw_st = 0;
-		ray.draw_end = ray.ln_hght / 2 + data->gfx.fr_bf.size.y / 2;
+		ray.draw_end = ray.ln_hght / 2 + data->gfx.fr_bf.size.y / 2 + data->gman.plyr.pitch;
 		if (ray.draw_end >= data->gfx.fr_bf.size.y)
 			ray.draw_end = data->gfx.fr_bf.size.y - 1;
 		data->gfx.zbuffer[i.x] = ray.p_dist;

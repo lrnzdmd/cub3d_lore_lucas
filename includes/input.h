@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:29:26 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/23 22:48:45 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/27 19:14:16 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 
 typedef struct s_input_data
 {
-	int		mouse_dx;
+	t_v2i	mouse_d;
 	bool	map_toggle;
 	bool	shoot;
 	bool	action;
@@ -52,6 +52,7 @@ int		mouse_move_handler(int x, int y, t_cub *data);
 
 void	rotate_player(t_cub *data, bool left);
 void	mouse_rotate_player(t_cub *data);
+void	mouse_change_pitch(t_cub *data);
 void	move_fwd_bck(t_cub *data, bool fwd);
 
 void	pew_pew(t_cub *data);

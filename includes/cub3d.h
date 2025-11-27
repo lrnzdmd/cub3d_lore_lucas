@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 17:13:51 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/27 19:04:48 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_player_data
 	t_v2d	dir;
 	t_v2d	plane;
 	double	rot;
+	int		pitch;
 	double	anim_timer;
 	t_ent	*target;
 	double	tgt_dist;

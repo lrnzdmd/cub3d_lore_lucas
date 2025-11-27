@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:30:28 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 06:07:02 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/27 19:37:17 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ void	input_manager(t_cub	*data)
 	t_input	input;
 
 	input = data->input;
-	if (input.mouse_dx != 0)
+	if (input.mouse_d.x != 0)
 		mouse_rotate_player(data);
+	if (input.mouse_d.y != 0)
+		mouse_change_pitch(data);
 	if (input.rght)
 		rotate_player(data, false);
 	if (input.lft)
@@ -35,6 +37,24 @@ void	input_manager(t_cub	*data)
 		exit_game(data);
 }
 
+void	mouse_change_pitch(t_cub *data)
+{
+	int	val;
+	int	limit;
+
+	val = data->input.mouse_d.y * 0.8;
+	limit = data->gfx.fr_bf.size.y / 2;
+	if (val != 0)
+	{
+		data->gman.plyr.pitch -= val;
+		if (data->gman.plyr.pitch < -limit)
+			data->gman.plyr.pitch = -limit;
+		if (data->gman.plyr.pitch > limit)
+			data->gman.plyr.pitch = limit;
+		data->input.mouse_d.y = 0;
+	}
+}
+
 // int	mouse_move_handler(int x, int y, t_cub *data)
 // {
 // 	int	scr_sz;
@@ -49,18 +69,20 @@ void	input_manager(t_cub	*data)
 
 int	mouse_move_handler(int x, int y, t_cub *data)
 {
-	int	center_x;
-	int	delta_x;
+	t_v2i	center;
+	t_v2i	delta;
 
 	(void)y;
-	center_x = data->gfx.fr_bf.size.x / 2;
-	delta_x = x - center_x;
-	if (abs(delta_x) > 2)
-	{
-		data->input.mouse_dx = delta_x;
-		mlx_mouse_move(data->mlx, data->mlx_w, center_x,
-			data->gfx.fr_bf.size.y / 2);
-	}
+	center.x = data->gfx.fr_bf.size.x / 2;
+	center.y = data->gfx.fr_bf.size.y / 2;
+	if (x == center.x && y == center.y)
+		return (0);
+	delta.x = x - center.x;
+	delta.y = y - center.y;
+	data->input.mouse_d.x = delta.x;
+	data->input.mouse_d.y = delta.y;
+	mlx_mouse_move(data->mlx, data->mlx_w, center.x,
+		center.y);
 	return (0);
 }
 
