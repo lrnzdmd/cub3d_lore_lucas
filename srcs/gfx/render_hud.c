@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 19:59:01 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 23:51:18 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 23:55:38 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void    hud_health(t_cub *data, t_img_d *frame, t_v2i pnl_pos, t_v2i pnl_size)
 	half_pnl_h = pnl_size.y / 2; 
 	padding = (half_pnl_h - icn_size.y) / 2;
 	icn_pos.x = pnl_pos.x + padding;
-	icn_pos.y = pnl_pos.y + padding; 
+	icn_pos.y = pnl_pos.y + (padding * 1.25); 
 	drawrectrd_to_img(frame, icn_pos, icn_size, 0xFFFFFFFF);
 	draw_cross(frame, icn_pos, icn_size);
 	draw_health_bar(data, frame, icn_pos, icn_size);
@@ -151,7 +151,7 @@ void    hud_ammo(t_cub *data, t_img_d *frame, t_v2i pnl_pos, t_v2i pnl_size)
 	half_pnl_h = pnl_size.y / 2; 
 	padding = (half_pnl_h - icn_size.y) / 2;
 	icn_pos.x = pnl_pos.x + padding;
-	icn_pos.y = pnl_pos.y + pnl_size.y - icn_size.y - padding; 
+	icn_pos.y = pnl_pos.y + pnl_size.y - icn_size.y - (padding * 1.25); 
 	drawrectrd_to_img(frame, icn_pos, icn_size, 0xFFFFFFFF);
 	draw_bullet(frame, icn_pos, icn_size);
 	if (data->gman.plyr.ammo)
