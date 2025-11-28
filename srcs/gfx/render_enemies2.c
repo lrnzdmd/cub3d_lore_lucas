@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_enemies2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 05:30:17 by luferna3          #+#    #+#             */
-/*   Updated: 2025/11/27 19:36:11 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 04:58:06 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	render_sprite(t_cub *data, t_ent *enemy, t_ray_s ray)
 			i.y = ray.draw_st.y - 1;
 			while (++i.y < ray.draw_end.y)
 			{
-				proy = (i.y - data->gman.plyr.pitch) * 256 - data->gfx.fr_bf.size.y * 128 + ray.size
-					* 128;
+				proy = (i.y - data->gman.plyr.pitch) * 256
+					- data->gfx.fr_bf.size.y * 128 + ray.size * 128;
 				txt_p.y = ((proy * enemy->sprt->size.y) / ray.size) / 256;
 				ray.color = get_sprite_pixel(enemy->sprt, txt_p);
 				if ((ray.color & 0x00FFFFFF) != 0xFF00FF)

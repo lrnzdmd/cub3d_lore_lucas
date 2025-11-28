@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_enemies.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 06:44:28 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/27 23:42:47 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 04:57:07 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ bool	is_shootable(t_cub *data, t_ray_s ray)
 	aim.x = (ray.size * PLR_AIM_SIZE) / 2;
 	aim.y = (ray.size * 0.1);
 	hit_x = (center.x >= ((ray.scr_x - aim.x))
-		&& center.x <= (ray.scr_x + aim.x));
+			&& center.x <= (ray.scr_x + aim.x));
 	hit_y = (center.y >= (ray.draw_st.y - aim.y)
-		&& center.y <= (ray.draw_end.y + aim.y));
+			&& center.y <= (ray.draw_end.y + aim.y));
 	return (hit_x && hit_y);
 }
 
