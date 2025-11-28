@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:46:21 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 20:35:07 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:57:11 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	draw_game(t_cub *data)
 	render_enemies(data);
 	render_player(data);
 	render_crosshair(data);
-	drawrectrd_to_img(&data->gfx.fr_bf, (t_v2i){150, 150}, (t_v2i){600, 100}, 0x90909090);
+	hud_health_ammo(data);
 	if (data->input.map_toggle)
 	{
 		draw_minimap(data);

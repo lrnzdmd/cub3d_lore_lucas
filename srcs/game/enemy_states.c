@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 06:29:54 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 16:44:25 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 23:01:05 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	attack_state(t_cub *data, t_ent *enemy)
 		enemy->data.st_timer -= data->d_time;
 	else
 	{
-		data->gman.plyr.hp -= 1;
+		data->gman.plyr.hp -= 10;
 		trigger_screen_shake(data, SCRSHK_INT_HURT, SCRSHK_DUR_HURT);
 		enemy->data.st_timer = ENM_ATK_SPD;
 	}
