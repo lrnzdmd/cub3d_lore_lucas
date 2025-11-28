@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 08:19:52 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 23:15:30 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,7 @@
 # include <safe_ops.h>
 # include <utils.h>
 # include <mlx.h>
-#include "types.h"
-
-// typedef struct s_vector2int		t_v2i;
-// typedef struct s_vector2double	t_v2d;
-// typedef struct s_map_data		t_map;
-// typedef struct s_temp_pointers	t_tmp;
-
+# include <types.h>
 
 typedef enum e_entity_types
 {
@@ -84,6 +78,7 @@ struct s_player_data
 {
 	t_pl_st	state;
 	int		hp;
+	int		ammo;
 	t_v2d	pos;
 	t_v2d	dir;
 	t_v2d	plane;

@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:38:52 by lorenzo           #+#    #+#             */
-/*   Updated: 2025/11/28 23:00:58 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 23:16:28 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define MOUSE_SENS 0.005
 
 # define PLYR_MAX_HP 100
+# define PLYR_MAX_AMMO 20
 # define PLR_HBOX_RD 0.125
 # define PLR_ACT_RNG 0.33
 # define PLR_AIM_SIZE 0.5

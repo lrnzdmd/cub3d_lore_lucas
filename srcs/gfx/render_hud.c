@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 19:59:01 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 23:05:20 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 23:36:44 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void    draw_cross(t_img_d *frame, t_v2i icn_pos, t_v2i icn_size)
     drawrect_to_img(frame, start, end, 0xFF00FF00);
 }
 
-void	draw_healthbar(t_cub *data, t_img_d *frame, t_v2i icn_pos, t_v2i icn_size)
+void	draw_health_bar(t_cub *data, t_img_d *frame, t_v2i icn_pos, t_v2i icn_size)
 {
 	t_v2i	bar_pos;
 	t_v2i	bar_size;
@@ -76,7 +76,6 @@ void	draw_healthbar(t_cub *data, t_img_d *frame, t_v2i icn_pos, t_v2i icn_size)
 	bar_pos.y = icn_pos.y + (icn_size.y / 2) - icn_size.y / 8;
 	bar_size.x = ((float)hp / PLYR_MAX_HP) * (icn_size.x * 4);
 	bar_size.y = icn_size.y / 4;
-	ft_printf("%d\n", bar_size.x);
 	drawrectrd_to_img(frame, bar_pos, bar_size, 0xFF00FF00);
 }
 
@@ -95,7 +94,38 @@ void    hud_health(t_cub *data, t_img_d *frame, t_v2i pnl_pos, t_v2i pnl_size)
 	icn_pos.y = pnl_pos.y + padding; 
 	drawrectrd_to_img(frame, icn_pos, icn_size, 0xFFFFFFFF);
 	draw_cross(frame, icn_pos, icn_size);
-	draw_healthbar(data, frame, icn_pos, icn_size);
+	draw_health_bar(data, frame, icn_pos, icn_size);
+}
+
+void	draw_ammo_bar(t_cub *data, t_img_d *frame, t_v2i icn_pos, t_v2i icn_size)
+{
+	t_v2i	bar_pos;
+	t_v2i	bar_size;
+	int		ammo;
+	
+	ammo = data->gman.plyr.ammo;
+	bar_pos.x = icn_pos.x + icn_size.x + 5;
+	bar_pos.y = icn_pos.y + (icn_size.y / 2) - icn_size.y / 8;
+	bar_size.x = ((float)ammo / PLYR_MAX_AMMO) * (icn_size.x * 4);
+	bar_size.y = icn_size.y / 4;
+	drawrectrd_to_img(frame, bar_pos, bar_size, 0xFFFF0000);
+}
+
+void    hud_ammo(t_cub *data, t_img_d *frame, t_v2i pnl_pos, t_v2i pnl_size)
+{
+	t_v2i   icn_pos;
+	t_v2i   icn_size;
+	int     half_pnl_h;
+	int     padding;
+
+	icn_size.x = pnl_size.y / 3;
+	icn_size.y = icn_size.x;
+	half_pnl_h = pnl_size.y / 2; 
+	padding = (half_pnl_h - icn_size.y) / 2;
+	icn_pos.x = pnl_pos.x + padding;
+	icn_pos.y = pnl_pos.y + pnl_size.y - icn_size.y - padding; 
+	drawrectrd_to_img(frame, icn_pos, icn_size, 0xFFFFFFFF);
+	draw_ammo_bar(data, frame, icn_pos, icn_size);
 }
 
 void	hud_health_ammo(t_cub *data)
@@ -111,4 +141,5 @@ void	hud_health_ammo(t_cub *data)
 	pnl_pos.y = frame->size.y - pnl_size.y;
 	drawrectrd_to_img(frame, pnl_pos, pnl_size, 0xFF000066);
 	hud_health(data, frame, pnl_pos, pnl_size);
+	hud_ammo(data, frame, pnl_pos, pnl_size);
 }

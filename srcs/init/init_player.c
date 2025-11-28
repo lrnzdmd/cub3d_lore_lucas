@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 17:18:35 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 17:57:59 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 23:15:49 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,5 @@ void	init_player(t_cub	*data)
 {
 	get_player_start_pos(data);
 	data->gman.plyr.hp = PLYR_MAX_HP;
+	data->gman.plyr.ammo = PLYR_MAX_AMMO;
 }

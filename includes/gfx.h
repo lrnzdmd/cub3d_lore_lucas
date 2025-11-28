@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 20:57:02 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 23:08:30 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define TXT_ENM_ATK_2 "./assets/textures/atk2.xpm"
 # define TXT_ENM_ATK_3 "./assets/textures/atk3.xpm"
 # define TXT_ENM_ATK_4 "./assets/textures/atk4.xpm"
-# define TXT_ENM_ATK_5 "./assets/textures/atk5.xpm"
+# define TXT_ENM_ATK_5 "./assets/textures/atk0.xpm"
 # define TXT_ENM_WALK_0 "./assets/textures/walk0.xpm"
 # define TXT_ENM_WALK_1 "./assets/textures/walk1.xpm"
 # define TXT_ENM_WALK_2 "./assets/textures/walk2.xpm"
