@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy_states.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 06:29:54 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 08:29:32 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 16:44:25 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,7 @@ void	attack_state(t_cub *data, t_ent *enemy)
 
 void	dead_state(t_cub *data, t_ent *enemy)
 {
-	if (enemy->anim != &data->gfx.txt.sprts.enemy.dead)
-		enemy->anim = &data->gfx.txt.sprts.enemy.dead;
+		set_animation(enemy, &data->gfx.txt.sprts.enemy.dead);
 }
 
 void	enemy_action(t_cub *data, t_ent *enemy)
