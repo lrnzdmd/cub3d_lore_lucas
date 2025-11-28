@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 05:17:15 by luferna3          #+#    #+#             */
-/*   Updated: 2025/11/28 05:40:24 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/28 06:41:33 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_sprites_textures t_sprt_txt;
 typedef struct s_textures      t_txt;
 typedef struct s_screen_shake t_screen_shake;
 typedef struct s_game_data		t_game;
+typedef void	(*t_state_func)(t_cub *data, t_ent *enemy);
 
 #endif
 
