@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 05:16:04 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 02:14:31 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 23:41:30 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ void	pew_pew(t_cub *data)
 	t_plyr	*plyr;
 
 	plyr = &data->gman.plyr;
-	if (plyr->state != SHOOT)
+	if (plyr->state != SHOOT && plyr->ammo)
 	{
 		plyr->state = SHOOT;
+		plyr->ammo--;
 		trigger_screen_shake(data, SCRSHK_INT_SHOOT, SCRSHK_DUR_SHOOT);
 		plyr->anim_timer = 0;
 		i = -1;

@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 19:59:01 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 23:36:44 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 23:51:18 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,34 @@ void	draw_ammo_bar(t_cub *data, t_img_d *frame, t_v2i icn_pos, t_v2i icn_size)
 	drawrectrd_to_img(frame, bar_pos, bar_size, 0xFFFF0000);
 }
 
+void    draw_bullet(t_img_d *frame, t_v2i icn_pos, t_v2i icn_size)
+{
+    t_v2i	start;
+    t_v2i	end;
+    t_v2i	center;
+    int		tip_height;
+	int		case_height;
+	int		bullet_height;
+    int		bullet_width;
+    
+    center.x = icn_pos.x + (icn_size.x / 2); 
+    center.y = icn_pos.y + (icn_size.y / 2); 
+    bullet_height = icn_size.y * 0.7;
+    bullet_width = icn_size.x * 0.3;
+    case_height = bullet_height * 0.6;
+    start.x = center.x - (bullet_width / 2);
+    end.x = center.x + (bullet_width / 2);
+    start.y = center.y + (bullet_height / 2) - case_height;
+    end.y = center.y + (bullet_height / 2);
+    drawrect_to_img(frame, start, end, 0xFFCCAA00); 
+    tip_height = bullet_height * 0.5;
+    start.x = center.x - (bullet_width / 2);
+    start.y = start.y - tip_height + 4;
+    end.x = bullet_width;
+    end.y = tip_height;
+    drawrectrd_to_img(frame, start, end, 0xFFFFCC00);
+}
+
 void    hud_ammo(t_cub *data, t_img_d *frame, t_v2i pnl_pos, t_v2i pnl_size)
 {
 	t_v2i   icn_pos;
@@ -125,7 +153,9 @@ void    hud_ammo(t_cub *data, t_img_d *frame, t_v2i pnl_pos, t_v2i pnl_size)
 	icn_pos.x = pnl_pos.x + padding;
 	icn_pos.y = pnl_pos.y + pnl_size.y - icn_size.y - padding; 
 	drawrectrd_to_img(frame, icn_pos, icn_size, 0xFFFFFFFF);
-	draw_ammo_bar(data, frame, icn_pos, icn_size);
+	draw_bullet(frame, icn_pos, icn_size);
+	if (data->gman.plyr.ammo)
+		draw_ammo_bar(data, frame, icn_pos, icn_size);
 }
 
 void	hud_health_ammo(t_cub *data)
