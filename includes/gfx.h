@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 19:14:22 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:22:47 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,6 +218,8 @@ void	draw_background(t_cub	*data);
 
 void	drawline_to_img(t_img_d *img, t_v2i start, t_v2i end, int color);
 void	drawrect_to_img(t_img_d	*img, t_v2i top_l, t_v2i bot_r, int color);
+void	drawrectrd_to_img(t_img_d	*img, t_v2i top_l, t_v2i bot_r, int color);
+void	drawcircle_to_img(t_img_d *img, t_v2i center, int r, int color);
 void	draw_h_line(t_img_d *img, t_v2i start, t_v2i end, int color);
 void	draw_v_line(t_img_d *img, t_v2i start, t_v2i end, int color);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shapes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:34:49 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/13 05:32:28 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:40:33 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,50 @@ void	drawrect_to_img(t_img_d	*img, t_v2i top_l, t_v2i bot_r, int color)
 			top_l.y--;
 	}
 	drawline_to_img(img, top_l, (t_v2i){bot_r.x, top_l.y}, color);
+}
+
+void	drawrectrd_to_img(t_img_d *img, t_v2i pos, t_v2i size, int color)
+{
+	int		r;
+	t_v2i	tl;
+	t_v2i	br;
+
+	r = 15;
+	if (size.x < r * 2)
+		r = size.x / 2;
+	if (size.y < r * 2)
+		r = size.y / 2;
+	tl = (t_v2i){pos.x, pos.y + r};
+	br = (t_v2i){pos.x + size.x, pos.y + size.y - r};
+	drawrect_to_img(img, tl, br, color);
+	tl = (t_v2i){pos.x + r, pos.y};
+	br = (t_v2i){pos.x + size.x - r, pos.y + size.y};
+	drawrect_to_img(img, tl, br, color);
+	drawcircle_to_img(img, (t_v2i){pos.x + r, pos.y + r}, r, color);
+	drawcircle_to_img(img, (t_v2i){pos.x + size.x - r - 1, pos.y + r},
+		r, color);
+	drawcircle_to_img(img, (t_v2i){pos.x + r, pos.y + size.y - r - 1},
+		r, color);
+	drawcircle_to_img(img, (t_v2i){pos.x + size.x - r - 1,
+		pos.y + size.y - r - 1}, r, color);
+}
+
+void	drawcircle_to_img(t_img_d *img, t_v2i center, int r, int color)
+{
+	t_v2i	i;
+	int		dist_sq;
+
+	i.y = -r - 1;
+	while (++i.y <= r)
+	{
+		i.x = -r - 1;
+		while (++i.x <= r)
+		{
+			dist_sq = (i.x * i.x) + (i.y * i.y);
+			if (dist_sq <= (r * r))
+				*(unsigned int *)calc_dest_addr(img, (t_v2i){center.x + i.x, center.y + i.y}) = color;
+		}
+	}
 }
 
 static void	drawline_x_dom(t_img_d *img, t_v2i start, t_v2i end, int color)
