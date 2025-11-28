@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy_states.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 06:29:54 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 06:43:21 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 08:26:25 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	change_state(t_ent *enemy, t_enm_st state)
 }
 void	idle_state(t_cub *data, t_ent *enemy)
 {
+	set_animation(enemy, &data->gfx.txt.sprts.enemy.idle);
 	enemy->pl_dist = ft_distance_sq_v2d(data->gman.plyr.pos, enemy->pos);
 	if (enemy->pl_dist < (ENM_AGGR_RANGE))
 	{
@@ -45,6 +46,7 @@ void	idle_state(t_cub *data, t_ent *enemy)
 
 void	patrol_state(t_cub *data, t_ent *enemy)
 {
+	set_animation(enemy, &data->gfx.txt.sprts.enemy.walk);
 	enemy->pl_dist = ft_distance_sq_v2d(data->gman.plyr.pos, enemy->pos);
 	if (enemy->pl_dist < ENM_AGGR_RANGE)
 	{
@@ -70,6 +72,7 @@ void	chase_state(t_cub *data, t_ent *enemy)
 	t_v2d	dist_vec;
 	double	dist_len;	
 
+	set_animation(enemy, &data->gfx.txt.sprts.enemy.walk);
 	enemy->pl_dist = ft_distance_sq_v2d(data->gman.plyr.pos, enemy->pos);
 	if (enemy->pl_dist < (ENM_ATK_RANGE * ENM_ATK_RANGE))
 	{
@@ -91,6 +94,7 @@ void	chase_state(t_cub *data, t_ent *enemy)
 
 void	attack_state(t_cub *data, t_ent *enemy)
 {
+	set_animation(enemy, &data->gfx.txt.sprts.enemy.attack);
 	enemy->pl_dist = ft_distance_sq_v2d(data->gman.plyr.pos, enemy->pos);
 	if (enemy->pl_dist > (ENM_ATK_RANGE * ENM_ATK_RANGE))
 	{
@@ -107,11 +111,16 @@ void	attack_state(t_cub *data, t_ent *enemy)
 	}
 }
 
+void	dead_state(t_cub *data, t_ent *enemy)
+{
+	if (enemy->anim != &data->gfx.txt.sprts.enemy.dead)
+		enemy->anim = &data->gfx.txt.sprts.enemy.dead;
+}
+
 void	enemy_action(t_cub *data, t_ent *enemy)
 {
-	static t_state_func	states[4] = {idle_state, patrol_state, chase_state,
-		attack_state};
+	static t_state_func	states[5] = {idle_state, patrol_state, chase_state,
+		attack_state, dead_state};
 
-	if (enemy->data.state != DEAD)
-		states[enemy->data.state](data, enemy);
+	states[enemy->data.state](data, enemy);
 }
