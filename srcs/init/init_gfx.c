@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_gfx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 04:04:23 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 08:08:56 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 17:58:12 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,22 @@ void	init_enemy_dead_anim(t_cub *data)
 	t_anim	*dead;
 
 	dead = &data->gfx.txt.sprts.enemy.dead;
-	dead->frm_n = 1;
-	dead->speed = 0;
+	dead->frm_n = 6;
+	dead->speed = 0.075;
 	dead->loop = false;
-	dead->frame = safe_calloc(data, 1, sizeof(t_img_d));
+	dead->frame = safe_calloc(data, 6, sizeof(t_img_d));
 	safe_mlx_xpm_to_img(data, &dead->frame[0],
-		TXT_ENM_DEAD, &dead->frame[0].size);
+		TXT_ENM_DEAD_0, &dead->frame[0].size);
+	safe_mlx_xpm_to_img(data, &dead->frame[1],
+		TXT_ENM_DEAD_1, &dead->frame[1].size);
+	safe_mlx_xpm_to_img(data, &dead->frame[2],
+		TXT_ENM_DEAD_2, &dead->frame[2].size);
+	safe_mlx_xpm_to_img(data, &dead->frame[3],
+		TXT_ENM_DEAD_3, &dead->frame[3].size);
+	safe_mlx_xpm_to_img(data, &dead->frame[4],
+		TXT_ENM_DEAD_4, &dead->frame[4].size);
+	safe_mlx_xpm_to_img(data, &dead->frame[5],
+		TXT_ENM_DEAD_5, &dead->frame[5].size);
 }
 
 void	init_enemy_textures(t_cub *data)

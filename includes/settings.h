@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:38:52 by lorenzo           #+#    #+#             */
-/*   Updated: 2025/11/27 23:40:53 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 17:50:06 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@
 # define PLR_ACT_RNG 0.33
 # define PLR_AIM_SIZE 0.5
 
-# define SCRSHK_INT_SHOOT 30
+# define SCRSHK_INT_SHOOT 8
 # define SCRSHK_INT_DOOR 2
-# define SCRSHK_INT_HURT 40
-# define SCRSHK_DUR_SHOOT 0.2
-# define SCRSHK_DUR_DOOR 0.5
-# define SCRSHK_DUR_HURT 0.3
+# define SCRSHK_INT_HURT 15
+# define SCRSHK_DUR_SHOOT 0.1
+# define SCRSHK_DUR_DOOR 0.3
+# define SCRSHK_DUR_HURT 0.2
 
 # define ENM_AI_TIMER 3
 # define ENM_ATK_RANGE 0.6
