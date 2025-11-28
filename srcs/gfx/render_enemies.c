@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_enemies.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 06:44:28 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 04:57:07 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/28 07:57:20 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ bool	is_shootable(t_cub *data, t_ray_s ray)
 
 	sp_cnt = (int)round(ray.scr_x);
 	if (ray.transf.y <= 0 || sp_cnt < 0
-		|| sp_cnt > data->gfx.fr_bf.size.x
+		|| sp_cnt >= data->gfx.fr_bf.size.x
 		|| ray.transf.y >= data->gfx.zbuffer[sp_cnt])
 		return (false);
 	center.x = data->gfx.fr_bf.size.x / 2;

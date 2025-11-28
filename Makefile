@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+         #
+#    By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/09 20:22:59 by lde-medi          #+#    #+#              #
-#    Updated: 2025/11/27 19:59:23 by lde-medi         ###   ########.fr        #
+#    Updated: 2025/11/28 07:34:11 by lde-medi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

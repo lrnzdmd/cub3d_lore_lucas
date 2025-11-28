@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_game.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:46:21 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/27 19:29:24 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 07:37:29 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	draw_game(t_cub *data)
 	render_world(data);
 	render_enemies(data);
 	render_player(data);
+	render_crosshair(data);
 	if (data->input.map_toggle)
 	{
 		draw_minimap(data);

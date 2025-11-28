@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_gfx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 04:04:23 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 07:15:33 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 08:08:56 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ void	init_enemy_walk_anim(t_cub *data)
 {
 	t_anim	*walk;
 
-	walk = &data->gfx.txt.sprts.enemy.walk_a;
+	walk = &data->gfx.txt.sprts.enemy.walk;
 	walk->frm_n = 2;
+	walk->speed = 0.4;
+	walk->loop = true;
 	walk->frame = safe_calloc(data, 2, sizeof(t_img_d));
 	safe_mlx_xpm_to_img(data, &walk->frame[0],
 		TXT_ENM_WALK_0, &walk->frame[0].size);
@@ -45,24 +47,53 @@ void	init_enemy_walk_anim(t_cub *data)
 		TXT_ENM_WALK_1, &walk->frame[1].size);
 }
 
+void	init_enemy_attack_anim(t_cub *data)
+{
+	t_anim	*attack;
+
+	attack = &data->gfx.txt.sprts.enemy.attack;
+	attack->frm_n = 2;
+	attack->speed = 0.4;
+	attack->loop = false;
+	attack->frame = safe_calloc(data, 2, sizeof(t_img_d));
+	safe_mlx_xpm_to_img(data, &attack->frame[0],
+		TXT_ENM_ATK_0, &attack->frame[0].size);
+	safe_mlx_xpm_to_img(data, &attack->frame[1],
+		TXT_ENM_ATK_1, &attack->frame[1].size);
+}
+
+void	init_enemy_idle_anim(t_cub *data)
+{
+	t_anim	*idle;
+
+	idle = &data->gfx.txt.sprts.enemy.idle;
+	idle->frm_n = 1;
+	idle->speed = 0;
+	idle->loop = false;
+	idle->frame = safe_calloc(data, 1, sizeof(t_img_d));
+	safe_mlx_xpm_to_img(data, &idle->frame[0],
+		TXT_ENM_IDLE, &idle->frame[0].size);
+}
+
+void	init_enemy_dead_anim(t_cub *data)
+{
+	t_anim	*dead;
+
+	dead = &data->gfx.txt.sprts.enemy.dead;
+	dead->frm_n = 1;
+	dead->speed = 0;
+	dead->loop = false;
+	dead->frame = safe_calloc(data, 1, sizeof(t_img_d));
+	safe_mlx_xpm_to_img(data, &dead->frame[0],
+		TXT_ENM_DEAD, &dead->frame[0].size);
+}
+
 void	init_enemy_textures(t_cub *data)
 {
-	t_enm_txt	*text;
-
-	text = &data->gfx.txt.sprts.enemy;
-	safe_mlx_xpm_to_img(data, &text->idle,
-		TXT_ENM_IDLE, &text->idle.size);
-	safe_mlx_xpm_to_img(data, &text->dead,
-		TXT_ENM_DEAD, &text->dead.size);
-	safe_mlx_xpm_to_img(data, &text->attack[0],
-		TXT_ENM_ATK_0, &text->attack[0].size);
-	safe_mlx_xpm_to_img(data, &text->attack[1],
-		TXT_ENM_ATK_1, &text->attack[1].size);
-	safe_mlx_xpm_to_img(data, &text->walk[0],
-		TXT_ENM_WALK_0, &text->walk[0].size);
-	safe_mlx_xpm_to_img(data, &text->walk[1],
-		TXT_ENM_WALK_1, &text->walk[1].size);
 	init_enemy_walk_anim(data);
+	init_enemy_idle_anim(data);
+	init_enemy_dead_anim(data);
+	init_enemy_attack_anim(data);
 }
 
 void	init_gun_textures(t_cub *data)

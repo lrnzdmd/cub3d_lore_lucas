@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gfx.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 07:05:02 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 07:59:30 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,11 +139,10 @@ struct s_animation
 
 struct s_enemy_textures
 {
-	t_anim	walk_a;
-	t_img_d	attack[2];
-	t_img_d	walk[2];
-	t_img_d	dead;
-	t_img_d	idle;
+	t_anim	walk;
+	t_anim	attack;
+	t_anim	dead;
+	t_anim	idle;
 };
 
 struct s_sprites_textures
