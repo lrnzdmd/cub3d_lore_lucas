@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 18:27:45 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 19:14:22 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,18 @@
 # define TXT_GUN_1 "./assets/textures/gun1.xpm"
 # define TXT_ENM_ATK_0 "./assets/textures/atk0.xpm"
 # define TXT_ENM_ATK_1 "./assets/textures/atk1.xpm"
+# define TXT_ENM_ATK_2 "./assets/textures/atk2.xpm"
+# define TXT_ENM_ATK_3 "./assets/textures/atk3.xpm"
+# define TXT_ENM_ATK_4 "./assets/textures/atk4.xpm"
+# define TXT_ENM_ATK_5 "./assets/textures/atk5.xpm"
 # define TXT_ENM_WALK_0 "./assets/textures/walk0.xpm"
 # define TXT_ENM_WALK_1 "./assets/textures/walk1.xpm"
 # define TXT_ENM_WALK_2 "./assets/textures/walk2.xpm"
 # define TXT_ENM_WALK_3 "./assets/textures/walk3.xpm"
-# define TXT_ENM_IDLE "./assets/textures/idle.xpm"
+# define TXT_ENM_IDLE_0 "./assets/textures/idle0.xpm"
+# define TXT_ENM_IDLE_1 "./assets/textures/idle1.xpm"
+# define TXT_ENM_IDLE_2 "./assets/textures/idle2.xpm"
+# define TXT_ENM_IDLE_3 "./assets/textures/idle3.xpm"
 # define TXT_ENM_DEAD_0 "./assets/textures/dead0.xpm"
 # define TXT_ENM_DEAD_1 "./assets/textures/dead1.xpm"
 # define TXT_ENM_DEAD_2 "./assets/textures/dead2.xpm"

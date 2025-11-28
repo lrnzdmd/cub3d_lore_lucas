@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 04:04:23 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 18:30:25 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 19:22:08 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	init_enemy_walk_anim(t_cub *data)
 
 	walk = &data->gfx.txt.sprts.enemy.walk;
 	walk->frm_n = 4;
-	walk->speed = 0.2;
+	walk->speed = 0.35;
 	walk->loop = true;
 	walk->frame = safe_calloc(data, 4, sizeof(t_img_d));
 	safe_mlx_xpm_to_img(data, &walk->frame[0],
@@ -56,14 +56,22 @@ void	init_enemy_attack_anim(t_cub *data)
 	t_anim	*attack;
 
 	attack = &data->gfx.txt.sprts.enemy.attack;
-	attack->frm_n = 2;
-	attack->speed = 0.4;
-	attack->loop = false;
-	attack->frame = safe_calloc(data, 2, sizeof(t_img_d));
+	attack->frm_n = 6;
+	attack->speed = ENM_ATK_SPD / 6;
+	attack->loop = true;
+	attack->frame = safe_calloc(data, 6, sizeof(t_img_d));
 	safe_mlx_xpm_to_img(data, &attack->frame[0],
 		TXT_ENM_ATK_0, &attack->frame[0].size);
 	safe_mlx_xpm_to_img(data, &attack->frame[1],
 		TXT_ENM_ATK_1, &attack->frame[1].size);
+	safe_mlx_xpm_to_img(data, &attack->frame[2],
+		TXT_ENM_ATK_2, &attack->frame[2].size);
+	safe_mlx_xpm_to_img(data, &attack->frame[3],
+		TXT_ENM_ATK_3, &attack->frame[3].size);
+	safe_mlx_xpm_to_img(data, &attack->frame[4],
+		TXT_ENM_ATK_4, &attack->frame[4].size);
+	safe_mlx_xpm_to_img(data, &attack->frame[5],
+		TXT_ENM_ATK_5, &attack->frame[5].size);
 }
 
 void	init_enemy_idle_anim(t_cub *data)
@@ -71,12 +79,18 @@ void	init_enemy_idle_anim(t_cub *data)
 	t_anim	*idle;
 
 	idle = &data->gfx.txt.sprts.enemy.idle;
-	idle->frm_n = 1;
-	idle->speed = 0;
-	idle->loop = false;
-	idle->frame = safe_calloc(data, 1, sizeof(t_img_d));
+	idle->frm_n = 4;
+	idle->speed = 0.8;
+	idle->loop = true;
+	idle->frame = safe_calloc(data, 4, sizeof(t_img_d));
 	safe_mlx_xpm_to_img(data, &idle->frame[0],
-		TXT_ENM_IDLE, &idle->frame[0].size);
+		TXT_ENM_IDLE_0, &idle->frame[0].size);
+	safe_mlx_xpm_to_img(data, &idle->frame[1],
+		TXT_ENM_IDLE_1, &idle->frame[1].size);
+	safe_mlx_xpm_to_img(data, &idle->frame[2],
+		TXT_ENM_IDLE_2, &idle->frame[2].size);
+	safe_mlx_xpm_to_img(data, &idle->frame[3],
+		TXT_ENM_IDLE_3, &idle->frame[3].size);
 }
 
 void	init_enemy_dead_anim(t_cub *data)
