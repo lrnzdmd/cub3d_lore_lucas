@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gfx.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 05:40:47 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/28 07:05:02 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@
 # define ANM_SPD_ENM_ATK 0.5
 # define ANM_SPD_ENM_WALK 0.8
 
-// typedef struct s_entity	t_ent;
 #include "types.h"
 
 typedef enum e_door_orientation
@@ -130,8 +129,17 @@ struct s_wall_textures
 	t_img_d	dr;
 };
 
+struct s_animation
+{
+	t_img_d	*frame;
+	int		frm_n;
+	double	speed;
+	bool	loop;
+};
+
 struct s_enemy_textures
 {
+	t_anim	walk_a;
 	t_img_d	attack[2];
 	t_img_d	walk[2];
 	t_img_d	dead;

@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 05:17:15 by luferna3          #+#    #+#             */
-/*   Updated: 2025/11/28 06:41:33 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 07:02:23 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef union  u_color         t_clr;
 typedef struct s_color_argb    t_argb;
 typedef struct s_door_data     t_door;
 typedef struct s_wall_textures t_wall_txt;
+typedef struct s_animation		t_anim;
 typedef struct s_enemy_textures t_enm_txt;
 typedef struct s_sprites_textures t_sprt_txt;
 typedef struct s_textures      t_txt;

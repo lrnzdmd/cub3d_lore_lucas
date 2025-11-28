@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 04:04:23 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 06:22:34 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 07:15:33 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,19 @@ void	set_window_size(t_cub *data)
 	data->gfx.zbuffer = safe_calloc(data, frame->size.x, sizeof(double));
 }
 
+void	init_enemy_walk_anim(t_cub *data)
+{
+	t_anim	*walk;
+
+	walk = &data->gfx.txt.sprts.enemy.walk_a;
+	walk->frm_n = 2;
+	walk->frame = safe_calloc(data, 2, sizeof(t_img_d));
+	safe_mlx_xpm_to_img(data, &walk->frame[0],
+		TXT_ENM_WALK_0, &walk->frame[0].size);
+	safe_mlx_xpm_to_img(data, &walk->frame[1],
+		TXT_ENM_WALK_1, &walk->frame[1].size);
+}
+
 void	init_enemy_textures(t_cub *data)
 {
 	t_enm_txt	*text;
@@ -49,6 +62,7 @@ void	init_enemy_textures(t_cub *data)
 		TXT_ENM_WALK_0, &text->walk[0].size);
 	safe_mlx_xpm_to_img(data, &text->walk[1],
 		TXT_ENM_WALK_1, &text->walk[1].size);
+	init_enemy_walk_anim(data);
 }
 
 void	init_gun_textures(t_cub *data)
