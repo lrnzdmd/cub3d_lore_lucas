@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 05:16:04 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 17:00:54 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 02:14:31 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ void	pew_pew(t_cub *data)
 			if (data->gman.plyr.target)
 			{
 				data->gman.plyr.target->data.state = DEAD;
+				data->input.shoot = false;
 				return ;
 			}
 		}
 	}
+	data->input.shoot = false;
 }

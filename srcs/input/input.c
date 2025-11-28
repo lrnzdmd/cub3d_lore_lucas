@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:30:28 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/27 19:37:17 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 02:12:57 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,16 @@ int	mouse_move_handler(int x, int y, t_cub *data)
 	data->input.mouse_d.y = delta.y;
 	mlx_mouse_move(data->mlx, data->mlx_w, center.x,
 		center.y);
+	return (0);
+}
+
+int	mouse_key_handler(int keycode, int x, int y, t_cub *data)
+{
+	(void)data;
+	(void)x;
+	(void)y;
+	if (keycode == 1)
+		data->input.shoot = true;
 	return (0);
 }
 
