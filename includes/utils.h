@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:50:16 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 06:44:23 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 05:19:36 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
 
-typedef struct s_list			t_list;
-typedef struct s_ray_data		t_ray;
-typedef struct s_image_data		t_img_d;
-typedef union u_color			t_clr;
+// typedef struct s_list			t_list;
+// typedef struct s_ray_data		t_ray;
+// typedef struct s_image_data		t_img_d;
+// typedef union u_color			t_clr;
+#include "types.h"
 
 void	update_player_vectors(t_cub *data);
 t_v2d	ft_rotate_v2d(t_v2d	vec, double angle);

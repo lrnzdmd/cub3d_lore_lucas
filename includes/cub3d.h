@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/27 19:04:48 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 05:38:54 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@
 # include <safe_ops.h>
 # include <utils.h>
 # include <mlx.h>
+#include "types.h"
 
-typedef struct s_vector2int		t_v2i;
-typedef struct s_vector2double	t_v2d;
-typedef struct s_map_data		t_map;
-typedef struct s_temp_pointers	t_tmp;
+// typedef struct s_vector2int		t_v2i;
+// typedef struct s_vector2double	t_v2d;
+// typedef struct s_map_data		t_map;
+// typedef struct s_temp_pointers	t_tmp;
+
 
 typedef enum e_entity_types
 {
@@ -53,23 +55,23 @@ typedef enum s_enemy_state
 	DEAD
 }	t_enm_st;
 
-typedef struct s_enemy_data
+struct s_enemy_data
 {
 	t_enm_st	state;
 	double		anim_timer;
 	int			anim_frm;
 	double		st_timer;
 	t_v2d		dir;
-}	t_enm;
+};
 
-typedef struct s_entity
+struct s_entity
 {
 	t_v2d	pos;
 	double	pl_dist;
 	t_img_d	*sprt;
 	t_ent_t	type;
 	t_enm	data;
-}	t_ent;
+};
 
 typedef enum e_player_states
 {
@@ -77,7 +79,7 @@ typedef enum e_player_states
 	SHOOT
 }	t_pl_st;
 
-typedef struct s_player_data
+struct s_player_data
 {
 	t_pl_st	state;
 	int		hp;
@@ -90,17 +92,17 @@ typedef struct s_player_data
 	t_ent	*target;
 	double	tgt_dist;
 	t_img_d	*sprt;
-}	t_plyr;
+};
 
-typedef struct s_game_data
+struct s_game_data
 {
 	t_plyr	plyr;
 	t_map	map;
 	t_ent	*enemies;
 	int		enemies_n;
-}	t_game;
+};
 
-typedef struct s_screen_shake
+struct s_screen_shake
 {
 	bool	active;
 	double	intensity;
@@ -108,9 +110,9 @@ typedef struct s_screen_shake
 	double	time;
 	double	offset;
 	double	last_offset;
-}	t_screen_shake;
+};
 
-typedef struct s_cub3d_data
+struct s_cub3d_data
 {
 	double			lst_frm_time;
 	double			d_time;
@@ -121,7 +123,7 @@ typedef struct s_cub3d_data
 	t_tmp			tmp;
 	t_input			input;
 	t_screen_shake	shake;
-}	t_cub;
+};
 
 void	update_screen_shake(t_cub *data);
 void	trigger_screen_shake(t_cub *data, double intensity, double duration);

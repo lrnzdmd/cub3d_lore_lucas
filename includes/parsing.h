@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 03:11:04 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/24 02:04:47 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 05:25:11 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define ERR_MAP_INV_BRD "map area (0) must be surrounded by (1)"
 # define ERR_MAP_INV_DR "doors (2) can only be connected to two walls (1)"
 
-typedef enum e_parser_id
+enum e_parser_id
 {
 	NO,
 	SO,
@@ -32,9 +32,9 @@ typedef enum e_parser_id
 	EA,
 	FLOOR,
 	CEILING
-}	t_en_cl;
+};
 
-typedef struct s_temp_pointers
+struct s_temp_pointers
 {
 	int		i;
 	int		fd;
@@ -44,9 +44,10 @@ typedef struct s_temp_pointers
 	char	*gnl;
 	t_list	*lst;
 	t_d_hor	lst_dr_h;
-}	t_tmp;
+};
 
-typedef struct s_cub3d_data	t_cub;
+//typedef struct s_cub3d_data	t_cub;
+#include "types.h"
 
 void	parse_cub3d(t_cub	*data, int ac, char **av);
 void	validate_args(t_cub	*data, int ac, char	**av);

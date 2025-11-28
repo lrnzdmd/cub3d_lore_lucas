@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:48:43 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/27 19:06:12 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 05:44:24 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,10 @@ void	move_fwd_bck(t_cub *data, bool fwd)
 	t_v2i	map;
 	double	speed;
 
+	coll.x = 0;
+	coll.y = 0;
+	map.x = 0;
+	map.y = 0;
 	speed = MOV_SPD * data->d_time;
 	if (data->input.sprint)
 		speed *= 2;

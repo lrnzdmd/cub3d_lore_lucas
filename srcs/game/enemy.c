@@ -6,7 +6,7 @@
 /*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 05:08:50 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/26 08:04:17 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/28 05:42:56 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void	enemy_move(t_cub *data, t_ent *enemy)
 	t_v2d	coll;
 	double	speed;
 
+	coll.x = 0;
+	coll.y = 0;
 	speed = ENM_MOV_SPD * data->d_time;
 	step = ft_multiply_v2d(enemy->data.dir, speed);
 	enemy_movement_x(data, enemy, step, coll);

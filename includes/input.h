@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:29:26 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 02:08:57 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 05:25:18 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define KEY_F 102
 # define KEY_M 109
 
-typedef struct s_input_data
+struct s_input_data
 {
 	t_v2i	mouse_d;
 	bool	map_toggle;
@@ -40,9 +40,10 @@ typedef struct s_input_data
 	bool	rght;
 	bool	sprint;
 	bool	quit;
-}	t_input;
+};
 
-typedef struct s_cub3d_data	t_cub;
+//typedef struct s_cub3d_data	t_cub;
+#include "types.h"
 
 void	input_manager(t_cub	*data);
 int		key_press_handler(int keycode, t_cub *data);

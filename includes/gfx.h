@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gfx.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/27 22:22:39 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 05:40:47 by luferna3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@
 # define ANM_SPD_ENM_ATK 0.5
 # define ANM_SPD_ENM_WALK 0.8
 
-typedef struct s_entity	t_ent;
+// typedef struct s_entity	t_ent;
+#include "types.h"
 
 typedef enum e_door_orientation
 {
@@ -43,14 +44,14 @@ typedef enum e_door_orientation
 	V
 }	t_d_hor;
 
-typedef struct s_door_data
+struct s_door_data
 {
 	t_v2i	pos;
 	bool	open;
 	t_d_hor	hor;
-}	t_door;
+};
 
-typedef struct s_map_data
+struct s_map_data
 {
 	char	**map;
 	int		tile_size;
@@ -59,23 +60,23 @@ typedef struct s_map_data
 	bool	doors_open;
 	t_door	*doors;
 	t_door	***door_map;
-}	t_map;
+};
 
-typedef struct s_color_argb
+struct s_color_argb
 {
 	unsigned char	b;
 	unsigned char	g;
 	unsigned char	r;
 	unsigned char	a;
-}	t_argb;
+};
 
-typedef union u_color
+union u_color
 {
 	int		color;
 	t_argb	c;
-}	t_clr;
+};
 
-typedef struct s_sprite_ray_data
+struct s_sprite_ray_data
 {
 	int		color;
 	double	inv_det;
@@ -86,9 +87,9 @@ typedef struct s_sprite_ray_data
 	t_v2d	rel_pos;
 	t_v2d	transf;
 
-}	t_ray_s;
+};
 
-typedef struct s_ray_data
+struct s_ray_data
 {
 	int		color;
 	double	ln_hght;
@@ -108,9 +109,9 @@ typedef struct s_ray_data
 	bool	hit;
 	bool	door_hit;
 	bool	side;
-}	t_ray;
+};
 
-typedef struct s_image_data
+struct s_image_data
 {
 	void		*img_p;
 	char		*addr;
@@ -118,38 +119,38 @@ typedef struct s_image_data
 	int			sz_line;
 	int			bpp;
 	int			end;
-}	t_img_d;
+};
 
-typedef struct s_wall_textures
+struct s_wall_textures
 {
 	t_img_d	n;
 	t_img_d	s;
 	t_img_d	w;
 	t_img_d	e;
 	t_img_d	dr;
-}	t_wall_txt;
+};
 
-typedef struct s_enemy_textures
+struct s_enemy_textures
 {
 	t_img_d	attack[2];
 	t_img_d	walk[2];
 	t_img_d	dead;
 	t_img_d	idle;
-}	t_enm_txt;
+};
 
-typedef struct s_sprites_textures
+struct s_sprites_textures
 {
 	t_enm_txt	enemy;
 	t_img_d		gun[2];
-}	t_sprt_txt;
+};
 
-typedef struct s_textures
+struct s_textures
 {
 	t_wall_txt	wall;
 	t_sprt_txt	sprts;
-}	t_txt;
+};
 
-typedef struct s_graphics_data
+struct s_graphics_data
 {
 	t_clr		ceil_c;
 	t_clr		grnd_c;
@@ -157,7 +158,7 @@ typedef struct s_graphics_data
 	t_img_d		fr_bf;
 	t_img_d		m_map;
 	double		*zbuffer;
-}	t_gfx;
+};
 
 inline static char	*calc_dest_addr(t_img_d	*img, t_v2i	pos)
 {
