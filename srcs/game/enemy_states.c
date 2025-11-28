@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 06:29:54 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 08:26:25 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 08:29:32 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	change_state(t_ent *enemy, t_enm_st state)
 	else if (state == ATTACK)
 		enemy->data.st_timer = 0.5;
 }
+
 void	idle_state(t_cub *data, t_ent *enemy)
 {
 	set_animation(enemy, &data->gfx.txt.sprts.enemy.idle);

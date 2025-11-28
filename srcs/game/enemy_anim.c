@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 20:11:24 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 08:21:36 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 08:28:19 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	enemy_animator(t_cub *data, t_ent *enemy)
 void	set_animation(t_ent *enemy, t_anim *anim)
 {
 	if (enemy->anim == anim)
-		return ; // Stessa animazione, non resettare nulla
+		return ;
 	enemy->anim = anim;
 	enemy->data.anim_frm = 0;
 	enemy->data.anim_timer = 0;

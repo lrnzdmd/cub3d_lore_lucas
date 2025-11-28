@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 18:49:10 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 08:04:16 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 08:33:40 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,10 @@ void	free_gfx_data(t_cub	*data)
 		safe_mlx_free_img(mlx, gfx->txt.sprts.enemy.idle.frame[0].img_p);
 	safe_mlx_free_img(mlx, gfx->txt.sprts.gun[0].img_p);
 	safe_mlx_free_img(mlx, gfx->txt.sprts.gun[1].img_p);
-	ft_multifree(6, &gfx->txt.sprts.enemy.dead.frame, &gfx->txt.sprts.enemy.idle.frame, &gfx->txt.sprts.enemy.attack.frame, &gfx->txt.sprts.enemy.walk.frame, &data->gman.enemies, &data->gfx.zbuffer);
+	ft_multifree(6, &gfx->txt.sprts.enemy.dead.frame,
+		&gfx->txt.sprts.enemy.idle.frame, &gfx->txt.sprts.enemy.attack.frame,
+		&gfx->txt.sprts.enemy.walk.frame, &data->gman.enemies,
+		&data->gfx.zbuffer);
 }
 
 void	free_tmp_pointers(t_cub	*data)
