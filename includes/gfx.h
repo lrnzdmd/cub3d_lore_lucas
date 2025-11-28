@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 17:45:37 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 18:27:45 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define TXT_ENM_ATK_1 "./assets/textures/atk1.xpm"
 # define TXT_ENM_WALK_0 "./assets/textures/walk0.xpm"
 # define TXT_ENM_WALK_1 "./assets/textures/walk1.xpm"
+# define TXT_ENM_WALK_2 "./assets/textures/walk2.xpm"
+# define TXT_ENM_WALK_3 "./assets/textures/walk3.xpm"
 # define TXT_ENM_IDLE "./assets/textures/idle.xpm"
 # define TXT_ENM_DEAD_0 "./assets/textures/dead0.xpm"
 # define TXT_ENM_DEAD_1 "./assets/textures/dead1.xpm"

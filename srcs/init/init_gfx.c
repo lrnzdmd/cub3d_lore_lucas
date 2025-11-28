@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 04:04:23 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 17:58:12 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/28 18:30:25 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,18 @@ void	init_enemy_walk_anim(t_cub *data)
 	t_anim	*walk;
 
 	walk = &data->gfx.txt.sprts.enemy.walk;
-	walk->frm_n = 2;
-	walk->speed = 0.4;
+	walk->frm_n = 4;
+	walk->speed = 0.2;
 	walk->loop = true;
-	walk->frame = safe_calloc(data, 2, sizeof(t_img_d));
+	walk->frame = safe_calloc(data, 4, sizeof(t_img_d));
 	safe_mlx_xpm_to_img(data, &walk->frame[0],
 		TXT_ENM_WALK_0, &walk->frame[0].size);
 	safe_mlx_xpm_to_img(data, &walk->frame[1],
 		TXT_ENM_WALK_1, &walk->frame[1].size);
+	safe_mlx_xpm_to_img(data, &walk->frame[2],
+		TXT_ENM_WALK_2, &walk->frame[2].size);
+	safe_mlx_xpm_to_img(data, &walk->frame[3],
+		TXT_ENM_WALK_3, &walk->frame[3].size);
 }
 
 void	init_enemy_attack_anim(t_cub *data)
