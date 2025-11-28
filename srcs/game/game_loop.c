@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:45:23 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 07:37:08 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 00:29:18 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	game_loop(t_cub *data)
 	calc_delta_time(data);
 	update_enemies(data);
 	update_screen_shake(data);
+	pl_update(data);
 	player_animator(data);
 	input_manager(data);
 	door_check(data);

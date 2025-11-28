@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 23:15:30 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 00:51:21 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,14 @@ struct s_entity
 typedef enum e_player_states
 {
 	NORM,
-	SHOOT
+	SHOOT,
+	RELOAD
 }	t_pl_st;
 
 struct s_player_data
 {
 	t_pl_st	state;
+	double	st_timer;
 	int		hp;
 	int		ammo;
 	t_v2d	pos;
@@ -126,5 +128,6 @@ void	trigger_screen_shake(t_cub *data, double intensity, double duration);
 int		game_loop(t_cub *data);
 void	init_screen_shake(t_cub *data);
 void	door_check(t_cub	*data);
+void	pl_update(t_cub *data);
 
 #endif

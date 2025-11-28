@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:30:28 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 05:00:16 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/29 00:56:23 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	input_manager(t_cub	*data)
 		move_fwd_bck(data, false);
 	if (input.action)
 		open_door(data);
-	if (input.shoot)
-		pew_pew(data);
 	if (input.quit)
 		exit_game(data);
 }
@@ -91,7 +89,7 @@ int	mouse_key_handler(int keycode, int x, int y, t_cub *data)
 	(void)data;
 	(void)x;
 	(void)y;
-	if (keycode == 1)
+	if (keycode == 1 && data->gman.plyr.state == NORM)
 		data->input.shoot = true;
 	return (0);
 }
@@ -111,6 +109,8 @@ int	key_press_handler(int keycode, t_cub *data)
 		input->rght = true;
 	if (keycode == KEY_F)
 		input->action = true;
+	if (keycode == KEY_R)
+		input->reload = true;
 	if (keycode == KEY_SPACE)
 		input->shoot = true;
 	if (keycode == KEY_LSHIFT || keycode == KEY_RSHIFT)
@@ -137,6 +137,8 @@ int	key_release_handler(int keycode, t_cub *data)
 		input->rght = false;
 	if (keycode == KEY_F)
 		input->action = false;
+	if (keycode == KEY_R)
+		input->reload = false;
 	if (keycode == KEY_SPACE)
 		input->shoot = false;
 	if (keycode == KEY_LSHIFT || keycode == KEY_RSHIFT)

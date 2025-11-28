@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:29:26 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 05:25:18 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/29 00:48:55 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define KEY_S 115
 # define KEY_D 100
 # define KEY_F 102
+# define KEY_R 114
 # define KEY_M 109
 
 struct s_input_data
@@ -33,6 +34,7 @@ struct s_input_data
 	t_v2i	mouse_d;
 	bool	map_toggle;
 	bool	shoot;
+	bool	reload;
 	bool	action;
 	bool	fwd;
 	bool	lft;
