@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 04:04:23 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 02:53:45 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 03:31:13 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,39 @@ void	init_enemy_walk_anim(t_cub *data)
 		TXT_ENM_WALK_3, &walk->frame[3].size);
 }
 
+void	init_reload_anim(t_cub *data)
+{
+	t_anim	*reload;
+
+	reload = &data->gfx.txt.sprts.plyr.reload;
+	reload->frm_n = 11;
+	reload->speed = 0.08;
+	reload->loop = false;
+	reload->frame = safe_calloc(data, 11, sizeof(t_img_d));
+	safe_mlx_xpm_to_img(data, &reload->frame[0],
+		TXT_RLD_0, &reload->frame[0].size);
+	safe_mlx_xpm_to_img(data, &reload->frame[1],
+		TXT_RLD_1, &reload->frame[1].size);
+	safe_mlx_xpm_to_img(data, &reload->frame[2],
+		TXT_RLD_2, &reload->frame[2].size);
+	safe_mlx_xpm_to_img(data, &reload->frame[3],
+		TXT_RLD_3, &reload->frame[3].size);
+	safe_mlx_xpm_to_img(data, &reload->frame[4],
+		TXT_RLD_4, &reload->frame[4].size);
+	safe_mlx_xpm_to_img(data, &reload->frame[5],
+		TXT_RLD_5, &reload->frame[5].size);
+	safe_mlx_xpm_to_img(data, &reload->frame[6],
+		TXT_RLD_6, &reload->frame[6].size);
+	safe_mlx_xpm_to_img(data, &reload->frame[7],
+		TXT_RLD_7, &reload->frame[7].size);
+	safe_mlx_xpm_to_img(data, &reload->frame[8],
+		TXT_RLD_8, &reload->frame[8].size);
+	safe_mlx_xpm_to_img(data, &reload->frame[9],
+		TXT_RLD_9, &reload->frame[9].size);
+	safe_mlx_xpm_to_img(data, &reload->frame[10],
+		TXT_RLD_10, &reload->frame[10].size);	
+}
+
 void	init_shoot_anim(t_cub *data)
 {
 	t_anim	*shoot;
@@ -88,8 +121,6 @@ void	init_idle_anim(t_cub *data)
 	safe_mlx_xpm_to_img(data, &idle->frame[0],
 		TXT_SHOOT_0, &idle->frame[0].size);
 }
-
-
 
 void	init_enemy_attack_anim(t_cub *data)
 {
@@ -160,6 +191,7 @@ void	init_enemy_textures(t_cub *data)
 {
 	init_shoot_anim(data);
 	init_idle_anim(data);
+	init_reload_anim(data);
 	init_enemy_walk_anim(data);
 	init_enemy_idle_anim(data);
 	init_enemy_dead_anim(data);

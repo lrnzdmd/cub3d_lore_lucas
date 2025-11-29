@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 00:14:40 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 02:51:44 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 03:31:34 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	pl_norm_state(t_cub *data, t_plyr *plyr)
 
 void	pl_reload_state(t_cub *data, t_plyr *plyr)
 {
+	set_pl_animation(plyr, &data->gfx.txt.sprts.plyr.reload);
 	plyr->st_timer -= data->d_time;
 	if (plyr->st_timer <= 0)
 	{
@@ -60,8 +61,8 @@ void	pl_shoot_state(t_cub *data, t_plyr *plyr)
 
 void	pl_update(t_cub *data)
 {
-	t_plyr	*plyr;
-	static	t_pl_state_func	states[3] = {pl_norm_state, pl_shoot_state,
+	t_plyr					*plyr;
+	static t_pl_state_func	states[3] = {pl_norm_state, pl_shoot_state,
 		pl_reload_state};
 
 	plyr = &data->gman.plyr;
