@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 21:05:31 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 20:51:34 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 03:48:06 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,15 @@ static void	calc_door_pos(t_cub *data, t_v2i *pos, t_v2i *end, t_d_hor hor)
 	tile_size = data->gman.map.tile_size;
 	if (hor)
 	{
-		pos->x += (tile_size / 2) - (tile_size / 16);
+		pos->x += (tile_size * 0.5) - (tile_size / 16);
 		end->y = pos->y + tile_size;
-		end->x = pos->x + (tile_size / 8);
+		end->x = pos->x + (tile_size * 0.125);
 	}
 	else
 	{
-		pos->y += (tile_size / 2) - (tile_size / 16);
+		pos->y += (tile_size * 0.5) - (tile_size / 16);
 		end->x = pos->x + tile_size;
-		end->y = pos->y + (tile_size / 8);
+		end->y = pos->y + (tile_size * 0.125);
 	}
 }
 
@@ -104,8 +104,8 @@ void	draw_player_minimap(t_cub *data)
 	plyr = data->gman.plyr;
 	minimap = &data->gfx.fr_bf;
 	pl_pix = map_to_pixel_coords(data->gman.map, plyr.pos);
-	dir_d.x = plyr.pos.x + (plyr.dir.x / 2);
-	dir_d.y = plyr.pos.y + (plyr.dir.y / 2);
+	dir_d.x = plyr.pos.x + (plyr.dir.x * 0.5);
+	dir_d.y = plyr.pos.y + (plyr.dir.y * 0.5);
 	dir = map_to_pixel_coords(data->gman.map, dir_d);
 	drawline_to_img(minimap, pl_pix, dir, 0x00707012);
 	drawrect_to_img(minimap, (t_v2i){pl_pix.x - 2,

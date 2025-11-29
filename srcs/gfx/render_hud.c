@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 19:59:01 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 03:35:39 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 03:48:04 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	render_crosshair(t_cub *data)
 	int		len;
 	int		color;
 
-	c.x = data->gfx.fr_bf.size.x / 2;
-	c.y = data->gfx.fr_bf.size.y / 2;
+	c.x = data->gfx.fr_bf.size.x * 0.5;
+	c.y = data->gfx.fr_bf.size.y * 0.5;
 	gap = 3;
 	len = 7;
 	if (data->gman.plyr.target)
@@ -49,18 +49,18 @@ void	draw_cross(t_img_d *frame, t_v2i icn_pos, t_v2i icn_size)
 	int		thickness;
 	int		half_len;
 
-	center.x = icn_pos.x + (icn_size.x / 2);
-	center.y = icn_pos.y + (icn_size.y / 2);
+	center.x = icn_pos.x + (icn_size.x * 0.5);
+	center.y = icn_pos.y + (icn_size.y * 0.5);
 	thickness = icn_size.y / 4;
-	half_len = icn_size.x / 2.5;
+	half_len = icn_size.x * 0.4;
 	start.x = center.x - half_len;
-	start.y = center.y - (thickness / 2);
+	start.y = center.y - (thickness * 0.5);
 	end.x = center.x + half_len;
-	end.y = center.y + (thickness / 2);
+	end.y = center.y + (thickness * 0.5);
 	drawrect_to_img(frame, start, end, 0xFF00FF00);
-	start.x = center.x - (thickness / 2);
+	start.x = center.x - (thickness * 0.5);
 	start.y = center.y - half_len;
-	end.x = center.x + (thickness / 2);
+	end.x = center.x + (thickness * 0.5);
 	end.y = center.y + half_len;
 	drawrect_to_img(frame, start, end, 0xFF00FF00);
 }
@@ -74,7 +74,7 @@ void	draw_health_bar(t_cub *data, t_img_d *frame,
 
 	hp = data->gman.plyr.hp;
 	bar_pos.x = icn_pos.x + icn_size.x + 5;
-	bar_pos.y = icn_pos.y + (icn_size.y / 2) - icn_size.y / 8;
+	bar_pos.y = icn_pos.y + (icn_size.y * 0.5) - icn_size.y * 0.125;
 	bar_size.x = ((float)hp / PLYR_MAX_HP) * (icn_size.x * 4);
 	bar_size.y = icn_size.y / 4;
 	drawrectrd_to_img(frame, bar_pos, bar_size, 0xFF00FF00);
@@ -89,8 +89,8 @@ void	hud_health(t_cub *data, t_img_d *frame, t_v2i pnl_pos, t_v2i pnl_size)
 
 	icn_size.x = pnl_size.y / 3;
 	icn_size.y = icn_size.x;
-	half_pnl_h = pnl_size.y / 2;
-	padding = (half_pnl_h - icn_size.y) / 2;
+	half_pnl_h = pnl_size.y * 0.5;
+	padding = (half_pnl_h - icn_size.y) * 0.5;
 	icn_pos.x = pnl_pos.x + padding;
 	icn_pos.y = pnl_pos.y + (padding * 1.25);
 	drawrectrd_to_img(frame, icn_pos, icn_size, 0xFFFFFFFF);
@@ -107,7 +107,7 @@ void	draw_ammo_bar(t_cub *data, t_img_d *frame,
 
 	ammo = data->gman.plyr.ammo;
 	bar_pos.x = icn_pos.x + icn_size.x + 5;
-	bar_pos.y = icn_pos.y + (icn_size.y / 2) - icn_size.y / 8;
+	bar_pos.y = icn_pos.y + (icn_size.y * 0.5) - icn_size.y * 0.125;
 	bar_size.x = ((float)ammo / PLYR_MAX_AMMO) * (icn_size.x * 4);
 	bar_size.y = icn_size.y / 4;
 	drawrectrd_to_img(frame, bar_pos, bar_size, 0xFFFF0000);
@@ -123,18 +123,18 @@ void	draw_bullet(t_img_d *frame, t_v2i icn_pos, t_v2i icn_size)
 	int		bullet_height;
 	int		bullet_width;
 
-	center.x = icn_pos.x + (icn_size.x / 2);
-	center.y = icn_pos.y + (icn_size.y / 2);
+	center.x = icn_pos.x + (icn_size.x * 0.5);
+	center.y = icn_pos.y + (icn_size.y * 0.5);
 	bullet_height = icn_size.y * 0.7;
 	bullet_width = icn_size.x * 0.3;
 	case_height = bullet_height * 0.6;
-	start.x = center.x - (bullet_width / 2);
-	end.x = center.x + (bullet_width / 2);
-	start.y = center.y + (bullet_height / 2) - case_height;
-	end.y = center.y + (bullet_height / 2);
+	start.x = center.x - (bullet_width * 0.5);
+	end.x = center.x + (bullet_width * 0.5);
+	start.y = center.y + (bullet_height * 0.5) - case_height;
+	end.y = center.y + (bullet_height * 0.5);
 	drawrect_to_img(frame, start, end, 0xFFCCAA00);
 	tip_height = bullet_height * 0.5;
-	start.x = center.x - (bullet_width / 2);
+	start.x = center.x - (bullet_width * 0.5);
 	start.y = start.y - tip_height + 4;
 	end.x = bullet_width;
 	end.y = tip_height;
@@ -150,8 +150,8 @@ void	hud_ammo(t_cub *data, t_img_d *frame, t_v2i pnl_pos, t_v2i pnl_size)
 
 	icn_size.x = pnl_size.y / 3;
 	icn_size.y = icn_size.x;
-	half_pnl_h = pnl_size.y / 2;
-	padding = (half_pnl_h - icn_size.y) / 2;
+	half_pnl_h = pnl_size.y * 0.5;
+	padding = (half_pnl_h - icn_size.y) * 0.5;
 	icn_pos.x = pnl_pos.x + padding;
 	icn_pos.y = pnl_pos.y + pnl_size.y - icn_size.y - (padding * 1.25);
 	drawrectrd_to_img(frame, icn_pos, icn_size, 0xFFFFFFFF);

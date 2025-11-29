@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 17:18:35 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 23:15:49 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 03:45:32 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	get_player_start_rot(t_cub *data, char d)
 
 	plyr = &data->gman.plyr;
 	if (d == 'N')
-		plyr->rot = M_PI / 2.0;
+		plyr->rot = M_PI * 0.5;
 	else if (d == 'S')
-		data->gman.plyr.rot = 3.0 * M_PI / 2.0;
+		data->gman.plyr.rot = 3.0 * M_PI * 0.5;
 	else if (d == 'W')
 		data->gman.plyr.rot = M_PI;
 	else
@@ -65,8 +65,8 @@ void	init_mouse_controls(t_cub *data)
 {
 	mlx_mouse_hide(data->mlx, data->mlx_w);
 	mlx_mouse_move(data->mlx, data->mlx_w,
-		data->gfx.fr_bf.size.x / 2,
-		data->gfx.fr_bf.size.y / 2);
+		data->gfx.fr_bf.size.x * 0.5,
+		data->gfx.fr_bf.size.y * 0.5);
 }
 
 void	init_player(t_cub	*data)

@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:34:49 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 21:06:50 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 03:44:31 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	drawrectrd_to_img(t_img_d *img, t_v2i pos, t_v2i size, int color)
 
 	r = 4;
 	if (size.x < r * 2)
-		r = size.x / 2;
+		r = size.x * 0.5;
 	if (size.y < r * 2)
-		r = size.y / 2;
+		r = size.y * 0.5;
 	tl = (t_v2i){pos.x, pos.y + r};
 	br = (t_v2i){pos.x + size.x, pos.y + size.y - r};
 	drawrect_to_img(img, tl, br, color);

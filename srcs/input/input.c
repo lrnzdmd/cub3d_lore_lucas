@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:30:28 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 03:29:47 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 03:44:52 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	mouse_change_pitch(t_cub *data)
 	int	limit;
 
 	val = data->input.mouse_d.y * 0.8;
-	limit = data->gfx.fr_bf.size.y / 2;
+	limit = data->gfx.fr_bf.size.y * 0.5;
 	if (val != 0)
 	{
 		data->gman.plyr.pitch -= val;
@@ -59,7 +59,7 @@ void	mouse_change_pitch(t_cub *data)
 // 	int	delta_x;
 
 // 	(void)y;
-// 	scr_sz = data->gfx.fr_bf.size.x / 2;
+// 	scr_sz = data->gfx.fr_bf.size.x * 0.5;
 // 	delta_x = x - scr_sz;
 // 	data->input.mouse_dx = delta_x;
 // 	return (0);
@@ -71,8 +71,8 @@ int	mouse_move_handler(int x, int y, t_cub *data)
 	t_v2i	delta;
 
 	(void)y;
-	center.x = data->gfx.fr_bf.size.x / 2;
-	center.y = data->gfx.fr_bf.size.y / 2;
+	center.x = data->gfx.fr_bf.size.x * 0.5;
+	center.y = data->gfx.fr_bf.size.y * 0.5;
 	if (x == center.x && y == center.y)
 		return (0);
 	delta.x = x - center.x;

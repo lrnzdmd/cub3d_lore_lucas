@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 06:44:28 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 02:58:04 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 03:43:15 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_sprite_ray(t_cub *data, t_ent *enemy, t_ray_s *ray)
 			* ray->rel_pos.x - plyr.dir.x * ray->rel_pos.y);
 	ray->transf.y = ray->inv_det * (-plyr.plane.y
 			* ray->rel_pos.x + plyr.plane.x * ray->rel_pos.y);
-	ray->scr_x = (data->gfx.fr_bf.size.x / 2)
+	ray->scr_x = (data->gfx.fr_bf.size.x * 0.5)
 		* (1 + (ray->transf.x / ray->transf.y));
 	ray->size = fabs(floor(data->gfx.fr_bf.size.y / ray->transf.y));
 	ray->draw_st.y = -ray->size * 0.5 + data->gfx.fr_bf.size.y * 0.5 + plyr.pitch;
@@ -63,9 +63,9 @@ bool	is_shootable(t_cub *data, t_ray_s ray)
 		|| sp_cnt >= data->gfx.fr_bf.size.x
 		|| ray.transf.y >= data->gfx.zbuffer[sp_cnt])
 		return (false);
-	center.x = data->gfx.fr_bf.size.x / 2;
-	center.y = data->gfx.fr_bf.size.y / 2;
-	aim.x = (ray.size * PLR_AIM_SIZE) / 2;
+	center.x = data->gfx.fr_bf.size.x * 0.5;
+	center.y = data->gfx.fr_bf.size.y * 0.5;
+	aim.x = (ray.size * PLR_AIM_SIZE) * 0.5;
 	aim.y = (ray.size * 0.1);
 	hit_x = (center.x >= ((ray.scr_x - aim.x))
 			&& center.x <= (ray.scr_x + aim.x));
