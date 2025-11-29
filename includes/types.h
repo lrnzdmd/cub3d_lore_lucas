@@ -6,14 +6,14 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 05:17:15 by luferna3          #+#    #+#             */
-/*   Updated: 2025/11/29 01:09:47 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 01:59:36 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
 
-#include "../libft/includes/libft.h"
+#include <libft.h>
 
 typedef struct s_cub3d_data     t_cub;
 typedef struct s_entity        t_ent;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_enemies.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-medi <lde-medi@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 06:44:28 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 07:57:20 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 02:58:04 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@ void	init_sprite_ray(t_cub *data, t_ent *enemy, t_ray_s *ray)
 	ray->scr_x = (data->gfx.fr_bf.size.x / 2)
 		* (1 + (ray->transf.x / ray->transf.y));
 	ray->size = fabs(floor(data->gfx.fr_bf.size.y / ray->transf.y));
-	ray->draw_st.y = -ray->size / 2 + data->gfx.fr_bf.size.y / 2 + plyr.pitch;
+	ray->draw_st.y = -ray->size * 0.5 + data->gfx.fr_bf.size.y * 0.5 + plyr.pitch;
 	if (ray->draw_st.y < 0)
 		ray->draw_st.y = 0;
-	ray->draw_end.y = ray->size / 2 + data->gfx.fr_bf.size.y / 2 + plyr.pitch;
+	ray->draw_end.y = ray->size * 0.5 + data->gfx.fr_bf.size.y * 0.5 + plyr.pitch;
 	if (ray->draw_end.y >= data->gfx.fr_bf.size.y)
 		ray->draw_end.y = data->gfx.fr_bf.size.y - 1;
-	ray->draw_st.x = -ray->size / 2 + ray->scr_x;
+	ray->draw_st.x = -ray->size * 0.5 + ray->scr_x;
 	if (ray->draw_st.x < 0)
 		ray->draw_st.x = 0;
-	ray->draw_end.x = ray->size / 2 + ray->scr_x;
+	ray->draw_end.x = ray->size * 0.5 + ray->scr_x;
 	if (ray->draw_end.x >= data->gfx.fr_bf.size.x)
 		ray->draw_end.x = data->gfx.fr_bf.size.x - 1;
 }

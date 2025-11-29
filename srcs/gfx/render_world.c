@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_world.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 04:26:06 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 04:56:48 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/29 02:58:10 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,11 @@ void	render_world(t_cub *data)
 	{
 		ray = cast_ray(data, i.x);
 		ray.ln_hght = (int)(data->gfx.fr_bf.size.y / ray.p_dist);
-		ray.draw_st = -ray.ln_hght / 2 + data->gfx.fr_bf.size.y / 2
+		ray.draw_st = -ray.ln_hght * 0.5 + data->gfx.fr_bf.size.y / 2
 			+ data->gman.plyr.pitch;
 		if (ray.draw_st < 0)
 			ray.draw_st = 0;
-		ray.draw_end = ray.ln_hght / 2 + data->gfx.fr_bf.size.y / 2
+		ray.draw_end = ray.ln_hght * 0.5 + data->gfx.fr_bf.size.y / 2
 			+ data->gman.plyr.pitch;
 		if (ray.draw_end >= data->gfx.fr_bf.size.y)
 			ray.draw_end = data->gfx.fr_bf.size.y - 1;

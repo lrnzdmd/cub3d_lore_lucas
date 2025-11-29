@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 01:08:36 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 02:40:01 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ struct s_player_data
 	double	rot;
 	int		pitch;
 	double	anim_timer;
+	int		anim_frm;
 	t_ent	*target;
 	double	tgt_dist;
 	t_img_d	*sprt;

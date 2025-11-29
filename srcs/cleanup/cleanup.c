@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 18:49:10 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 17:57:01 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 02:37:09 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	free_gfx_data(t_cub	*data)
 	safe_mlx_free_img(mlx, gfx->txt.wall.w.img_p);
 	safe_mlx_free_img(mlx, gfx->txt.wall.e.img_p);
 	safe_mlx_free_img(mlx, gfx->txt.wall.dr.img_p);
+	if (gfx->txt.sprts.plyr.shoot.frame)
+		clean_anim(mlx, &gfx->txt.sprts.plyr.shoot);
 	if (gfx->txt.sprts.enemy.attack.frame)
 		clean_anim(mlx, &gfx->txt.sprts.enemy.attack);
 	if (gfx->txt.sprts.enemy.walk.frame)

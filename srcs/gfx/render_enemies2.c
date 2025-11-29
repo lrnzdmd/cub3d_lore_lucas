@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_enemies2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 05:30:17 by luferna3          #+#    #+#             */
-/*   Updated: 2025/11/28 04:58:06 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/29 02:58:08 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	render_sprite(t_cub *data, t_ent *enemy, t_ray_s ray)
 	i.x = ray.draw_st.x - 1;
 	while (++i.x < ray.draw_end.x)
 	{
-		txt_p.x = (256 * (i.x - (-ray.size / 2 + ray.scr_x))
+		txt_p.x = (256 * (i.x - (-ray.size * 0.5 + ray.scr_x))
 				* enemy->sprt->size.x / ray.size) / 256;
 		if (ray.transf.y > 0 && i.x > 0 && i.x < data->gfx.fr_bf.size.x
 			&& ray.transf.y < data->gfx.zbuffer[i.x])

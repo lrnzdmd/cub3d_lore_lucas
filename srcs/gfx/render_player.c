@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 21:36:22 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 01:41:30 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 02:55:42 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,44 @@
 
 void	player_animator(t_cub *data)
 {
+	t_anim	*anim;
 	t_plyr	*plyr;
 
 	plyr = &data->gman.plyr;
-	if (plyr->state == NORM)
-	{
-		plyr->sprt = &data->gfx.txt.sprts.gun[0];
-		plyr->anim_timer = 0;
+	anim = plyr->anim;
+	if (!anim || !anim->frame)
 		return ;
-	}
 	plyr->anim_timer += data->d_time;
-	if (plyr->anim_timer < (ANM_SPD_SHOOT * 0.50))
-		plyr->sprt = &data->gfx.txt.sprts.gun[1];
-	else
-		plyr->sprt = &data->gfx.txt.sprts.gun[0];
+	if (plyr->anim_timer >= anim->speed)
+	{
+		plyr->anim_timer = 0;
+		if (anim->loop)
+			plyr->anim_frm = (plyr->anim_frm + 1) % anim->frm_n;
+		else
+		{
+			if (plyr->anim_frm < anim->frm_n - 1)
+				plyr->anim_frm++;
+		}
+	}
+	plyr->sprt = &anim->frame[plyr->anim_frm];
+}
+
+void	set_pl_animation(t_plyr *plyr, t_anim *anim)
+{
+	if (plyr->anim == anim)
+		return ;
+	plyr->anim = anim;
+	plyr->anim_frm = 0;
+	plyr->anim_timer = 0;
 }
 
 static t_v2i	calc_gun_bounds(t_cub *data, t_v2i *start, t_v2i *end)
 {
 	t_v2i	size;
 
-	size.x = data->gfx.fr_bf.size.y / 2.5;
+	size.x = data->gfx.fr_bf.size.y * 0.6;
 	size.y = size.x;
-	start->x = data->gfx.fr_bf.size.x / 2;
+	start->x = data->gfx.fr_bf.size.x * 0.5;
 	start->y = data->gfx.fr_bf.size.y - size.y;
 	end->x = start->x + size.x;
 	end->y = start->y + size.y;

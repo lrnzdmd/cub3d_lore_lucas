@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 04:04:23 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 19:22:08 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 02:53:45 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,46 @@ void	init_enemy_walk_anim(t_cub *data)
 	safe_mlx_xpm_to_img(data, &walk->frame[3],
 		TXT_ENM_WALK_3, &walk->frame[3].size);
 }
+
+void	init_shoot_anim(t_cub *data)
+{
+	t_anim	*shoot;
+
+	shoot = &data->gfx.txt.sprts.plyr.shoot;
+	shoot->frm_n = 7;
+	shoot->speed = 0.04;
+	shoot->loop = false;
+	shoot->frame = safe_calloc(data, 7, sizeof(t_img_d));
+	safe_mlx_xpm_to_img(data, &shoot->frame[0],
+		TXT_SHOOT_0, &shoot->frame[0].size);
+	safe_mlx_xpm_to_img(data, &shoot->frame[1],
+		TXT_SHOOT_1, &shoot->frame[1].size);
+	safe_mlx_xpm_to_img(data, &shoot->frame[2],
+		TXT_SHOOT_2, &shoot->frame[2].size);
+	safe_mlx_xpm_to_img(data, &shoot->frame[3],
+		TXT_SHOOT_3, &shoot->frame[3].size);
+	safe_mlx_xpm_to_img(data, &shoot->frame[4],
+		TXT_SHOOT_4, &shoot->frame[4].size);
+	safe_mlx_xpm_to_img(data, &shoot->frame[5],
+		TXT_SHOOT_1, &shoot->frame[5].size);
+	safe_mlx_xpm_to_img(data, &shoot->frame[6],
+		TXT_SHOOT_0, &shoot->frame[6].size);
+}
+
+void	init_idle_anim(t_cub *data)
+{
+	t_anim	*idle;
+
+	idle = &data->gfx.txt.sprts.plyr.idle;
+	idle->frm_n = 1;
+	idle->speed = 0;
+	idle->loop = false;
+	idle->frame = safe_calloc(data, 1, sizeof(t_img_d));
+	safe_mlx_xpm_to_img(data, &idle->frame[0],
+		TXT_SHOOT_0, &idle->frame[0].size);
+}
+
+
 
 void	init_enemy_attack_anim(t_cub *data)
 {
@@ -118,6 +158,8 @@ void	init_enemy_dead_anim(t_cub *data)
 
 void	init_enemy_textures(t_cub *data)
 {
+	init_shoot_anim(data);
+	init_idle_anim(data);
 	init_enemy_walk_anim(data);
 	init_enemy_idle_anim(data);
 	init_enemy_dead_anim(data);
