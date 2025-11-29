@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 04:04:23 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 03:52:49 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 04:28:25 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,167 +32,40 @@ void	set_window_size(t_cub *data)
 	data->gfx.zbuffer = safe_calloc(data, frame->size.x, sizeof(double));
 }
 
-void	init_enemy_walk_anim(t_cub *data)
+void	load_anim(t_cub *data, t_anim *anim, char *path, int frm_n)
 {
-	t_anim	*walk;
+	int	i;
 
-	walk = &data->gfx.txt.sprts.enemy.walk;
-	walk->frm_n = 4;
-	walk->speed = 0.35;
-	walk->loop = true;
-	walk->frame = safe_calloc(data, 4, sizeof(t_img_d));
-	safe_mlx_xpm_to_img(data, &walk->frame[0],
-		TXT_ENM_WALK_0, &walk->frame[0].size);
-	safe_mlx_xpm_to_img(data, &walk->frame[1],
-		TXT_ENM_WALK_1, &walk->frame[1].size);
-	safe_mlx_xpm_to_img(data, &walk->frame[2],
-		TXT_ENM_WALK_2, &walk->frame[2].size);
-	safe_mlx_xpm_to_img(data, &walk->frame[3],
-		TXT_ENM_WALK_3, &walk->frame[3].size);
+	anim->frm_n = frm_n;
+	anim->frame = safe_calloc(data, frm_n, sizeof(t_img_d));
+	i = -1;
+	while (++i < frm_n)
+	{
+		data->tmp.str_1 = ft_sprintf("%s%d.xpm", path, i);
+		if (!data->tmp.str_1)
+			exit_with_error(data, "ft_sprintf", 1);
+		safe_mlx_xpm_to_img(data, &anim->frame[i],
+			data->tmp.str_1, &anim->frame[i].size);
+		ft_multifree(1, &data->tmp.str_1);
+	}
 }
 
-void	init_reload_anim(t_cub *data)
+void	set_anim_data(t_anim *anim, double speed, bool loop)
 {
-	t_anim	*reload;
-
-	reload = &data->gfx.txt.sprts.plyr.reload;
-	reload->frm_n = 11;
-	reload->speed = 0.08;
-	reload->loop = false;
-	reload->frame = safe_calloc(data, 11, sizeof(t_img_d));
-	safe_mlx_xpm_to_img(data, &reload->frame[0],
-		TXT_RLD_0, &reload->frame[0].size);
-	safe_mlx_xpm_to_img(data, &reload->frame[1],
-		TXT_RLD_1, &reload->frame[1].size);
-	safe_mlx_xpm_to_img(data, &reload->frame[2],
-		TXT_RLD_2, &reload->frame[2].size);
-	safe_mlx_xpm_to_img(data, &reload->frame[3],
-		TXT_RLD_3, &reload->frame[3].size);
-	safe_mlx_xpm_to_img(data, &reload->frame[4],
-		TXT_RLD_4, &reload->frame[4].size);
-	safe_mlx_xpm_to_img(data, &reload->frame[5],
-		TXT_RLD_5, &reload->frame[5].size);
-	safe_mlx_xpm_to_img(data, &reload->frame[6],
-		TXT_RLD_6, &reload->frame[6].size);
-	safe_mlx_xpm_to_img(data, &reload->frame[7],
-		TXT_RLD_7, &reload->frame[7].size);
-	safe_mlx_xpm_to_img(data, &reload->frame[8],
-		TXT_RLD_8, &reload->frame[8].size);
-	safe_mlx_xpm_to_img(data, &reload->frame[9],
-		TXT_RLD_9, &reload->frame[9].size);
-	safe_mlx_xpm_to_img(data, &reload->frame[10],
-		TXT_RLD_10, &reload->frame[10].size);	
-}
-
-void	init_shoot_anim(t_cub *data)
-{
-	t_anim	*shoot;
-
-	shoot = &data->gfx.txt.sprts.plyr.shoot;
-	shoot->frm_n = 7;
-	shoot->speed = 0.04;
-	shoot->loop = false;
-	shoot->frame = safe_calloc(data, 7, sizeof(t_img_d));
-	safe_mlx_xpm_to_img(data, &shoot->frame[0],
-		TXT_SHOOT_0, &shoot->frame[0].size);
-	safe_mlx_xpm_to_img(data, &shoot->frame[1],
-		TXT_SHOOT_1, &shoot->frame[1].size);
-	safe_mlx_xpm_to_img(data, &shoot->frame[2],
-		TXT_SHOOT_2, &shoot->frame[2].size);
-	safe_mlx_xpm_to_img(data, &shoot->frame[3],
-		TXT_SHOOT_3, &shoot->frame[3].size);
-	safe_mlx_xpm_to_img(data, &shoot->frame[4],
-		TXT_SHOOT_4, &shoot->frame[4].size);
-	safe_mlx_xpm_to_img(data, &shoot->frame[5],
-		TXT_SHOOT_1, &shoot->frame[5].size);
-	safe_mlx_xpm_to_img(data, &shoot->frame[6],
-		TXT_SHOOT_0, &shoot->frame[6].size);
-}
-
-void	init_idle_anim(t_cub *data)
-{
-	t_anim	*idle;
-
-	idle = &data->gfx.txt.sprts.plyr.idle;
-	idle->frm_n = 1;
-	idle->speed = 0;
-	idle->loop = false;
-	idle->frame = safe_calloc(data, 1, sizeof(t_img_d));
-	safe_mlx_xpm_to_img(data, &idle->frame[0],
-		TXT_SHOOT_0, &idle->frame[0].size);
-}
-
-void	init_enemy_attack_anim(t_cub *data)
-{
-	t_anim	*attack;
-
-	attack = &data->gfx.txt.sprts.enemy.attack;
-	attack->frm_n = 6;
-	attack->speed = ENM_ATK_SPD / 6;
-	attack->loop = true;
-	attack->frame = safe_calloc(data, 6, sizeof(t_img_d));
-	safe_mlx_xpm_to_img(data, &attack->frame[0],
-		TXT_ENM_ATK_0, &attack->frame[0].size);
-	safe_mlx_xpm_to_img(data, &attack->frame[1],
-		TXT_ENM_ATK_1, &attack->frame[1].size);
-	safe_mlx_xpm_to_img(data, &attack->frame[2],
-		TXT_ENM_ATK_2, &attack->frame[2].size);
-	safe_mlx_xpm_to_img(data, &attack->frame[3],
-		TXT_ENM_ATK_3, &attack->frame[3].size);
-	safe_mlx_xpm_to_img(data, &attack->frame[4],
-		TXT_ENM_ATK_4, &attack->frame[4].size);
-	safe_mlx_xpm_to_img(data, &attack->frame[5],
-		TXT_ENM_ATK_5, &attack->frame[5].size);
-}
-
-void	init_enemy_idle_anim(t_cub *data)
-{
-	t_anim	*idle;
-
-	idle = &data->gfx.txt.sprts.enemy.idle;
-	idle->frm_n = 4;
-	idle->speed = 0.8;
-	idle->loop = true;
-	idle->frame = safe_calloc(data, 4, sizeof(t_img_d));
-	safe_mlx_xpm_to_img(data, &idle->frame[0],
-		TXT_ENM_IDLE_0, &idle->frame[0].size);
-	safe_mlx_xpm_to_img(data, &idle->frame[1],
-		TXT_ENM_IDLE_1, &idle->frame[1].size);
-	safe_mlx_xpm_to_img(data, &idle->frame[2],
-		TXT_ENM_IDLE_2, &idle->frame[2].size);
-	safe_mlx_xpm_to_img(data, &idle->frame[3],
-		TXT_ENM_IDLE_3, &idle->frame[3].size);
-}
-
-void	init_enemy_dead_anim(t_cub *data)
-{
-	t_anim	*dead;
-
-	dead = &data->gfx.txt.sprts.enemy.dead;
-	dead->frm_n = 6;
-	dead->speed = 0.075;
-	dead->loop = false;
-	dead->frame = safe_calloc(data, 6, sizeof(t_img_d));
-	safe_mlx_xpm_to_img(data, &dead->frame[0],
-		TXT_ENM_DEAD_0, &dead->frame[0].size);
-	safe_mlx_xpm_to_img(data, &dead->frame[1],
-		TXT_ENM_DEAD_1, &dead->frame[1].size);
-	safe_mlx_xpm_to_img(data, &dead->frame[2],
-		TXT_ENM_DEAD_2, &dead->frame[2].size);
-	safe_mlx_xpm_to_img(data, &dead->frame[3],
-		TXT_ENM_DEAD_3, &dead->frame[3].size);
-	safe_mlx_xpm_to_img(data, &dead->frame[4],
-		TXT_ENM_DEAD_4, &dead->frame[4].size);
-	safe_mlx_xpm_to_img(data, &dead->frame[5],
-		TXT_ENM_DEAD_5, &dead->frame[5].size);
+	anim->loop = loop;
+	anim->speed = speed;
 }
 
 void	init_enemy_textures(t_cub *data)
 {
-	init_enemy_walk_anim(data);
-	init_enemy_idle_anim(data);
-	init_enemy_dead_anim(data);
-	init_enemy_attack_anim(data);
+	load_anim(data, &data->gfx.txt.sprts.enemy.walk, TXT_ENM_WALK, 4);
+	set_anim_data(&data->gfx.txt.sprts.enemy.walk, 0.35, true);
+	load_anim(data, &data->gfx.txt.sprts.enemy.idle, TXT_ENM_IDLE, 4);
+	set_anim_data(&data->gfx.txt.sprts.enemy.idle, 0.7, true);
+	load_anim(data, &data->gfx.txt.sprts.enemy.dead, TXT_ENM_DEAD, 6);
+	set_anim_data(&data->gfx.txt.sprts.enemy.dead, 0.05, false);
+	load_anim(data, &data->gfx.txt.sprts.enemy.attack, TXT_ENM_ATK, 6);
+	set_anim_data(&data->gfx.txt.sprts.enemy.attack, ENM_ATK_SPD * 0.125, false);
 }
 
 void	init_gfx_data(t_cub	*data)
@@ -209,9 +82,12 @@ void	init_gfx_data(t_cub	*data)
 			frame->size.x, frame->size.y, "cub3d");
 	safe_mlx_new_img(data, frame, frame->size.x, frame->size.y);
 	safe_mlx_xpm_to_img(data, door_txt, TXT_DOOR, &door_txt->size);
-	init_shoot_anim(data);
-	init_idle_anim(data);
-	init_reload_anim(data);
+	load_anim(data, &data->gfx.txt.sprts.plyr.shoot, TXT_SHOOT, 7);
+	set_anim_data(&data->gfx.txt.sprts.plyr.shoot, 0.04, false);
+	load_anim(data, &data->gfx.txt.sprts.plyr.reload, TXT_RLD, 11);
+	set_anim_data(&data->gfx.txt.sprts.plyr.reload, 0.08, false);
+	load_anim(data, &data->gfx.txt.sprts.plyr.idle, TXT_SHOOT, 1);
+	set_anim_data(&data->gfx.txt.sprts.plyr.idle, 0, false);
 	init_enemy_textures(data);
 	init_minimap(data);
 }

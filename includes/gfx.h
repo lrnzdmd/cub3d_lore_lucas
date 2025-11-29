@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 03:53:44 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 04:25:26 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,37 +22,23 @@
 # define MAP_CLR_BG 0xFF002147
 
 # define TXT_DOOR "./assets/textures/door.xpm"
-# define TXT_SHOOT_0 "./assets/textures/shoot0.xpm"
-# define TXT_SHOOT_1 "./assets/textures/shoot1.xpm"
-# define TXT_SHOOT_2 "./assets/textures/shoot2.xpm"
-# define TXT_SHOOT_3 "./assets/textures/shoot3.xpm"
-# define TXT_SHOOT_4 "./assets/textures/shoot4.xpm"
-# define TXT_RLD_0 "./assets/textures/rld0.xpm"
-# define TXT_RLD_1 "./assets/textures/rld1.xpm"
-# define TXT_RLD_2 "./assets/textures/rld2.xpm"
-# define TXT_RLD_3 "./assets/textures/rld3.xpm"
-# define TXT_RLD_4 "./assets/textures/rld4.xpm"
-# define TXT_RLD_5 "./assets/textures/rld5.xpm"
-# define TXT_RLD_6 "./assets/textures/rld6.xpm"
-# define TXT_RLD_7 "./assets/textures/rld7.xpm"
-# define TXT_RLD_8 "./assets/textures/rld8.xpm"
-# define TXT_RLD_9 "./assets/textures/rld9.xpm"
-# define TXT_RLD_10 "./assets/textures/rld10.xpm"
-# define TXT_ENM_ATK_0 "./assets/textures/atk0.xpm"
+# define TXT_SHOOT "./assets/textures/shoot"
+# define TXT_RLD "./assets/textures/rld"
+# define TXT_ENM_ATK "./assets/textures/atk"
 # define TXT_ENM_ATK_1 "./assets/textures/atk1.xpm"
 # define TXT_ENM_ATK_2 "./assets/textures/atk2.xpm"
 # define TXT_ENM_ATK_3 "./assets/textures/atk3.xpm"
 # define TXT_ENM_ATK_4 "./assets/textures/atk4.xpm"
 # define TXT_ENM_ATK_5 "./assets/textures/atk0.xpm"
-# define TXT_ENM_WALK_0 "./assets/textures/walk0.xpm"
+# define TXT_ENM_WALK "./assets/textures/walk"
 # define TXT_ENM_WALK_1 "./assets/textures/walk1.xpm"
 # define TXT_ENM_WALK_2 "./assets/textures/walk2.xpm"
 # define TXT_ENM_WALK_3 "./assets/textures/walk3.xpm"
-# define TXT_ENM_IDLE_0 "./assets/textures/idle0.xpm"
+# define TXT_ENM_IDLE "./assets/textures/idle"
 # define TXT_ENM_IDLE_1 "./assets/textures/idle1.xpm"
 # define TXT_ENM_IDLE_2 "./assets/textures/idle2.xpm"
 # define TXT_ENM_IDLE_3 "./assets/textures/idle3.xpm"
-# define TXT_ENM_DEAD_0 "./assets/textures/dead0.xpm"
+# define TXT_ENM_DEAD "./assets/textures/dead"
 # define TXT_ENM_DEAD_1 "./assets/textures/dead1.xpm"
 # define TXT_ENM_DEAD_2 "./assets/textures/dead2.xpm"
 # define TXT_ENM_DEAD_3 "./assets/textures/dead3.xpm"
