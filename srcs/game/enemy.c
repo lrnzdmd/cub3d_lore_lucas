@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 05:08:50 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 06:38:57 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 01:02:28 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	update_enemies(t_cub *data)
 	i = -1;
 	while (++i < data->gman.enemies_n)
 	{
-		enemy_action(data, &data->gman.enemies[i]);
+		enemy_update(data, &data->gman.enemies[i]);
 		enemy_animator(data, &data->gman.enemies[i]);
 	}
 }

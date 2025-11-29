@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 21:36:22 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 00:26:51 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 01:41:30 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,13 @@ static t_v2i	calc_gun_bounds(t_cub *data, t_v2i *start, t_v2i *end)
 static void	draw_gun_pixel(t_cub *data, t_v2i i, t_v2i start, t_v2i size)
 {
 	t_v2i	txt_cd;
+	t_img_d	*sprite;
 	int		color;
 
-	txt_cd.x = ((i.x - start.x) * data->gfx.txt.sprts.gun[0].size.x) / size.x;
-	txt_cd.y = ((i.y - start.y) * data->gfx.txt.sprts.gun[0].size.y) / size.y;
-	color = get_sprite_pixel(data->gman.plyr.sprt, txt_cd);
+	sprite = data->gman.plyr.sprt;
+	txt_cd.x = ((i.x - start.x) * sprite->size.x) / size.x;
+	txt_cd.y = ((i.y - start.y) * sprite->size.y) / size.y;
+	color = get_sprite_pixel(sprite, txt_cd);
 	if ((color & 0x00FFFFFF) != 0xFF00FF)
 		*(int *)calc_dest_addr(&data->gfx.fr_bf, i) = color;
 }

@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 06:29:54 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 23:01:05 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 01:02:28 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,9 @@ void	dead_state(t_cub *data, t_ent *enemy)
 		set_animation(enemy, &data->gfx.txt.sprts.enemy.dead);
 }
 
-void	enemy_action(t_cub *data, t_ent *enemy)
+void	enemy_update(t_cub *data, t_ent *enemy)
 {
-	static t_state_func	states[5] = {idle_state, patrol_state, chase_state,
+	static t_en_state_func	states[5] = {idle_state, patrol_state, chase_state,
 		attack_state, dead_state};
 
 	states[enemy->data.state](data, enemy);

@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 23:08:30 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 01:41:51 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,9 +159,17 @@ struct s_enemy_textures
 	t_anim	idle;
 };
 
+struct s_player_textures
+{
+	t_anim	idle;
+	t_anim	shoot;
+	t_anim	reload;
+};
+
 struct s_sprites_textures
 {
 	t_enm_txt	enemy;
+	t_plyr_txt	plyr;
 	t_img_d		gun[2];
 };
 
