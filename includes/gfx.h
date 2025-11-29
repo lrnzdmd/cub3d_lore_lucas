@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 03:20:27 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 03:53:44 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@
 # define MAP_CLR_DR 0xFF009C8C
 # define MAP_CLR_BG 0xFF002147
 
-# define TXT_ENEMY "./assets/textures/bear.xpm"
 # define TXT_DOOR "./assets/textures/door.xpm"
-# define TXT_GUN_0 "./assets/textures/gun0.xpm"
-# define TXT_GUN_1 "./assets/textures/gun1.xpm"
 # define TXT_SHOOT_0 "./assets/textures/shoot0.xpm"
 # define TXT_SHOOT_1 "./assets/textures/shoot1.xpm"
 # define TXT_SHOOT_2 "./assets/textures/shoot2.xpm"
@@ -186,7 +183,6 @@ struct s_sprites_textures
 {
 	t_enm_txt	enemy;
 	t_plyr_txt	plyr;
-	t_img_d		gun[2];
 };
 
 struct s_textures

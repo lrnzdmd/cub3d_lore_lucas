@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 21:05:31 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 03:48:06 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 03:50:05 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ static void	calc_door_pos(t_cub *data, t_v2i *pos, t_v2i *end, t_d_hor hor)
 	tile_size = data->gman.map.tile_size;
 	if (hor)
 	{
-		pos->x += (tile_size * 0.5) - (tile_size / 16);
+		pos->x += (tile_size * 0.5) - (tile_size * 0.0675);
 		end->y = pos->y + tile_size;
 		end->x = pos->x + (tile_size * 0.125);
 	}
 	else
 	{
-		pos->y += (tile_size * 0.5) - (tile_size / 16);
+		pos->y += (tile_size * 0.5) - (tile_size * 0.0675);
 		end->x = pos->x + tile_size;
 		end->y = pos->y + (tile_size * 0.125);
 	}

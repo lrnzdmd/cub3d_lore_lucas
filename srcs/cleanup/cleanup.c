@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 18:49:10 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 03:23:29 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 03:52:21 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	free_gfx_data(t_cub	*data)
 		clean_anim(mlx, &gfx->txt.sprts.plyr.shoot);
 	if (gfx->txt.sprts.plyr.reload.frame)
 		clean_anim(mlx, &gfx->txt.sprts.plyr.reload);
+	if (gfx->txt.sprts.plyr.idle.frame)
+		clean_anim(mlx, &gfx->txt.sprts.plyr.idle);
 	if (gfx->txt.sprts.enemy.attack.frame)
 		clean_anim(mlx, &gfx->txt.sprts.enemy.attack);
 	if (gfx->txt.sprts.enemy.walk.frame)
@@ -74,8 +76,6 @@ void	free_gfx_data(t_cub	*data)
 		clean_anim(mlx, &gfx->txt.sprts.enemy.dead);
 	if (gfx->txt.sprts.enemy.idle.frame)
 		clean_anim(mlx, &gfx->txt.sprts.enemy.idle);
-	safe_mlx_free_img(mlx, gfx->txt.sprts.gun[0].img_p);
-	safe_mlx_free_img(mlx, gfx->txt.sprts.gun[1].img_p);
 	ft_multifree(2, &data->gman.enemies,
 		&data->gfx.zbuffer);
 }

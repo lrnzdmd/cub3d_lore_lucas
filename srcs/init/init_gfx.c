@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 04:04:23 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 03:31:13 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 03:52:49 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,22 +189,10 @@ void	init_enemy_dead_anim(t_cub *data)
 
 void	init_enemy_textures(t_cub *data)
 {
-	init_shoot_anim(data);
-	init_idle_anim(data);
-	init_reload_anim(data);
 	init_enemy_walk_anim(data);
 	init_enemy_idle_anim(data);
 	init_enemy_dead_anim(data);
 	init_enemy_attack_anim(data);
-}
-
-void	init_gun_textures(t_cub *data)
-{
-	t_sprt_txt	*txt;
-
-	txt = &data->gfx.txt.sprts;
-	safe_mlx_xpm_to_img(data, &txt->gun[0], TXT_GUN_0, &txt->gun[0].size);
-	safe_mlx_xpm_to_img(data, &txt->gun[1], TXT_GUN_1, &txt->gun[1].size);
 }
 
 void	init_gfx_data(t_cub	*data)
@@ -221,7 +209,9 @@ void	init_gfx_data(t_cub	*data)
 			frame->size.x, frame->size.y, "cub3d");
 	safe_mlx_new_img(data, frame, frame->size.x, frame->size.y);
 	safe_mlx_xpm_to_img(data, door_txt, TXT_DOOR, &door_txt->size);
+	init_shoot_anim(data);
+	init_idle_anim(data);
+	init_reload_anim(data);
 	init_enemy_textures(data);
-	init_gun_textures(data);
 	init_minimap(data);
 }
