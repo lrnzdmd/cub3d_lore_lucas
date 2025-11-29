@@ -6,25 +6,11 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 06:29:54 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 01:02:28 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 04:53:50 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
-
-void	change_state(t_ent *enemy, t_enm_st state)
-{
-	enemy->data.state = state;
-	if (state == IDLE)
-		enemy->data.st_timer = 2;
-	else if (state == PATROL)
-	{
-		update_enemy_dir(enemy);
-		enemy->data.st_timer = 3.5;
-	}
-	else if (state == ATTACK)
-		enemy->data.st_timer = 0.5;
-}
 
 void	idle_state(t_cub *data, t_ent *enemy)
 {
@@ -114,13 +100,5 @@ void	attack_state(t_cub *data, t_ent *enemy)
 
 void	dead_state(t_cub *data, t_ent *enemy)
 {
-		set_animation(enemy, &data->gfx.txt.sprts.enemy.dead);
-}
-
-void	enemy_update(t_cub *data, t_ent *enemy)
-{
-	static t_en_state_func	states[5] = {idle_state, patrol_state, chase_state,
-		attack_state, dead_state};
-
-	states[enemy->data.state](data, enemy);
+	set_animation(enemy, &data->gfx.txt.sprts.enemy.dead);
 }

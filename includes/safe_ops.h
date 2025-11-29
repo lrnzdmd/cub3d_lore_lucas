@@ -3,20 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   safe_ops.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 01:42:59 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 05:19:26 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/29 04:41:13 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SAFE_OPS_H
 # define SAFE_OPS_H
 
-# include <stddef.h>
-
-//typedef struct s_cub3d_data	t_cub;
-#include "types.h"
+# include <types.h>
 
 char	*safe_strdup(t_cub *data, const char *src);
 char	**safe_split(t_cub *data, const char *s, char c);

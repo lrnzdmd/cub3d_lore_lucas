@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 04:04:23 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 04:28:25 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 04:49:39 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,17 @@ void	set_anim_data(t_anim *anim, double speed, bool loop)
 
 void	init_enemy_textures(t_cub *data)
 {
-	load_anim(data, &data->gfx.txt.sprts.enemy.walk, TXT_ENM_WALK, 4);
-	set_anim_data(&data->gfx.txt.sprts.enemy.walk, 0.35, true);
-	load_anim(data, &data->gfx.txt.sprts.enemy.idle, TXT_ENM_IDLE, 4);
-	set_anim_data(&data->gfx.txt.sprts.enemy.idle, 0.7, true);
-	load_anim(data, &data->gfx.txt.sprts.enemy.dead, TXT_ENM_DEAD, 6);
-	set_anim_data(&data->gfx.txt.sprts.enemy.dead, 0.05, false);
-	load_anim(data, &data->gfx.txt.sprts.enemy.attack, TXT_ENM_ATK, 6);
-	set_anim_data(&data->gfx.txt.sprts.enemy.attack, ENM_ATK_SPD * 0.125, false);
+	t_enm_txt	*enemy;
+
+	enemy = &data->gfx.txt.sprts.enemy;
+	load_anim(data, &enemy->walk, TXT_ENM_WALK, 4);
+	set_anim_data(&enemy->walk, ANM_SPD_ENM_WALK, true);
+	load_anim(data, &enemy->idle, TXT_ENM_IDLE, 4);
+	set_anim_data(&enemy->idle, ANM_SPD_ENM_IDLE, true);
+	load_anim(data, &enemy->dead, TXT_ENM_DEAD, 6);
+	set_anim_data(&enemy->dead, ANM_SPD_ENM_DEAD, false);
+	load_anim(data, &enemy->attack, TXT_ENM_ATK, 6);
+	set_anim_data(&enemy->attack, ENM_ATK_SPD * 0.125, false);
 }
 
 void	init_gfx_data(t_cub	*data)
@@ -83,9 +86,9 @@ void	init_gfx_data(t_cub	*data)
 	safe_mlx_new_img(data, frame, frame->size.x, frame->size.y);
 	safe_mlx_xpm_to_img(data, door_txt, TXT_DOOR, &door_txt->size);
 	load_anim(data, &data->gfx.txt.sprts.plyr.shoot, TXT_SHOOT, 7);
-	set_anim_data(&data->gfx.txt.sprts.plyr.shoot, 0.04, false);
+	set_anim_data(&data->gfx.txt.sprts.plyr.shoot, ANM_SPD_SHOOT, false);
 	load_anim(data, &data->gfx.txt.sprts.plyr.reload, TXT_RLD, 11);
-	set_anim_data(&data->gfx.txt.sprts.plyr.reload, 0.08, false);
+	set_anim_data(&data->gfx.txt.sprts.plyr.reload, ANM_SPD_RLD, false);
 	load_anim(data, &data->gfx.txt.sprts.plyr.idle, TXT_SHOOT, 1);
 	set_anim_data(&data->gfx.txt.sprts.plyr.idle, 0, false);
 	init_enemy_textures(data);

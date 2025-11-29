@@ -6,7 +6,7 @@
 #    By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/09 20:22:59 by lde-medi          #+#    #+#              #
-#    Updated: 2025/11/29 00:28:58 by lde-medi         ###   ########.fr        #
+#    Updated: 2025/11/29 04:46:52 by lde-medi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS = 	srcs/main.c \
 		srcs/init/init_player.c \
 		srcs/input/action.c \
 		srcs/input/input.c \
+		srcs/input/mouse_input.c \
 		srcs/input/movement.c \
 		srcs/parsing/parsing.c \
 		srcs/parsing/parsing_args.c \

@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 03:11:04 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 05:25:11 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/29 04:40:30 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
+
+# include <types.h>
 
 # define ERR_USAGE "usage: ./cub3d mapname.cub"
 # define ERR_MAP_EXT "invalid map file extension"
@@ -45,9 +47,6 @@ struct s_temp_pointers
 	t_list	*lst;
 	t_d_hor	lst_dr_h;
 };
-
-//typedef struct s_cub3d_data	t_cub;
-#include "types.h"
 
 void	parse_cub3d(t_cub	*data, int ac, char **av);
 void	validate_args(t_cub	*data, int ac, char	**av);

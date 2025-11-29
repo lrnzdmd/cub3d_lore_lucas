@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luferna3 <luferna3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 03:45:20 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/28 05:19:02 by luferna3         ###   ########.fr       */
+/*   Updated: 2025/11/29 04:39:07 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INIT_H
 # define INIT_H
 
-// typedef struct s_cub3d_data	t_cub;
-#include "types.h"
+# include <types.h>
 
 void	init_gfx_data(t_cub	*data);
 void	init_map(t_cub	*data);

@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 05:31:18 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 02:40:01 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 05:10:27 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ typedef enum e_entity_types
 	ENEMY
 }	t_ent_t;
 
-typedef enum s_enemy_state
+enum e_enemy_state
 {
 	IDLE,
 	PATROL,
 	CHASE,
 	ATTACK,
 	DEAD
-}	t_enm_st;
+};
 
 struct s_enemy_data
 {

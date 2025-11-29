@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 18:49:10 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 03:52:21 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 04:51:18 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	clean_anim(void *mlx, t_anim *anim)
 	int	i;
 
 	i = -1;
+	if (!anim->frame)
+		return ;
 	while (++i < anim->frm_n)
 		safe_mlx_free_img(mlx, anim->frame[i].img_p);
 	ft_multifree(1, &anim->frame);
@@ -62,20 +64,13 @@ void	free_gfx_data(t_cub	*data)
 	safe_mlx_free_img(mlx, gfx->txt.wall.w.img_p);
 	safe_mlx_free_img(mlx, gfx->txt.wall.e.img_p);
 	safe_mlx_free_img(mlx, gfx->txt.wall.dr.img_p);
-	if (gfx->txt.sprts.plyr.shoot.frame)
-		clean_anim(mlx, &gfx->txt.sprts.plyr.shoot);
-	if (gfx->txt.sprts.plyr.reload.frame)
-		clean_anim(mlx, &gfx->txt.sprts.plyr.reload);
-	if (gfx->txt.sprts.plyr.idle.frame)
-		clean_anim(mlx, &gfx->txt.sprts.plyr.idle);
-	if (gfx->txt.sprts.enemy.attack.frame)
-		clean_anim(mlx, &gfx->txt.sprts.enemy.attack);
-	if (gfx->txt.sprts.enemy.walk.frame)
-		clean_anim(mlx, &gfx->txt.sprts.enemy.walk);
-	if (gfx->txt.sprts.enemy.dead.frame)
-		clean_anim(mlx, &gfx->txt.sprts.enemy.dead);
-	if (gfx->txt.sprts.enemy.idle.frame)
-		clean_anim(mlx, &gfx->txt.sprts.enemy.idle);
+	clean_anim(mlx, &gfx->txt.sprts.plyr.shoot);
+	clean_anim(mlx, &gfx->txt.sprts.plyr.reload);
+	clean_anim(mlx, &gfx->txt.sprts.plyr.idle);
+	clean_anim(mlx, &gfx->txt.sprts.enemy.attack);
+	clean_anim(mlx, &gfx->txt.sprts.enemy.walk);
+	clean_anim(mlx, &gfx->txt.sprts.enemy.dead);
+	clean_anim(mlx, &gfx->txt.sprts.enemy.idle);
 	ft_multifree(2, &data->gman.enemies,
 		&data->gfx.zbuffer);
 }

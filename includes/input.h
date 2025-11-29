@@ -6,12 +6,14 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:29:26 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 00:48:55 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 04:41:29 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INPUT_H
 # define INPUT_H
+
+# include <types.h>
 
 # define KEY_UP 65362
 # define KEY_DOWN 65364
@@ -43,9 +45,6 @@ struct s_input_data
 	bool	sprint;
 	bool	quit;
 };
-
-//typedef struct s_cub3d_data	t_cub;
-#include "types.h"
 
 void	input_manager(t_cub	*data);
 int		key_press_handler(int keycode, t_cub *data);

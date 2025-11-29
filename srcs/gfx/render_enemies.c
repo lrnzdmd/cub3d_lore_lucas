@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 06:44:28 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 03:43:15 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 04:57:59 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,31 @@
 
 void	init_sprite_ray(t_cub *data, t_ent *enemy, t_ray_s *ray)
 {
+	t_img_d	*frame;
 	t_plyr	plyr;
 
 	plyr = data->gman.plyr;
+	frame = &data->gfx.fr_bf;
 	ray->rel_pos.x = enemy->pos.x - plyr.pos.x;
 	ray->rel_pos.y = enemy->pos.y - plyr.pos.y;
 	ray->transf.x = ray->inv_det * (plyr.dir.y
 			* ray->rel_pos.x - plyr.dir.x * ray->rel_pos.y);
 	ray->transf.y = ray->inv_det * (-plyr.plane.y
 			* ray->rel_pos.x + plyr.plane.x * ray->rel_pos.y);
-	ray->scr_x = (data->gfx.fr_bf.size.x * 0.5)
-		* (1 + (ray->transf.x / ray->transf.y));
-	ray->size = fabs(floor(data->gfx.fr_bf.size.y / ray->transf.y));
-	ray->draw_st.y = -ray->size * 0.5 + data->gfx.fr_bf.size.y * 0.5 + plyr.pitch;
+	ray->scr_x = (frame->size.x * 0.5) * (1 + (ray->transf.x / ray->transf.y));
+	ray->size = fabs(floor(frame->size.y / ray->transf.y));
+	ray->draw_st.y = -ray->size * 0.5 + frame->size.y * 0.5 + plyr.pitch;
 	if (ray->draw_st.y < 0)
 		ray->draw_st.y = 0;
-	ray->draw_end.y = ray->size * 0.5 + data->gfx.fr_bf.size.y * 0.5 + plyr.pitch;
-	if (ray->draw_end.y >= data->gfx.fr_bf.size.y)
-		ray->draw_end.y = data->gfx.fr_bf.size.y - 1;
+	ray->draw_end.y = ray->size * 0.5 + frame->size.y * 0.5 + plyr.pitch;
+	if (ray->draw_end.y >= frame->size.y)
+		ray->draw_end.y = frame->size.y - 1;
 	ray->draw_st.x = -ray->size * 0.5 + ray->scr_x;
 	if (ray->draw_st.x < 0)
 		ray->draw_st.x = 0;
 	ray->draw_end.x = ray->size * 0.5 + ray->scr_x;
-	if (ray->draw_end.x >= data->gfx.fr_bf.size.x)
-		ray->draw_end.x = data->gfx.fr_bf.size.x - 1;
+	if (ray->draw_end.x >= frame->size.x)
+		ray->draw_end.x = frame->size.x - 1;
 }
 
 int	get_sprite_pixel(t_img_d *txt, t_v2i pos)

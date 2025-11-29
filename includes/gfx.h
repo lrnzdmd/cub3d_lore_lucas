@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 04:25:26 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 05:10:10 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,16 @@
 # define TXT_SHOOT "./assets/textures/shoot"
 # define TXT_RLD "./assets/textures/rld"
 # define TXT_ENM_ATK "./assets/textures/atk"
-# define TXT_ENM_ATK_1 "./assets/textures/atk1.xpm"
-# define TXT_ENM_ATK_2 "./assets/textures/atk2.xpm"
-# define TXT_ENM_ATK_3 "./assets/textures/atk3.xpm"
-# define TXT_ENM_ATK_4 "./assets/textures/atk4.xpm"
-# define TXT_ENM_ATK_5 "./assets/textures/atk0.xpm"
 # define TXT_ENM_WALK "./assets/textures/walk"
-# define TXT_ENM_WALK_1 "./assets/textures/walk1.xpm"
-# define TXT_ENM_WALK_2 "./assets/textures/walk2.xpm"
-# define TXT_ENM_WALK_3 "./assets/textures/walk3.xpm"
 # define TXT_ENM_IDLE "./assets/textures/idle"
-# define TXT_ENM_IDLE_1 "./assets/textures/idle1.xpm"
-# define TXT_ENM_IDLE_2 "./assets/textures/idle2.xpm"
-# define TXT_ENM_IDLE_3 "./assets/textures/idle3.xpm"
 # define TXT_ENM_DEAD "./assets/textures/dead"
-# define TXT_ENM_DEAD_1 "./assets/textures/dead1.xpm"
-# define TXT_ENM_DEAD_2 "./assets/textures/dead2.xpm"
-# define TXT_ENM_DEAD_3 "./assets/textures/dead3.xpm"
-# define TXT_ENM_DEAD_4 "./assets/textures/dead4.xpm"
-# define TXT_ENM_DEAD_5 "./assets/textures/dead5.xpm"
-# define ANM_SPD_SHOOT 0.8
-# define ANM_SPD_ENM_ATK 0.5
-# define ANM_SPD_ENM_WALK 0.8
+# define ANM_SPD_SHOOT 0.06
+# define ANM_SPD_RLD 0.1
+# define ANM_SPD_ENM_IDLE 0.7
+# define ANM_SPD_ENM_DEAD 0.085
+# define ANM_SPD_ENM_WALK 0.175
 
-#include "types.h"
+# include <types.h>
 
 typedef enum e_door_orientation
 {
@@ -236,7 +222,10 @@ bool	is_shootable(t_cub *data, t_ray_s ray);
 void	render_sprite(t_cub *data, t_ent *enemy, t_ray_s ray);
 void	render_crosshair(t_cub *data);
 void	hud_health_ammo(t_cub *data);
-
+void	draw_health_bar(t_cub *data, t_img_d *frame,
+						t_v2i icn_pos, t_v2i icn_size);
+void	draw_ammo_bar(t_cub *data, t_img_d *frame,
+						t_v2i icn_pos, t_v2i icn_size);
 void	init_ray_dir(t_cub *data, t_ray *ray, int x);
 void	init_ray_d_dist(t_ray *ray);
 void	init_ray_sd_dist(t_ray *ray);
