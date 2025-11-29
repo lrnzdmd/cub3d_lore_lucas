@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 05:20:12 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 05:09:19 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 16:34:37 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ void	draw_ammo_bar(t_cub *data, t_img_d *frame,
 {
 	t_v2i	bar_pos;
 	t_v2i	bar_size;
+	int		space;
 	int		ammo;
 
 	ammo = data->gman.plyr.ammo;
+	space = ((data->gfx.fr_bf.size.x * 0.25) - (icn_size.x * 1.8));
 	bar_pos.x = icn_pos.x + icn_size.x + 5;
 	bar_pos.y = icn_pos.y + (icn_size.y * 0.5) - icn_size.y * 0.125;
-	bar_size.x = ((float)ammo / PLYR_MAX_AMMO) * (icn_size.x * 4);
+	bar_size.x = ((float)ammo / PLYR_MAX_AMMO) * space;
 	bar_size.y = icn_size.y * 0.25;
 	drawrectrd_to_img(frame, bar_pos, bar_size, 0xFFFF0000);
 }

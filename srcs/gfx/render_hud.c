@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 19:59:01 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 05:09:23 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 16:42:35 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	render_crosshair(t_cub *data)
 	int		len;
 	int		color;
 
-	c.x = data->gfx.fr_bf.size.x * 0.5;
-	c.y = data->gfx.fr_bf.size.y * 0.5;
-	gap = 3;
-	len = 7;
+	c.x = (data->gfx.fr_bf.size.x * 0.5)- 1;
+	c.y = (data->gfx.fr_bf.size.y * 0.5)- 1;
+	gap = 4;
+	len = 8;
 	if (data->gman.plyr.target)
 		color = 0x00FF0000;
 	else
@@ -46,12 +46,14 @@ void	draw_health_bar(t_cub *data, t_img_d *frame,
 {
 	t_v2i	bar_pos;
 	t_v2i	bar_size;
+	int		space;
 	int		hp;
 
 	hp = data->gman.plyr.hp;
+	space = ((data->gfx.fr_bf.size.x * 0.25) - (icn_size.x * 1.8));
 	bar_pos.x = icn_pos.x + icn_size.x + 5;
 	bar_pos.y = icn_pos.y + (icn_size.y * 0.5) - icn_size.y * 0.125;
-	bar_size.x = ((float)hp / PLYR_MAX_HP) * (icn_size.x * 4);
+	bar_size.x = ((float)hp / PLYR_MAX_HP) * space;
 	bar_size.y = icn_size.y * 0.25;
 	drawrectrd_to_img(frame, bar_pos, bar_size, 0xFF00FF00);
 }

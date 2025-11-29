@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 20:36:57 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 05:10:10 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 16:04:40 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define GFX_H
 
 # define TARGET_FR_TIME 0.0166666666666667
-# define SCR_SZ_X 900
-# define SCR_SZ_Y 600
+# define SCR_SZ_X 1280
+# define SCR_SZ_Y 720
 # define FOV_PLANE 0.66f
 # define MAP_CLR_WL 0xFF644117
 # define MAP_CLR_DR 0xFF009C8C
