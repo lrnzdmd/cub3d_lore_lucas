@@ -6,7 +6,7 @@
 /*   By: lde-medi <lde-medio@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 19:59:01 by lde-medi          #+#    #+#             */
-/*   Updated: 2025/11/29 16:42:35 by lde-medi         ###   ########.fr       */
+/*   Updated: 2025/11/29 16:43:48 by lde-medi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	render_crosshair(t_cub *data)
 	int		len;
 	int		color;
 
-	c.x = (data->gfx.fr_bf.size.x * 0.5)- 1;
-	c.y = (data->gfx.fr_bf.size.y * 0.5)- 1;
+	c.x = (data->gfx.fr_bf.size.x * 0.5) - 1;
+	c.y = (data->gfx.fr_bf.size.y * 0.5) - 1;
 	gap = 4;
 	len = 8;
 	if (data->gman.plyr.target)
